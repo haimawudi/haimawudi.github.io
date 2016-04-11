@@ -78,15 +78,40 @@
 
 
 
-<meta name="description" content="Life is beautiful,so make IT wonderful.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="梦想家Haima's">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="普通命令
+ctrl+a:跳到命令行首  to ahead
+ctrl+e:跳到命令ing行尾  to end 
+ctrl+u:删除光标至命令行首 delete to ahead
+ctrl+k:删除光标至命令行尾  delete to end 
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 //  alias cls=&amp;apos;clear&amp;apos;
+
+上下键可以翻阅命令执行历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用技巧">
+<meta property="og:url" content="http://yoursite.com/2016/04/11/Linux/index.html">
 <meta property="og:site_name" content="梦想家Haima's">
-<meta property="og:description" content="Life is beautiful,so make IT wonderful.">
+<meta property="og:description" content="普通命令
+ctrl+a:跳到命令行首  to ahead
+ctrl+e:跳到命令ing行尾  to end 
+ctrl+u:删除光标至命令行首 delete to ahead
+ctrl+k:删除光标至命令行尾  delete to end 
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 //  alias cls=&amp;apos;clear&amp;apos;
+
+上下键可以翻阅命令执行历">
+<meta property="og:updated_time" content="2016-04-11T11:04:17.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="梦想家Haima's">
-<meta name="twitter:description" content="Life is beautiful,so make IT wonderful.">
+<meta name="twitter:title" content="Linux常用技巧">
+<meta name="twitter:description" content="普通命令
+ctrl+a:跳到命令行首  to ahead
+ctrl+e:跳到命令ing行尾  to end 
+ctrl+u:删除光标至命令行首 delete to ahead
+ctrl+k:删除光标至命令行尾  delete to end 
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 //  alias cls=&amp;apos;clear&amp;apos;
+
+上下键可以翻阅命令执行历">
 
 
 
@@ -104,7 +129,7 @@
   };
 </script>
 
-  <title> 梦想家Haima's </title>
+  <title> Linux常用技巧 | 梦想家Haima's </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -125,9 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -204,9 +227,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -226,158 +249,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/04/11/Python.String/" itemprop="url">
-                  python 字符串string
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T19:22:45+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/11/Python.String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Python.String/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基本字符串操作"><a href="#基本字符串操作" class="headerlink" title="基本字符串操作"></a>基本字符串操作</h2><p>索引、分片、乘法、判断成员资格、长度、最大值、最小值</p>
-<pre><code>&gt;&gt;&gt; str=&quot;wo shi haima&quot;
-&gt;&gt;&gt; str[5]
-&apos;i&apos;
-&gt;&gt;&gt; str[5:]
-&apos;i haima&apos;
-&gt;&gt;&gt; str*2
-&apos;wo shi haimawo shi haima&apos;
-&gt;&gt;&gt; &quot;haima&quot; in str
-True
-&gt;&gt;&gt; len(str)
-12
-&gt;&gt;&gt; max(str)
-&apos;w&apos;
-&gt;&gt;&gt; min(str)
-&apos;&apos;
-</code></pre><h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><p>目标字符串以%为标记，格式化用%作为运算符 后面跟随要格式化替换的内容</p>
-<pre><code>&gt;&gt;&gt; &quot;woshi %s&quot;  %   &quot;haima&quot;   //被替换的目标字符串中%s  s表示替换者类型
-&apos;woshi haima&apos;
-</code></pre><p>常见替换者类型符            类型</p>
-<pre><code>i                              十进制整数
-f,F                           浮点型
-s                             字符串（使用str转化任意python对象）
-r                             字符串（使用repr转换任意python对象）
-C                             单字符
-</code></pre><p>举例</p>
-<pre><code>&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; &quot;%10f&quot; % pi        //10 可以指明替换宽度
-&apos;  3.141593&apos;
-
-&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; &quot;%10.2f&quot; % pi   // f前面点号后面可以指定一个保留小数位数
-&apos;      3.14&apos;
-
-&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; &quot;%-10.2f&quot; % pi   //符号（-）可以指明左对齐
-&apos;3.14      &apos;
-</code></pre><h2 id="find-查找"><a href="#find-查找" class="headerlink" title="find()  查找 "></a>find()  查找 </h2><p>返回查找到的第一个子字符串的索引，如果找不到，则返回-1</p>
-<pre><code>&gt;&gt;&gt; &quot;hello I am haima&quot;.find(&quot;haima&quot;)
-11
-&gt;&gt;&gt; &quot;hello I am haima&quot;.find(&quot;haimd&quot;)
--1
-</code></pre><h2 id="split-切割方法"><a href="#split-切割方法" class="headerlink" title="split() 切割方法"></a>split() 切割方法</h2><p>返回一个被分割后的序列</p>
-<pre><code>&quot;hello I am haima&quot;.split(&quot; &quot;)
-[&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;]
-</code></pre><h2 id="join-方法"><a href="#join-方法" class="headerlink" title="join()方法  "></a>join()方法  </h2><p>split() 的一个逆运算</p>
-<pre><code>&gt;&gt;&gt; &quot; &quot;.join([&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;])
-&apos;hello I am haima&apos;
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/11/Linux/" itemprop="url">
-                  Linux常用技巧
-                </a>
+                Linux常用技巧
               
             
           </h1>
@@ -424,9 +296,7 @@ C                             单字符
       
 
       
-        
-          
-            <h2 id="普通命令"><a href="#普通命令" class="headerlink" title="普通命令"></a>普通命令</h2><hr>
+        <h2 id="普通命令"><a href="#普通命令" class="headerlink" title="普通命令"></a>普通命令</h2><hr>
 <pre><code>ctrl+a:跳到命令行首  to ahead
 ctrl+e:跳到命令ing行尾  to end 
 ctrl+u:删除光标至命令行首 delete to ahead
@@ -504,16 +374,18 @@ N：上一个匹配到的
 v   按字符选取
 V   按矩形选取
 </code></pre>
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
@@ -521,19 +393,32 @@ V   按矩形选取
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/11/Python.String/" rel="prev" title="python 字符串string">
+                python 字符串string <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -541,6 +426,14 @@ V   按矩形选取
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/11/Linux/"
+           data-title="Linux常用技巧" data-url="http://yoursite.com/2016/04/11/Linux/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -560,8 +453,17 @@ V   按矩形选取
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.gif"
@@ -599,6 +501,17 @@ V   按矩形选取
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通命令"><span class="nav-number">1.</span> <span class="nav-text">普通命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man使用文档"><span class="nav-number">2.</span> <span class="nav-text">man使用文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim编辑器"><span class="nav-number">3.</span> <span class="nav-text">vim编辑器</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -690,6 +603,10 @@ V   按矩形选取
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
