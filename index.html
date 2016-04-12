@@ -78,15 +78,15 @@
 
 
 
-<meta name="description" content="Life is beautiful,so make IT wonderful.">
+<meta name="description" content="649766951|北京">
 <meta property="og:type" content="website">
-<meta property="og:title" content="梦想家Haima's">
+<meta property="og:title" content="Dream Developer">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="梦想家Haima's">
-<meta property="og:description" content="Life is beautiful,so make IT wonderful.">
+<meta property="og:site_name" content="Dream Developer">
+<meta property="og:description" content="649766951|北京">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="梦想家Haima's">
-<meta name="twitter:description" content="Life is beautiful,so make IT wonderful.">
+<meta name="twitter:title" content="Dream Developer">
+<meta name="twitter:description" content="649766951|北京">
 
 
 
@@ -104,7 +104,7 @@
   };
 </script>
 
-  <title> 梦想家Haima's </title>
+  <title> Dream Developer </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,11 +137,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">梦想家Haima's</span>
+      <span class="site-title">Dream Developer</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">649766951@qq.com</p>
+  <p class="site-subtitle">Life is beautiful,so make IT wonderful.</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -227,6 +227,456 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/12/python.brief/" itemprop="url">
+                  python入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T21:13:41+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/python.brief/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/python.brief/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python的使用"><a href="#python的使用" class="headerlink" title="python的使用"></a>python的使用</h2><pre><code>Linux中基本都自带安装了python编译器，其他安装方式待查询。
+
+使用python命令，
+     -V 查看版本
+     安装python 通常linux 自带安装了python 
+     直接在linux环境中使用命令python即可进入python交互式解释器
+
+man python 一下，查看python的基本参数
+</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><pre><code>&gt;&gt;&gt; 1/2   //整除
+0
+
+&gt;&gt;&gt; 1.0/3   //浮点型
+0.33333333333333331
+&gt;&gt;&gt; 1/3.0
+0.33333333333333331
+&gt;&gt;&gt; 1/2.0
+0.5
+
+
+&gt;&gt;&gt; 1.0//2  //浮点型强制整除
+0.0
+
+
+&gt;&gt;&gt; 10%3     //取余
+1
+
+
+&gt;&gt;&gt; 2**5  //幂运算     **表示 幂运算
+32
+</code></pre><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><pre><code>&gt;&gt;&gt; 100000000000000000000000000000000     //自动转型为Long型
+100000000000000000000000000000000L  
+
+&gt;&gt;&gt; x=3        //变量
+&gt;&gt;&gt;u x
+3
+</code></pre><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>input() 函数  提供用户标砖输入
+
+&gt;&gt;&gt; x=input()
+&quot;dd&quot;
+&gt;&gt;&gt; x
+&apos;dd&apos;
+
+
+&gt;&gt;&gt; x=input(&quot;input a word number: \n&quot;)
+input a word number:
+50
+&gt;&gt;&gt; print x
+50
+
+
+pow(a,b) 函数 也是幂运算，和**效果相同
+
+&gt;&gt;&gt; pow(2,5)
+32
+
+
+
+
+&gt;&gt;&gt; print 4
+4
+&gt;&gt;&gt; print (3)   //新版python中print变成函数，不仅是表达式
+3
+</code></pre><h2 id="模块引入"><a href="#模块引入" class="headerlink" title="模块引入"></a>模块引入</h2><pre><code>&gt;&gt;&gt; import math    //引入模块，有点像java中包，类引入
+&gt;&gt;&gt; math.floor(3.9)
+3.0
+
+
+&gt;&gt;&gt; import cmath   //复数运算   引入cmath模块
+&gt;&gt;&gt; cmath.sqrt(-1)
+1j
+</code></pre><h2 id="python-脚本"><a href="#python-脚本" class="headerlink" title="python 脚本"></a>python 脚本</h2><pre><code>编写python脚本，用纯文本文档
+和bash shell相似，在文本的开头有一句声明#!/usr/bin/env python   (bash 的声明为#!/bin/bash  )
+
+和bash一样，用文本编辑器编辑好脚本后，chmod u+x  test.py   授权，使得   test.py拥有 执行权限
+执行test.py和 bash执行相同。./test.py执行。
+
+脚本内容--------------------------------------
+#!/usr/bin/env python
+#My first python shell
+print &quot;I LOVE YOU&quot;
+print &quot;Do you love me too?&quot;
+--------------------------------------------------
+------------------------------------执行效果
+# ./test.py    
+I LOVE YOU
+Do you love me too?
+--------------------------------------------------
+</code></pre><h2 id="repr-和"><a href="#repr-和" class="headerlink" title="repr()  和``"></a>repr()  和``</h2><p>将表达式 转为结果，字符串</p>
+<pre><code># ./test.py----------------
+#!/usr/bin/env python
+#my first python shell
+print &quot;I LOVE YOU&quot;
+print &quot;Do you love me too?&quot;
+print repr(&quot;Hello world&quot;)
+print repr(1000L)
+print &quot;hello&quot; + repr(100)
+print &quot;hello&quot;+ repr(1234*4321) # repr can convert express to str
+print &quot;hello&quot;+ `123*321`  # `` function as same as repr
+#print 123+ `22*441` # str can&apos;t  convert to int  
+
+# ./test1.py ------------------执行效果
+I LOVE YOU
+Do you love me too?
+&apos;Hello world&apos;
+1000L
+hello100
+hello5332114
+hello39483        
+</code></pre><h2 id="input-和-raw-input"><a href="#input-和-raw-input" class="headerlink" title="input 和  raw_input "></a>input 和  raw_input </h2><p>区别：raw_input 接受用户标准输入流时，不需要使用双引号作为起始标记</p>
+<pre><code>#!/usr/bin/env python
+#input vs raw_input
+x=input(&quot;input your name:\n&quot;)
+y=raw_input(&quot;raw_input your name:\n&quot;)
+
+print x
+print y
+
+# ./test3.py
+input your name:
+&quot;wo shi haima&quot;    //imput 用户输入时，需要双引号
+raw_input your name:
+woshi haima    //raw_input    用户直接标准输入
+
+wo shi haima
+woshi haima
+</code></pre><h2 id="print-和-print-r"><a href="#print-和-print-r" class="headerlink" title="print 和  print r  "></a>print 和  print r  </h2><p>区别：print r  会保持原字符输出。print  会识别转义字符</p>
+<pre><code>&gt;&gt;&gt; print &quot;hello \n hallo&quot;
+hello 
+ hallo    //转义后，换行输出了
+
+&gt;&gt;&gt; print r&quot;hello \n hallo&quot;;
+hello \n hallo    //“\n未转义，直接输出”
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/12/Python.dictionary/" itemprop="url">
+                  python 字典dictionary
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T20:36:41+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/Python.dictionary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Python.dictionary/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>字典有点像其他语言中的json。以大括号作为起始标记，以键值对的数据结构存在。</p>
+<pre><code>&gt;&gt;&gt; worker={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}
+&gt;&gt;&gt; worker[&quot;name&quot;]
+&apos;haima&apos;
+</code></pre><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>字典长度，取值，重新赋值，删除键值对，权限检查（检查键是否存在）</p>
+<pre><code>&gt;&gt;&gt; worker={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}
+&gt;&gt;&gt; len(worker)     //长度
+2
+&gt;&gt;&gt; worker[&quot;name&quot;]     //取值
+&apos;haima&apos;
+&gt;&gt;&gt; worker[&quot;name&quot;]=&quot;vicky&quot;     //重新赋值
+&gt;&gt;&gt; worker
+{&apos;age&apos;: 25, &apos;name&apos;: &apos;vicky&apos;}
+&gt;&gt;&gt; del worker[&quot;name&quot;]     //删除键值对
+&gt;&gt;&gt; worker
+{&apos;age&apos;: 25}
+&gt;&gt;&gt; &quot;age&quot; in worker     //检查键是否存在
+True
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/12/About/" itemprop="url">
+                  我是海马
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T14:04:57+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/About/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/About/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/11/Python.String/" itemprop="url">
                   python 字符串string
                 </a>
@@ -278,7 +728,7 @@
       
         
           
-            <h2 id="基本字符串操作"><a href="#基本字符串操作" class="headerlink" title="基本字符串操作"></a>基本字符串操作</h2><p>索引、分片、乘法、判断成员资格、长度、最大值、最小值</p>
+            <h2 id="基本字符串操作"><a href="#基本字符串操作" class="headerlink" title="基本字符串操作"></a>基本字符串操作</h2><p>索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链</p>
 <pre><code>&gt;&gt;&gt; str=&quot;wo shi haima&quot;
 &gt;&gt;&gt; str[5]
 &apos;i&apos;
@@ -294,6 +744,8 @@ True
 &apos;w&apos;
 &gt;&gt;&gt; min(str)
 &apos;&apos;
+&gt;&gt;&gt; str+&quot; vick&apos;s brother&quot;
+&quot;wo shi haima vick&apos;s brother&quot;
 </code></pre><h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><p>目标字符串以%为标记，格式化用%作为运算符 后面跟随要格式化替换的内容</p>
 <pre><code>&gt;&gt;&gt; &quot;woshi %s&quot;  %   &quot;haima&quot;   //被替换的目标字符串中%s  s表示替换者类型
 &apos;woshi haima&apos;
@@ -321,11 +773,42 @@ C                             单字符
 &gt;&gt;&gt; &quot;hello I am haima&quot;.find(&quot;haimd&quot;)
 -1
 </code></pre><h2 id="split-切割方法"><a href="#split-切割方法" class="headerlink" title="split() 切割方法"></a>split() 切割方法</h2><p>返回一个被分割后的序列</p>
-<pre><code>&quot;hello I am haima&quot;.split(&quot; &quot;)
+<pre><code>&gt;&gt;&gt;&quot;hello I am haima&quot;.split(&quot; &quot;)
 [&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;]
+
+&gt;&gt;&gt; &quot;hello I    am haima&quot;.split(&quot; &quot;)     //*连续出现空格是，切割容易出错
+[&apos;hello&apos;, &apos;I&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;am&apos;, &apos;haima&apos;]
 </code></pre><h2 id="join-方法"><a href="#join-方法" class="headerlink" title="join()方法  "></a>join()方法  </h2><p>split() 的一个逆运算</p>
 <pre><code>&gt;&gt;&gt; &quot; &quot;.join([&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;])
 &apos;hello I am haima&apos;
+</code></pre><h2 id="lower-方法"><a href="#lower-方法" class="headerlink" title="lower()方法    "></a>lower()方法    </h2><p>返回字符串的小写</p>
+<pre><code>&gt;&gt;&gt; &quot;WO SHI HAIMA&quot;.lower();
+&apos;wo shi haima&apos;
+</code></pre><h2 id="upper-方法"><a href="#upper-方法" class="headerlink" title="upper()方法"></a>upper()方法</h2><p>返回字符串的大写</p>
+<pre><code>&gt;&gt;&gt; &quot;wo shi haima&quot;.upper();
+&apos;WO SHI HAIMA&apos;
+</code></pre><h2 id="title-方法"><a href="#title-方法" class="headerlink" title="title()方法"></a>title()方法</h2><p>可以将string中的单词首字母大写</p>
+<pre><code>&gt;&gt;&gt; &quot;I&apos;m haima,Vicky&apos;s brother&quot;.title();
+&quot;I&apos;M Haima,Vicky&apos;S Brother&quot;
+</code></pre><h2 id="capwords-方法"><a href="#capwords-方法" class="headerlink" title="capwords()方法"></a>capwords()方法</h2><p>可以看出title不算特别友好，在句子中有分隔符的时候</p>
+<pre><code>&gt;&gt;&gt; capwords(&quot;I&apos;m haima,Vick&apos;s brother&quot;)
+&quot;I&apos;m Haima,vick&apos;s Brother&quot;
+</code></pre><h2 id="replace"><a href="#replace" class="headerlink" title="replace()    "></a>replace()    </h2><p>替换</p>
+<pre><code>&gt;&gt;&gt; &quot;I am haima,I am a java developer.&quot;.replace(&quot;I am&quot;,&quot;He is&quot;)
+&apos;He is haima,He is a java developer.&apos;    //He is 替换 I am
+</code></pre><h2 id="strip"><a href="#strip" class="headerlink" title="strip() "></a>strip() </h2><p>去除两端空格</p>
+<pre><code>&gt;&gt;&gt; &quot;      I am rob or haima.    &quot;.strip();
+&apos;I am rob or haima.&apos;
+</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>单引号和双引号都能作为字符串的开始和结束标记。<br>字符串中间不能出现此字符串的开头或结束标记。如果需要，则用转移字符\</p>
+<pre><code>&gt;&gt;&gt; &quot;I am &apos;haima&apos; &quot;
+&quot;I am &apos;haima&apos; &quot;
+
+
+&gt;&gt;&gt; &apos;I am &quot;haima&quot; &apos;
+&apos;I am &quot;haima&quot; &apos;
+
+&gt;&gt;&gt; &apos;I am \&apos;haima\&apos; &apos;     //注意转移字符
+&quot;I am &apos;haima&apos; &quot;
 </code></pre>
           
         
@@ -375,7 +858,7 @@ C                             单字符
             
               
                 
-                <a class="post-title-link" href="/2016/04/11/Linux/" itemprop="url">
+                <a class="post-title-link" href="/2016/04/11/Linux.skills/" itemprop="url">
                   Linux常用技巧
                 </a>
               
@@ -400,8 +883,8 @@ C                             单字符
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/11/Linux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Linux/" itemprop="commentsCount"></span>
+                <a href="/2016/04/11/Linux.skills/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Linux.skills/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -427,19 +910,19 @@ C                             单字符
         
           
             <h2 id="普通命令"><a href="#普通命令" class="headerlink" title="普通命令"></a>普通命令</h2><hr>
-<pre><code>ctrl+a:跳到命令行首  to ahead
-ctrl+e:跳到命令ing行尾  to end 
-ctrl+u:删除光标至命令行首 delete to ahead
-ctrl+k:删除光标至命令行尾  delete to end 
+<pre><code>ctrl+a:跳到命令行首 
+ctrl+e:跳到命令行尾   
+ctrl+u:删除光标至命令行首 
+ctrl+k:删除光标至命令行尾  
 ctrl+左/右 ：光标跳一个单词 
-ctrl +l ：实现清屏的 //  alias cls=&apos;clear&apos;
+ctrl +l ：实现清屏的 // （命令行使用clear）
 
 上下键可以翻阅命令执行历史
 
 history 查看命令执行历史
 ！n  执行历史中编号为 n 的历史
 
-命令和路径不全   tab键
+命令和路径补全   tab键
 </code></pre><h2 id="man使用文档"><a href="#man使用文档" class="headerlink" title="man使用文档"></a>man使用文档</h2><hr>
 <pre><code>命令模式 space 向下翻页
 命令模式 b健   向上翻页
@@ -462,7 +945,7 @@ J  删除当前光标所在行行尾的换行符（拼接行）   【大写的J�
 u 撤销，相当于windows里的ctrl+u
 o 从下一行开始追加数据
 
-没有删除到行首？
+没有删除到行首??
 </code></pre><hr>
 <pre><code>命令行模式
 
@@ -491,7 +974,7 @@ y$复制光标到行尾
 :%s/old/new/g:  使用new替换全文中的old
 :%s/old/new/gc:  使用new替换全文中的old，但是逐个替换，每次替换会询问
 </code></pre><hr>
-<pre><code>查找，命令模式按/，
+<pre><code>查找，命令模式按 /，
 
 要查找一个字符串，需要按下斜线（/）键，光标会跑到消息行
 输入要查找的字符串，按n可以跳转下一个
@@ -567,12 +1050,12 @@ V   按矩形选取
                src="/images/head.gif"
                alt="Haima" />
           <p class="site-author-name" itemprop="name">Haima</p>
-          <p class="site-description motion-element" itemprop="description">Life is beautiful,so make IT wonderful.</p>
+          <p class="site-description motion-element" itemprop="description">649766951|北京</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

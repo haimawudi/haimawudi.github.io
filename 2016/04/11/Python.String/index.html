@@ -78,37 +78,37 @@
 
 
 
-<meta name="description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值
+<meta name="description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链
 &amp;gt;&amp;gt;&amp;gt; str=&amp;quot;wo shi haima&amp;quot;
 &amp;gt;&amp;gt;&amp;gt; str[5]
 &amp;apos;i&amp;apos;
 &amp;gt;&amp;gt;&amp;gt; str[5:]
 &amp;apos;i haima&amp;apos;
 &amp;gt;&amp;gt;&amp;gt; str*2
-&amp;apos;wo shi haimawo shi haima">
+&amp;apos;wo shi haimawo shi ha">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 字符串string">
 <meta property="og:url" content="http://yoursite.com/2016/04/11/Python.String/index.html">
-<meta property="og:site_name" content="梦想家Haima's">
-<meta property="og:description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值
+<meta property="og:site_name" content="Dream Developer">
+<meta property="og:description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链
 &amp;gt;&amp;gt;&amp;gt; str=&amp;quot;wo shi haima&amp;quot;
 &amp;gt;&amp;gt;&amp;gt; str[5]
 &amp;apos;i&amp;apos;
 &amp;gt;&amp;gt;&amp;gt; str[5:]
 &amp;apos;i haima&amp;apos;
 &amp;gt;&amp;gt;&amp;gt; str*2
-&amp;apos;wo shi haimawo shi haima">
-<meta property="og:updated_time" content="2016-04-11T13:00:07.277Z">
+&amp;apos;wo shi haimawo shi ha">
+<meta property="og:updated_time" content="2016-04-12T12:41:44.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 字符串string">
-<meta name="twitter:description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值
+<meta name="twitter:description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链
 &amp;gt;&amp;gt;&amp;gt; str=&amp;quot;wo shi haima&amp;quot;
 &amp;gt;&amp;gt;&amp;gt; str[5]
 &amp;apos;i&amp;apos;
 &amp;gt;&amp;gt;&amp;gt; str[5:]
 &amp;apos;i haima&amp;apos;
 &amp;gt;&amp;gt;&amp;gt; str*2
-&amp;apos;wo shi haimawo shi haima">
+&amp;apos;wo shi haimawo shi ha">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title> python 字符串string | 梦想家Haima's </title>
+  <title> python 字符串string | Dream Developer </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,11 +157,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">梦想家Haima's</span>
+      <span class="site-title">Dream Developer</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">649766951@qq.com</p>
+  <p class="site-subtitle">Life is beautiful,so make IT wonderful.</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -293,7 +293,7 @@
       
 
       
-        <h2 id="基本字符串操作"><a href="#基本字符串操作" class="headerlink" title="基本字符串操作"></a>基本字符串操作</h2><p>索引、分片、乘法、判断成员资格、长度、最大值、最小值</p>
+        <h2 id="基本字符串操作"><a href="#基本字符串操作" class="headerlink" title="基本字符串操作"></a>基本字符串操作</h2><p>索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链</p>
 <pre><code>&gt;&gt;&gt; str=&quot;wo shi haima&quot;
 &gt;&gt;&gt; str[5]
 &apos;i&apos;
@@ -309,6 +309,8 @@ True
 &apos;w&apos;
 &gt;&gt;&gt; min(str)
 &apos;&apos;
+&gt;&gt;&gt; str+&quot; vick&apos;s brother&quot;
+&quot;wo shi haima vick&apos;s brother&quot;
 </code></pre><h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><p>目标字符串以%为标记，格式化用%作为运算符 后面跟随要格式化替换的内容</p>
 <pre><code>&gt;&gt;&gt; &quot;woshi %s&quot;  %   &quot;haima&quot;   //被替换的目标字符串中%s  s表示替换者类型
 &apos;woshi haima&apos;
@@ -336,11 +338,42 @@ C                             单字符
 &gt;&gt;&gt; &quot;hello I am haima&quot;.find(&quot;haimd&quot;)
 -1
 </code></pre><h2 id="split-切割方法"><a href="#split-切割方法" class="headerlink" title="split() 切割方法"></a>split() 切割方法</h2><p>返回一个被分割后的序列</p>
-<pre><code>&quot;hello I am haima&quot;.split(&quot; &quot;)
+<pre><code>&gt;&gt;&gt;&quot;hello I am haima&quot;.split(&quot; &quot;)
 [&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;]
+
+&gt;&gt;&gt; &quot;hello I    am haima&quot;.split(&quot; &quot;)     //*连续出现空格是，切割容易出错
+[&apos;hello&apos;, &apos;I&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;am&apos;, &apos;haima&apos;]
 </code></pre><h2 id="join-方法"><a href="#join-方法" class="headerlink" title="join()方法  "></a>join()方法  </h2><p>split() 的一个逆运算</p>
 <pre><code>&gt;&gt;&gt; &quot; &quot;.join([&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;])
 &apos;hello I am haima&apos;
+</code></pre><h2 id="lower-方法"><a href="#lower-方法" class="headerlink" title="lower()方法    "></a>lower()方法    </h2><p>返回字符串的小写</p>
+<pre><code>&gt;&gt;&gt; &quot;WO SHI HAIMA&quot;.lower();
+&apos;wo shi haima&apos;
+</code></pre><h2 id="upper-方法"><a href="#upper-方法" class="headerlink" title="upper()方法"></a>upper()方法</h2><p>返回字符串的大写</p>
+<pre><code>&gt;&gt;&gt; &quot;wo shi haima&quot;.upper();
+&apos;WO SHI HAIMA&apos;
+</code></pre><h2 id="title-方法"><a href="#title-方法" class="headerlink" title="title()方法"></a>title()方法</h2><p>可以将string中的单词首字母大写</p>
+<pre><code>&gt;&gt;&gt; &quot;I&apos;m haima,Vicky&apos;s brother&quot;.title();
+&quot;I&apos;M Haima,Vicky&apos;S Brother&quot;
+</code></pre><h2 id="capwords-方法"><a href="#capwords-方法" class="headerlink" title="capwords()方法"></a>capwords()方法</h2><p>可以看出title不算特别友好，在句子中有分隔符的时候</p>
+<pre><code>&gt;&gt;&gt; capwords(&quot;I&apos;m haima,Vick&apos;s brother&quot;)
+&quot;I&apos;m Haima,vick&apos;s Brother&quot;
+</code></pre><h2 id="replace"><a href="#replace" class="headerlink" title="replace()    "></a>replace()    </h2><p>替换</p>
+<pre><code>&gt;&gt;&gt; &quot;I am haima,I am a java developer.&quot;.replace(&quot;I am&quot;,&quot;He is&quot;)
+&apos;He is haima,He is a java developer.&apos;    //He is 替换 I am
+</code></pre><h2 id="strip"><a href="#strip" class="headerlink" title="strip() "></a>strip() </h2><p>去除两端空格</p>
+<pre><code>&gt;&gt;&gt; &quot;      I am rob or haima.    &quot;.strip();
+&apos;I am rob or haima.&apos;
+</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>单引号和双引号都能作为字符串的开始和结束标记。<br>字符串中间不能出现此字符串的开头或结束标记。如果需要，则用转移字符\</p>
+<pre><code>&gt;&gt;&gt; &quot;I am &apos;haima&apos; &quot;
+&quot;I am &apos;haima&apos; &quot;
+
+
+&gt;&gt;&gt; &apos;I am &quot;haima&quot; &apos;
+&apos;I am &quot;haima&quot; &apos;
+
+&gt;&gt;&gt; &apos;I am \&apos;haima\&apos; &apos;     //注意转移字符
+&quot;I am &apos;haima&apos; &quot;
 </code></pre>
       
     </div>
@@ -364,13 +397,17 @@ C                             单字符
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/11/Linux/" rel="next" title="Linux常用技巧">
+              <a href="/2016/04/11/Linux.skills/" rel="next" title="Linux常用技巧">
                 <i class="fa fa-chevron-left"></i> Linux常用技巧
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/12/About/" rel="prev" title="我是海马">
+                我是海马 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -437,12 +474,12 @@ C                             单字符
                src="/images/head.gif"
                alt="Haima" />
           <p class="site-author-name" itemprop="name">Haima</p>
-          <p class="site-description motion-element" itemprop="description">Life is beautiful,so make IT wonderful.</p>
+          <p class="site-description motion-element" itemprop="description">649766951|北京</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -476,7 +513,7 @@ C                             单字符
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本字符串操作"><span class="nav-number">1.</span> <span class="nav-text">基本字符串操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串格式化"><span class="nav-number">2.</span> <span class="nav-text">字符串格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-查找"><span class="nav-number">3.</span> <span class="nav-text">find()  查找 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split-切割方法"><span class="nav-number">4.</span> <span class="nav-text">split() 切割方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-方法"><span class="nav-number">5.</span> <span class="nav-text">join()方法  </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本字符串操作"><span class="nav-number">1.</span> <span class="nav-text">基本字符串操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串格式化"><span class="nav-number">2.</span> <span class="nav-text">字符串格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-查找"><span class="nav-number">3.</span> <span class="nav-text">find()  查找 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split-切割方法"><span class="nav-number">4.</span> <span class="nav-text">split() 切割方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-方法"><span class="nav-number">5.</span> <span class="nav-text">join()方法  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lower-方法"><span class="nav-number">6.</span> <span class="nav-text">lower()方法    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#upper-方法"><span class="nav-number">7.</span> <span class="nav-text">upper()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#title-方法"><span class="nav-number">8.</span> <span class="nav-text">title()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#capwords-方法"><span class="nav-number">9.</span> <span class="nav-text">capwords()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replace"><span class="nav-number">10.</span> <span class="nav-text">replace()    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strip"><span class="nav-number">11.</span> <span class="nav-text">strip() </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">12.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
           </div>
         </section>

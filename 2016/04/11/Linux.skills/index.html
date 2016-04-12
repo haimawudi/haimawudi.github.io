@@ -1,0 +1,672 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="普通命令
+ctrl+a:跳到命令行首 
+ctrl+e:跳到命令行尾   
+ctrl+u:删除光标至命令行首 
+ctrl+k:删除光标至命令行尾  
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 // （命令行使用clear）
+
+上下键可以翻阅命令执行历史
+
+history 查看命令执行历史
+！n  执行历史中编号为 n 的历史
+
+命令和路径补全   tab键
+man使用文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用技巧">
+<meta property="og:url" content="http://yoursite.com/2016/04/11/Linux.skills/index.html">
+<meta property="og:site_name" content="Dream Developer">
+<meta property="og:description" content="普通命令
+ctrl+a:跳到命令行首 
+ctrl+e:跳到命令行尾   
+ctrl+u:删除光标至命令行首 
+ctrl+k:删除光标至命令行尾  
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 // （命令行使用clear）
+
+上下键可以翻阅命令执行历史
+
+history 查看命令执行历史
+！n  执行历史中编号为 n 的历史
+
+命令和路径补全   tab键
+man使用文档">
+<meta property="og:updated_time" content="2016-04-12T11:13:54.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用技巧">
+<meta name="twitter:description" content="普通命令
+ctrl+a:跳到命令行首 
+ctrl+e:跳到命令行尾   
+ctrl+u:删除光标至命令行首 
+ctrl+k:删除光标至命令行尾  
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 // （命令行使用clear）
+
+上下键可以翻阅命令执行历史
+
+history 查看命令执行历史
+！n  执行历史中编号为 n 的历史
+
+命令和路径补全   tab键
+man使用文档">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: false,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Linux常用技巧 | Dream Developer </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Dream Developer</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Life is beautiful,so make IT wonderful.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux常用技巧
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T17:28:28+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/11/Linux.skills/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Linux.skills/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="普通命令"><a href="#普通命令" class="headerlink" title="普通命令"></a>普通命令</h2><hr>
+<pre><code>ctrl+a:跳到命令行首 
+ctrl+e:跳到命令行尾   
+ctrl+u:删除光标至命令行首 
+ctrl+k:删除光标至命令行尾  
+ctrl+左/右 ：光标跳一个单词 
+ctrl +l ：实现清屏的 // （命令行使用clear）
+
+上下键可以翻阅命令执行历史
+
+history 查看命令执行历史
+！n  执行历史中编号为 n 的历史
+
+命令和路径补全   tab键
+</code></pre><h2 id="man使用文档"><a href="#man使用文档" class="headerlink" title="man使用文档"></a>man使用文档</h2><hr>
+<pre><code>命令模式 space 向下翻页
+命令模式 b健   向上翻页
+命令模式 q健   推出
+
+/【搜索的关键字】向后搜索关键字
+？【搜索的关键字】向前搜索关键字
+n:下一个搜索到的关键字
+N:上一个搜索到的关键字
+
+默认搜索的时候是不区分大小写的，怎么样区分大小写呢？
+</code></pre><h2 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h2><hr>
+<pre><code>以下命令均区分大小写，以下指令均在  命令模式下生效
+
+x  删除当前光标所在位置的字符
+dd 删除当前光标所在行
+dw 删除当前光标所在位置的单词
+d$  删除当前光标到行行尾的内容
+J  删除当前光标所在行行尾的换行符（拼接行）   【大写的J】
+u 撤销，相当于windows里的ctrl+u
+o 从下一行开始追加数据
+
+没有删除到行首??
+</code></pre><hr>
+<pre><code>命令行模式
+
+u撤销前一编辑命令
+ctrl+R 相当于ctrl+y
+a在当前光标后追加数据
+A在当前光标所在行行为追加数据
+r char 用char 替换当前光标所在位置的单个字符
+R text 用text 覆盖当前位置的数据，知道按下ESC键
+</code></pre><hr>
+<pre><code>方向健
+h、j、k、l 分别代表  左，下，上，下
+</code></pre><hr>
+<pre><code>粘贴复制，命令行模式
+
+p代表的是粘贴，当缓冲区中有数据时，该命令就会执行。
+删除指令均会将删除的数据存入缓存区中，如dd 和 p组合起来有剪切的效果
+
+y（yank）拷贝的
+yw复制单词
+y$复制光标到行尾
+</code></pre><hr>
+<pre><code>替换，底行模式
+
+:s/old/new/g:  使用new替换本行中的old
+:%s/old/new/g:  使用new替换全文中的old
+:%s/old/new/gc:  使用new替换全文中的old，但是逐个替换，每次替换会询问
+</code></pre><hr>
+<pre><code>查找，命令模式按 /，
+
+要查找一个字符串，需要按下斜线（/）键，光标会跑到消息行
+输入要查找的字符串，按n可以跳转下一个
+
+和man 命令中一样也可以用n  N
+n ：下一个匹配到的
+N：上一个匹配到的
+</code></pre><hr>
+<pre><code>可视化模式，在命令模式时按v,或者V   此功能使vi的加强版 vim才有的
+v   按字符选取
+V   按矩形选取
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/11/Python.String/" rel="prev" title="python 字符串string">
+                python 字符串string <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/11/Linux.skills/"
+           data-title="Linux常用技巧" data-url="http://yoursite.com/2016/04/11/Linux.skills/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.gif"
+               alt="Haima" />
+          <p class="site-author-name" itemprop="name">Haima</p>
+          <p class="site-description motion-element" itemprop="description">649766951|北京</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通命令"><span class="nav-number">1.</span> <span class="nav-text">普通命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man使用文档"><span class="nav-number">2.</span> <span class="nav-text">man使用文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim编辑器"><span class="nav-number">3.</span> <span class="nav-text">vim编辑器</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haima</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"refly"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
