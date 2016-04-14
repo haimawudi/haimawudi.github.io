@@ -188,16 +188,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -215,6 +205,632 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/14/Linux.brief/" itemprop="url">
+                  Linux入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T18:03:21+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/Linux.brief/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/Linux.brief/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><p>Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,如果你学习过前面的入门课程，应该会有个基本概念了,这里简单介绍下操作系统在整个计算机系统中的角色</p>
+<h2 id="linux重要人物"><a href="#linux重要人物" class="headerlink" title="linux重要人物"></a>linux重要人物</h2><pre><code>Ken Thompson：C语言之父和Unix之父
+Dennis Ritchie：C语言之父和Unix之父
+Stallman：著名黑客，GNU创始人，开发了Emacs、gcc、bash shell
+Linus Torvalds：Linux之父，芬兰赫尔辛基大学
+</code></pre><h2 id="Linux原则"><a href="#Linux原则" class="headerlink" title="Linux原则"></a>Linux原则</h2><p>linux系统的基本原则</p>
+<pre><code>1.由目的的小程序组成     组合小程序完成复杂任务
+2.一切皆文件
+3.尽量避免捕获用户接口
+4.配置文件，保存为纯文本
+5.严格区分大小写
+</code></pre><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令<br>    命令格式 ：【命令名】   【选项】   【参数】</p>
+<pre><code>选项：
+    短选项用 “-”    表示
+    长选项用 “--”表示 
+
+参数： 命令的作用对象
+
+
+eg:
+   ls  -a  /root    //查看/root目录下的所有文件
+</code></pre><h2 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h2><p>manual的意思，查询某个命令的使用说明<br>我觉得这个命令是所有命令中最重要的。可以查询所有命令怎么使用。</p>
+<pre><code>eg.  man  man      //查看man命令的使用说明书
+
+NAME        
+       man - format and display the on-line manual pages
+
+SYNOPSIS  [-acdfFhkKtwW]  [--path]  [-m system] [-p string] [-C config_file]
+       [-M pathlist] [-P pager] [-B browser] [-H htmlpager] [-S  section_list]
+       [section] name 
+
+OPTIONS
+   -C  config_file
+          Specify   the   configuration   file  to  use;  the  default  is
+          /etc/man.config.  (See man.config(5).)
+
+**-----------------------**
+
+释[1]Name：被查询命令的命令名和命令功能说明
+
+释[2]SYNOPSIS：被查询命令的使用格式。
+使用格式中的符号：
+    &lt;&gt;: 必须参数
+    []:可选参数
+    ...:可以出现多次
+    name:命令名
+
+释[3]OPTIONS：被查询命令的选项
+</code></pre><p><strong>阅读man文档时可以用到的技巧</strong></p>
+<pre><code>命令模式 space/空格 向下翻页
+命令模式 b健   向上翻页
+命令模式 q健   推出
+
+/【搜索的关键字】向后搜索关键字
+？【搜索的关键字】向前搜索关键字
+n:下一个搜索到的关键字
+N:上一个搜索到的关键字
+</code></pre><h2 id="type-which-whatis命令"><a href="#type-which-whatis命令" class="headerlink" title="type,which,whatis命令"></a>type,which,whatis命令</h2><p>这三个命令都和man一样，可以查询命令的信息。换句话说，这三个命令的参数也是一个命令</p>
+<p>type     【目标命令】：查看目标命令是否是内部命令。（查看命令的类型）如果不是，将输出命令所在位置的路径</p>
+<p>which     【目标命令】：查看目标命令所在位置的路径</p>
+<pre><code>which - shows the full path of (shell) commands.
+</code></pre><p>whatis     【目标命令】：查看命令在系统中使用说明的收录情况</p>
+<pre><code>whatis - search the whatis database for complete words.
+</code></pre><hr>
+<pre><code># type man
+man is hashed (/usr/bin/man)     //man是一个内部命令
+
+# type python
+python is /usr/bin/python
+</code></pre><hr>
+<pre><code># which man     
+/usr/bin/man     //man命令的路径
+</code></pre><hr>
+<pre><code># whatis rm
+rm                   (1)  - remove files or directories
+rm                   (1p)  - remove directory entries    //（1p）章介绍删除目录的所有说明
+
+释[1]所有命令的说明书都记录在Linux中的database中，分章节。不同章节的说明书说明不同的用途。
+上面执行命令whatis rm时，查看rm命令的使用说明说的章节。分别为（1）章 删除文件或文件夹，
+（1p）章 删除文件夹映射。此时再结合man命令查询该章节的使用说明。
+</code></pre><hr>
+<pre><code># man 1p rm    //查询（1p）章节的使用说明书
+
+RM(1P)                     POSIX Programmer?. Manual                    RM(1P)
+
+PROLOG
+       This  manual page is part of the POSIX Programmer?. Manual.
+       The Linux implementation of this interface may differ (con-
+       sult  the  corresponding  Linux  manual page for details of
+       Linux behavior), or the interface may not be implemented on
+       Linux.
+
+NAME
+       rm - remove directory entries
+
+SYNOPSIS
+       rm [-fiRr] file...
+</code></pre><h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p>（list的意思）查看目录下的内容</p>
+<pre><code># man ls     //查看ls的使用说明书
+
+NAME
+       ls - list directory contents    //ls命令的作用列出目录下的内容
+
+SYNOPSIS
+       ls [OPTION]... [FILE]...
+</code></pre><p>字段摘要<br>    -a, –all    //列出所有，包括隐藏文件（Linux中以点开头的文件）<br>              do not ignore entries starting with .</p>
+<pre><code>-l     use a long listing format    //以长格式显示（显示列表元素的更多信息）
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/13/Python.sequence/" itemprop="url">
+                  python 序列sequence
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T20:25:39+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/Python.sequence/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/Python.sequence/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>有点像数组，可以用下标索引访问到容器中的数值，索引以0开始<br>序列中可以是不同类型的内容<br>字符串也能用索引脚标访问<br>逆序访问序列的元素，用负数表示索引</p>
+<pre><code>&gt;&gt;&gt; arr=[&quot;haima&quot;,1] 
+&gt;&gt;&gt; arr[0]  
+&apos;haima&apos;
+&gt;&gt;&gt; arr[1]
+1
+
+
+&gt;&gt;&gt; name=&quot;haima&quot; 
+&gt;&gt;&gt; name[3]
+&apos;m&apos;
+
+&gt;&gt;&gt; arr=[&quot;haima&quot;,1]  
+&gt;&gt;&gt; arr[-1]
+1
+</code></pre><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>序列相乘，序列相加</p>
+<pre><code>&gt;&gt;&gt; arrbig=arr+[&quot;hailong&quot;,2]   //序列相加：简单的元素组合
+&gt;&gt;&gt; arrbig
+[&apos;haima&apos;, 1, &apos;hailong&apos;, 2]
+
+
+&gt;&gt;&gt; arrM=arr*5    //序列*数字   元素的简单重复
+&gt;&gt;&gt; arrM
+[&apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1]
+</code></pre><h2 id="序列分片"><a href="#序列分片" class="headerlink" title="序列分片"></a>序列分片</h2><pre><code>arr[index1:index2:length] 
+     index1开始的元素，index2结束的元素，length 步长。
+     分片是，包含index1，不包含index2
+     步长默认为1
+     如果从首尾开始，则可以空index1，index2
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]  
+&gt;&gt;&gt; arr[3:5]
+[4, 5]
+
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]   //有步长的
+&gt;&gt;&gt; arr[3:8:2]
+[4, 6, 8]
+
+
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]   //逆序，脚标为负
+&gt;&gt;&gt; arr[-5:-1]
+[6, 7, 8, 9]
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]
+&gt;&gt;&gt; arr[0:-1]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]  //0脚标不在逆序脚标之内
+&gt;&gt;&gt; arr[-1:0]
+[]
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]
+&gt;&gt;&gt;arr[::]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]
+&gt;&gt;&gt; arr[5::2]
+[6, 8, 10]
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]
+&gt;&gt;&gt; arr[::2]
+[1, 3, 5, 7, 9]
+</code></pre><h2 id="空序列"><a href="#空序列" class="headerlink" title="空序列"></a>空序列</h2><pre><code>&gt;&gt;&gt; no=[]
+&gt;&gt;&gt; no
+[]
+
+&gt;&gt;&gt; no[0]   //length为0  ，没有元素，不能访问
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+IndexError: list index out of range
+
+用None表示空元素，有点像null
+
+
+&gt;&gt;&gt; no=[None]
+&gt;&gt;&gt; print no[0]
+None
+</code></pre><h2 id="检验一个元素是否在序列里，用in"><a href="#检验一个元素是否在序列里，用in" class="headerlink" title="检验一个元素是否在序列里，用in"></a>检验一个元素是否在序列里，用in</h2><pre><code>&gt;&gt;&gt; user=[&quot;haima&quot;,&quot;hailong&quot;,&quot;long&quot;]
+&gt;&gt;&gt; &quot;haima&quot; in user
+True
+
+&gt;&gt;&gt; str=&quot;haima is excellent&quot;
+&gt;&gt;&gt; &quot;haima&quot; in str
+True
+</code></pre><h2 id="内建函数len-max-min"><a href="#内建函数len-max-min" class="headerlink" title="内建函数len ,max ,min"></a>内建函数len ,max ,min</h2><pre><code>&gt;&gt;&gt; no=[]
+&gt;&gt;&gt; len(no)
+0
+
+&gt;&gt;&gt; no=[] //空序列会报错
+&gt;&gt;&gt; max(no)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ValueError: max() arg is an empty sequence
+
+&gt;&gt;&gt; none=[None,None]   //最大的是空
+&gt;&gt;&gt; max(none)
+
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]
+&gt;&gt;&gt; max(arr)
+10
+
+&gt;&gt;&gt; arr=[1,2,3,4,5,6,7,8,9,10]
+&gt;&gt;&gt; min(arr)
+1
+
+&gt;&gt;&gt; str=&quot;haima is excellent&quot;  
+&gt;&gt;&gt; len(str)
+18
+
+&gt;&gt;&gt; str=&quot;haima is excellent&quot;    //这个不知道是怎么比较的
+&gt;&gt;&gt; max(str)
+&apos;x&apos;
+</code></pre><h2 id="list-：python的苦力。遍历。"><a href="#list-：python的苦力。遍历。" class="headerlink" title="list ：python的苦力。遍历。"></a>list ：python的苦力。遍历。</h2><pre><code>&gt;&gt;&gt; list(&quot;hello&quot;)
+[&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;]
+
+list使用与所有序列和字符串。
+</code></pre><h2 id="赋值：和java中的数组赋值相同"><a href="#赋值：和java中的数组赋值相同" class="headerlink" title="赋值：和java中的数组赋值相同"></a>赋值：和java中的数组赋值相同</h2><pre><code>&gt;&gt;&gt; none=[None,None]
+&gt;&gt;&gt; none[1]=0
+&gt;&gt;&gt; none
+[None, 0]
+
+&gt;&gt;&gt; none[4]=0  //序列也会下标越界
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+IndexError: list assignment index out of range
+</code></pre><h2 id="分片赋值"><a href="#分片赋值" class="headerlink" title="分片赋值"></a>分片赋值</h2><pre><code>&gt;&gt;&gt; arr=[2,4,844,&quot;dd&quot;] //
+&gt;&gt;&gt; arr[2:]=&quot;dd&quot;
+&gt;&gt;&gt; arr
+[2, 4, &apos;d&apos;, &apos;d&apos;]
+
+&gt;&gt;&gt; arr[2:]=[&quot;dd&quot;]*5
+&gt;&gt;&gt; arr
+[2, 4, &apos;dd&apos;, &apos;dd&apos;, &apos;dd&apos;, &apos;dd&apos;, &apos;dd&apos;]
+
+
+&gt;&gt;&gt; arr[2:]=[&quot;dd&quot;]
+&gt;&gt;&gt; arr
+[2, 4, &apos;dd&apos;]
+</code></pre><h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><pre><code>&gt;&gt;&gt; arr=[2,4,844,&quot;dd&quot;]
+&gt;&gt;&gt; del arr[len(arr)-1]
+&gt;&gt;&gt; arr
+[2, 4, 844]
+</code></pre><h2 id="index"><a href="#index" class="headerlink" title="index()"></a>index()</h2><p>获取元素的索引</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3]
+&gt;&gt;&gt; arr.index(2)
+1
+</code></pre><h2 id="count"><a href="#count" class="headerlink" title="count()"></a>count()</h2><p>检查某个元素出现次数</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,2]
+&gt;&gt;&gt; arr.count(2)
+2
+
+&gt;&gt;&gt; arr=[1,[1,2],3]
+&gt;&gt;&gt; arr.count(1)
+1
+&gt;&gt;&gt; arr.count([1,2])
+1
+</code></pre><h2 id="append"><a href="#append" class="headerlink" title="append()"></a>append()</h2><p>追加元素</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4]
+&gt;&gt;&gt; arr.append(1)
+&gt;&gt;&gt; arr
+[1, 2, 3, 4, 1]
+
+
+&gt;&gt;&gt; arr=[1,2,3,4]
+&gt;&gt;&gt; arr.append([1])
+&gt;&gt;&gt; arr
+[1, 2, 3, 4, [1]]
+</code></pre><h2 id="extend"><a href="#extend" class="headerlink" title="extend() "></a>extend() </h2><p>把另外一个序列扩展到原序列中</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4]
+&gt;&gt;&gt; arr.extend([6,7])
+&gt;&gt;&gt; arr
+[1, 2, 3, 4, 6, 7]
+</code></pre><h2 id="insert-index-a"><a href="#insert-index-a" class="headerlink" title="insert(index,a) "></a>insert(index,a) </h2><p>在某个位置插入某个元素</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4]
+&gt;&gt;&gt; arr.insert(4,&quot;ddd&quot;)
+&gt;&gt;&gt; arr
+[1, 2, 3, 4, &apos;ddd&apos;]
+</code></pre><h2 id="pop"><a href="#pop" class="headerlink" title="pop()  "></a>pop()  </h2><p>移除  仅有该方法才能既移除元素，又返回元素</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4]
+&gt;&gt;&gt; arr.pop(0)
+1
+&gt;&gt;&gt; arr
+[2, 3, 4]
+
+&gt;&gt;&gt; arr=[1,2,3,4]
+&gt;&gt;&gt; arr.pop()
+4
+&gt;&gt;&gt; arr
+[1, 2, 3]
+</code></pre><h2 id="remove"><a href="#remove" class="headerlink" title="remove()  "></a>remove()  </h2><p>移除匹配到的第一个元素，没有返回值</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4,1]
+&gt;&gt;&gt; arr.remove(1)
+&gt;&gt;&gt; arr
+[2, 3, 4, 1]
+
+
+&gt;&gt;&gt; arr=[1,2,3,4,1]
+&gt;&gt;&gt; arr.remove(5)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ValueError: list.remove(x): x not in list
+
+remove()  vs del
+del arr[0]  //删除某个元素
+</code></pre><h2 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h2><p>反转数组</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4,1]
+&gt;&gt;&gt; arr.reverse()
+&gt;&gt;&gt; arr
+[1, 4, 3, 2, 1]
+</code></pre><h2 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h2><p>在原位置对列表排序</p>
+<pre><code>&gt;&gt;&gt; arr=[1,2,3,4,1]
+&gt;&gt;&gt; arr.sort()
+&gt;&gt;&gt; arr
+[1, 1, 2, 3, 4]
+
+
+
+&gt;&gt;&gt; arr=[1,2,3,4,1]
+&gt;&gt;&gt; arrycopy=arr[:];   //分片赋值是拷贝副本的
+&gt;&gt;&gt; arrycopy.sort();
+&gt;&gt;&gt; arrycopy
+[1, 1, 2, 3, 4]
+&gt;&gt;&gt; arr
+[1, 2, 3, 4, 1]  //arr的顺序没变
+
+
+&gt;&gt;&gt; arr=[1,2,3,4,1]
+&gt;&gt;&gt; arrycopy=arr;    //直接赋值，赋值引用。
+&gt;&gt;&gt; arrycopy.sort();
+&gt;&gt;&gt; arrycopy
+[1, 1, 2, 3, 4]
+&gt;&gt;&gt; arr
+[1, 1, 2, 3, 4]  //arr的顺序变了
+</code></pre><h2 id="内置函数sorted"><a href="#内置函数sorted" class="headerlink" title="内置函数sorted()"></a>内置函数sorted()</h2><p>排序，并返回序列</p>
+<pre><code>&gt;&gt;&gt; sorted(arr)
+[1, 1, 2, 3, 4]
+&gt;&gt;&gt; arr
+[1, 2, 3, 4, 1]
+
+&gt;&gt;&gt; sorted(&quot;dsdfsdf&quot;)
+[&apos;d&apos;, &apos;d&apos;, &apos;d&apos;, &apos;f&apos;, &apos;f&apos;, &apos;s&apos;, &apos;s&apos;]
+</code></pre><h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>元组与列表一样，也是一种序序列。唯一的不同是元组不能修改。</p>
+<h2 id="创建元组"><a href="#创建元组" class="headerlink" title="创建元组"></a>创建元组</h2><pre><code>&gt;&gt;&gt; 1,2,3  //创建元组方式，直接逗号分隔
+(1, 2, 3)
+
+&gt;&gt;&gt; 1,   //一个元素的时候
+(1,)
+
+&gt;&gt;&gt; (1,2,3)  //创建元组方式二
+(1, 2, 3)
+
+
+&gt;&gt;&gt; (1)  //错误，
+1
+
+
+&gt;&gt;&gt; (1,)  //一个元素时
+(1,)
+</code></pre><h2 id="元组加法"><a href="#元组加法" class="headerlink" title="元组加法"></a>元组加法</h2><p>同样支持 加法和乘法</p>
+<pre><code>&gt;&gt;&gt; (1, 2, 3)*2
+(1, 2, 3, 1, 2, 3)
+
+
+&gt;&gt;&gt; (1, 2, 3)+(1,)
+(1, 2, 3, 1)
+</code></pre><h2 id="tuple-函数"><a href="#tuple-函数" class="headerlink" title="tuple()函数"></a>tuple()函数</h2><p>tuple()函数，将一个序列转化为元组</p>
+<pre><code>&gt;&gt;&gt; tuple([2,1,2])
+(2, 1, 2)
+
+&gt;&gt;&gt; tuple((1,2,3))
+(1, 2, 3)
+
+
+&gt;&gt;&gt; x=1,2,3
+&gt;&gt;&gt; x[0]
+1
+&gt;&gt;&gt; x[1:2]   //元组的分片还是元组
+(2,)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -508,6 +1124,25 @@ hello \n hallo    //“\n未转义，直接输出”
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -557,6 +1192,95 @@ hello \n hallo    //“\n未转义，直接输出”
 {&apos;age&apos;: 25}
 &gt;&gt;&gt; &quot;age&quot; in worker     //检查键是否存在
 True
+</code></pre><h2 id="键类型"><a href="#键类型" class="headerlink" title="键类型"></a>键类型</h2><p>键的类型可以是任意的不可变类型，比如浮点型，字符串或者元组</p>
+<pre><code>&gt;&gt;&gt; x={1:3}
+&gt;&gt;&gt; x
+{1: 3}
+&gt;&gt;&gt; x[1]
+3
+</code></pre><h2 id="格式化替换"><a href="#格式化替换" class="headerlink" title="格式化替换"></a>格式化替换</h2><pre><code>&gt;&gt;&gt; temp=&quot;wo shi %(name)s&quot;
+&gt;&gt;&gt; stu={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; temp % stu
+&apos;wo shi haima&apos;
+</code></pre><h2 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h2><p>clear方法清楚字典中所有项。没有返回值</p>
+<pre><code>&gt;&gt;&gt; stu={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; out=stu.clear()
+&gt;&gt;&gt; print out
+None
+
+&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; y=x
+&gt;&gt;&gt; y.clear()     //清空，是清空指向对象中的内容
+&gt;&gt;&gt; x
+{}
+
+
+&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; y=x
+&gt;&gt;&gt; y={}     //赋值，直接改变了y的引用
+&gt;&gt;&gt; x
+{&apos;name&apos;: &apos;haima&apos;}
+</code></pre><h2 id="copy"><a href="#copy" class="headerlink" title="copy()"></a>copy()</h2><p>拷贝字典，实现的是浅拷贝，拷贝后，两者同键的值相同。</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}     //拷贝后&quot;haima&quot;和&quot;haima&quot;相同
+&gt;&gt;&gt; y=x.copy();
+&gt;&gt;&gt; x[&quot;name&quot;]=&quot;vicky&quot;     //重新赋值，值发生改变
+&gt;&gt;&gt; y
+{&apos;name&apos;: &apos;haima&apos;}
+
+
+&gt;&gt;&gt; x={&quot;scores&quot;:[1,3,4]}
+&gt;&gt;&gt; y=x.copy()
+&gt;&gt;&gt; y[&quot;scores&quot;][0]=5;     //改变值得内容
+&gt;&gt;&gt; x
+{&apos;scores&apos;: [5, 3, 4]}     //因为x中的值和y中相同，所以x中也改变了
+</code></pre><h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><p>通过键取值，取不到值时，会返回None。而普通取值，会报错。</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}   
+&gt;&gt;&gt; print x.get(&quot;age&quot;)
+None
+
+&gt;&gt;&gt; x[&quot;age&quot;]
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+KeyError: &apos;age&apos;
+</code></pre><h2 id="has-key"><a href="#has-key" class="headerlink" title="has_key()"></a>has_key()</h2><p>相当与基本操作in，判断成员资格</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}   
+&gt;&gt;&gt; x.has_key(&quot;age&quot;)
+False
+</code></pre><h2 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h2><p>返回所有键值对，的序列</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.items();
+[(&apos;age&apos;, 25), (&apos;name&apos;, &apos;haima&apos;)]
+</code></pre><h2 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h2><p>返回所有键的序列</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.keys();
+[&apos;age&apos;, &apos;name&apos;]
+</code></pre><h2 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h2><p>移除键值对，并且返回，该键值对中的值</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.pop(&quot;name&quot;)
+&apos;haima&apos;
+&gt;&gt;&gt; x
+{&apos;age&apos;: 25}
+</code></pre><h2 id="popitem"><a href="#popitem" class="headerlink" title="popitem()"></a>popitem()</h2><p>顺序弹出字典中的一个键值对</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.popitem();
+(&apos;age&apos;, 25)
+&gt;&gt;&gt; x
+{&apos;name&apos;: &apos;haima&apos;}
+</code></pre><h2 id="setdefault"><a href="#setdefault" class="headerlink" title="setdefault()"></a>setdefault()</h2><p>设置某个键的默认值</p>
+<pre><code>&gt;&gt;&gt; x={}
+&gt;&gt;&gt; x.setdefault(&quot;name&quot;,&quot;haima&quot;)
+&apos;haima&apos;
+&gt;&gt;&gt; x.get(&quot;name&quot;)
+&apos;haima&apos;
+</code></pre><h2 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h2><p>update方法可以利用一个字典项更新另外一个字典<br>更新时，目标字典中多出来的键值对，直接加入到原字典中</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}  
+&gt;&gt;&gt; x.update(y);
+&gt;&gt;&gt; x
+{&apos;job&apos;: &apos;teacher&apos;, &apos;age&apos;: 25, &apos;name&apos;: &apos;vicky&apos;}     //可以看出，更新时候，&quot;job&quot;项直接被加入到原字典中了
+</code></pre><h2 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h2><p>获取所有的值，返回一个序列</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.values();
+[25, &apos;haima&apos;]
 </code></pre>
           
         
@@ -725,6 +1449,25 @@ True
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -957,7 +1700,8 @@ C                             单字符
       
         
           
-            <pre><code>ctrl+a:跳到命令行首 
+            <h2 id="普通命令"><a href="#普通命令" class="headerlink" title="普通命令"></a>普通命令</h2><hr>
+<pre><code>ctrl+a:跳到命令行首 
 ctrl+e:跳到命令行尾   
 ctrl+u:删除光标至命令行首 
 ctrl+k:删除光标至命令行尾  
@@ -1102,7 +1846,7 @@ V   按矩形选取
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1118,10 +1862,10 @@ V   按矩形选取
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">4</span>
+              
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
-              </a>
+              
             </div>
           
 

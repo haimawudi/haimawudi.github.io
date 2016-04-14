@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python,json," />
 
 
 
@@ -92,7 +92,7 @@
 &amp;gt;&amp;gt;&amp;gt; worker[&amp;quot;name&amp;quot;]
 &amp;apos;haima&amp;apos;
 基本操作字典长度，取值，重新赋值，删除键值对，权限检">
-<meta property="og:updated_time" content="2016-04-12T12:39:44.194Z">
+<meta property="og:updated_time" content="2016-04-13T12:06:07.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 字典dictionary">
 <meta name="twitter:description" content="简介字典有点像其他语言中的json。以大括号作为起始标记，以键值对的数据结构存在。
@@ -199,16 +199,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -265,6 +255,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -312,6 +321,95 @@
 {&apos;age&apos;: 25}
 &gt;&gt;&gt; &quot;age&quot; in worker     //检查键是否存在
 True
+</code></pre><h2 id="键类型"><a href="#键类型" class="headerlink" title="键类型"></a>键类型</h2><p>键的类型可以是任意的不可变类型，比如浮点型，字符串或者元组</p>
+<pre><code>&gt;&gt;&gt; x={1:3}
+&gt;&gt;&gt; x
+{1: 3}
+&gt;&gt;&gt; x[1]
+3
+</code></pre><h2 id="格式化替换"><a href="#格式化替换" class="headerlink" title="格式化替换"></a>格式化替换</h2><pre><code>&gt;&gt;&gt; temp=&quot;wo shi %(name)s&quot;
+&gt;&gt;&gt; stu={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; temp % stu
+&apos;wo shi haima&apos;
+</code></pre><h2 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h2><p>clear方法清楚字典中所有项。没有返回值</p>
+<pre><code>&gt;&gt;&gt; stu={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; out=stu.clear()
+&gt;&gt;&gt; print out
+None
+
+&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; y=x
+&gt;&gt;&gt; y.clear()     //清空，是清空指向对象中的内容
+&gt;&gt;&gt; x
+{}
+
+
+&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}
+&gt;&gt;&gt; y=x
+&gt;&gt;&gt; y={}     //赋值，直接改变了y的引用
+&gt;&gt;&gt; x
+{&apos;name&apos;: &apos;haima&apos;}
+</code></pre><h2 id="copy"><a href="#copy" class="headerlink" title="copy()"></a>copy()</h2><p>拷贝字典，实现的是浅拷贝，拷贝后，两者同键的值相同。</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}     //拷贝后&quot;haima&quot;和&quot;haima&quot;相同
+&gt;&gt;&gt; y=x.copy();
+&gt;&gt;&gt; x[&quot;name&quot;]=&quot;vicky&quot;     //重新赋值，值发生改变
+&gt;&gt;&gt; y
+{&apos;name&apos;: &apos;haima&apos;}
+
+
+&gt;&gt;&gt; x={&quot;scores&quot;:[1,3,4]}
+&gt;&gt;&gt; y=x.copy()
+&gt;&gt;&gt; y[&quot;scores&quot;][0]=5;     //改变值得内容
+&gt;&gt;&gt; x
+{&apos;scores&apos;: [5, 3, 4]}     //因为x中的值和y中相同，所以x中也改变了
+</code></pre><h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><p>通过键取值，取不到值时，会返回None。而普通取值，会报错。</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}   
+&gt;&gt;&gt; print x.get(&quot;age&quot;)
+None
+
+&gt;&gt;&gt; x[&quot;age&quot;]
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+KeyError: &apos;age&apos;
+</code></pre><h2 id="has-key"><a href="#has-key" class="headerlink" title="has_key()"></a>has_key()</h2><p>相当与基本操作in，判断成员资格</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;}   
+&gt;&gt;&gt; x.has_key(&quot;age&quot;)
+False
+</code></pre><h2 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h2><p>返回所有键值对，的序列</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.items();
+[(&apos;age&apos;, 25), (&apos;name&apos;, &apos;haima&apos;)]
+</code></pre><h2 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h2><p>返回所有键的序列</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.keys();
+[&apos;age&apos;, &apos;name&apos;]
+</code></pre><h2 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h2><p>移除键值对，并且返回，该键值对中的值</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.pop(&quot;name&quot;)
+&apos;haima&apos;
+&gt;&gt;&gt; x
+{&apos;age&apos;: 25}
+</code></pre><h2 id="popitem"><a href="#popitem" class="headerlink" title="popitem()"></a>popitem()</h2><p>顺序弹出字典中的一个键值对</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.popitem();
+(&apos;age&apos;, 25)
+&gt;&gt;&gt; x
+{&apos;name&apos;: &apos;haima&apos;}
+</code></pre><h2 id="setdefault"><a href="#setdefault" class="headerlink" title="setdefault()"></a>setdefault()</h2><p>设置某个键的默认值</p>
+<pre><code>&gt;&gt;&gt; x={}
+&gt;&gt;&gt; x.setdefault(&quot;name&quot;,&quot;haima&quot;)
+&apos;haima&apos;
+&gt;&gt;&gt; x.get(&quot;name&quot;)
+&apos;haima&apos;
+</code></pre><h2 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h2><p>update方法可以利用一个字典项更新另外一个字典<br>更新时，目标字典中多出来的键值对，直接加入到原字典中</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}  
+&gt;&gt;&gt; x.update(y);
+&gt;&gt;&gt; x
+{&apos;job&apos;: &apos;teacher&apos;, &apos;age&apos;: 25, &apos;name&apos;: &apos;vicky&apos;}     //可以看出，更新时候，&quot;job&quot;项直接被加入到原字典中了
+</code></pre><h2 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h2><p>获取所有的值，返回一个序列</p>
+<pre><code>&gt;&gt;&gt; x={&quot;name&quot;:&quot;haima&quot;,&quot;age&quot;:25}   
+&gt;&gt;&gt; x.values();
+[25, &apos;haima&apos;]
 </code></pre>
       
     </div>
@@ -329,6 +427,14 @@ True
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/json/" rel="tag">#json</a>
+          
+        </div>
       
 
       
@@ -417,7 +523,7 @@ True
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -433,10 +539,10 @@ True
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">4</span>
+              
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
-              </a>
+              
             </div>
           
 
@@ -465,7 +571,7 @@ True
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键类型"><span class="nav-number">3.</span> <span class="nav-text">键类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化替换"><span class="nav-number">4.</span> <span class="nav-text">格式化替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clear"><span class="nav-number">5.</span> <span class="nav-text">clear()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">6.</span> <span class="nav-text">copy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get"><span class="nav-number">7.</span> <span class="nav-text">get()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#has-key"><span class="nav-number">8.</span> <span class="nav-text">has_key()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#items"><span class="nav-number">9.</span> <span class="nav-text">items()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keys"><span class="nav-number">10.</span> <span class="nav-text">keys()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop"><span class="nav-number">11.</span> <span class="nav-text">pop()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#popitem"><span class="nav-number">12.</span> <span class="nav-text">popitem()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setdefault"><span class="nav-number">13.</span> <span class="nav-text">setdefault()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#update"><span class="nav-number">14.</span> <span class="nav-text">update()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#values"><span class="nav-number">15.</span> <span class="nav-text">values()</span></a></li></ol></div>
             
           </div>
         </section>
