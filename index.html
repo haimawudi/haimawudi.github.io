@@ -404,7 +404,46 @@ NAME
 SYNOPSIS
        ls [OPTION]... [FILE]...
 </code></pre><p>字段摘要<br>    -a, –all    //列出所有，包括隐藏文件（Linux中以点开头的文件）<br>              do not ignore entries starting with .</p>
-<pre><code>-l     use a long listing format    //以长格式显示（显示列表元素的更多信息）
+<pre><code>  -l     use a long listing format    //以长格式显示（显示列表元素的更多信息）
+
+ -d, --directory    
+          list directory entries instead of contents, and do not  derefer-
+          ence symbolic links      //显示当前目录的属性，其他的就不显示了
+
+ -L, --dereference
+          when showing file information for a symbolic link, show informa-
+          tion for the file the link references rather than for  the  link
+          itself //        读不懂，自己查去
+
+--color[=WHEN]    //用不同颜色显示不同类型的文件
+
+
+# type ls
+ls is aliased to `ls --color=auto&apos; //表明本ls命令起始是  ls --color=auto 的别名
+</code></pre><hr>
+<p>ls|eg  </p>
+<pre><code># ls -la /root/    
+total 200    //列表200项，案例中有省略
+dr-xr-x---. 25 root root  4096 Apr 14 09:02 .
+dr-xr-xr-x. 21 root root  4096 Apr 14 08:24 ..
+</code></pre><h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>切换目录</p>
+<pre><code># man cd     //查看cd命令的使用说明书，发现cd命令是bash。在下方查到相关说明
+
+ cd [-L|-P] [dir]    
+              Change  the  current directory to dir.  The variable HOME is the
+              default dir.  The variable CDPATH defines the  search  path  for
+              the  directory  containing  dir. 
+</code></pre><p>至今不是很明白这个段手册，理解如下：<br>cd 【path】：切换到path目录下面</p>
+<hr>
+<p>cd|eg</p>
+<pre><code># cd /usr/local/    //切换到/usr/local/ 目录下
+# ls -l
+total 36    //列表36项，案例中有省略
+drwxr-xr-x. 2 root root 4096 Sep 23  2011 bin
+</code></pre><h2 id="路径"><a href="#路径" class="headerlink" title=". .. ~ 路径"></a>. .. ~ 路径</h2><pre><code>.或者./表示当前路径
+..或者../表示当前路径的父目录
+~或者~/表示当前用户的家目录。家目录将在Linux权限单元介绍
+绝对路径：以/开头，如/root/local
 </code></pre>
           
         
