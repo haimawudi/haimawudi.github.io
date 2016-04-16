@@ -90,7 +90,7 @@ Stallman：著名黑客，G">
 linux重要人物Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
 Stallman：著名黑客，G">
-<meta property="og:updated_time" content="2016-04-14T16:31:04.063Z">
+<meta property="og:updated_time" content="2016-04-16T09:13:07.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux入门">
 <meta name="twitter:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,如果你学习过前面的入门课程，应该会有个基本概念了,这里简单介绍下操作系统在整个计算机系统中的角色
@@ -311,8 +311,34 @@ Linus Torvalds：Linux之父，芬兰赫尔辛基大学
 3.尽量避免捕获用户接口
 4.配置文件，保存为纯文本
 5.严格区分大小写
-</code></pre><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令<br>    命令格式 ：【命令名】   【选项】   【参数】</p>
-<pre><code>选项：
+</code></pre><h2 id="Linux-Vs-windows"><a href="#Linux-Vs-windows" class="headerlink" title="Linux Vs windows"></a>Linux Vs windows</h2><pre><code>windows没有的
+    稳定的系统
+    安全性和漏洞的快速修补
+    多用户
+    用户和用户组的规划
+    相对较少的系统资源占用
+    可定制裁剪，移植到嵌入式平台（如安卓设备）
+    可选择的多种图形用户界面（如GNOME,KDE）
+    为开源而生，Linux系统本生开源的同时，在Linux平台的软件也大多开源 
+
+
+Linux没有的
+    没有特定的支持厂商
+    游戏娱乐支持度不足
+    专业软件支持度不足
+</code></pre><h2 id="Linux应用范畴"><a href="#Linux应用范畴" class="headerlink" title="Linux应用范畴"></a>Linux应用范畴</h2><pre><code>或许你之前不知道Linux,要知道，你之前在windows使用百度，谷歌，上淘宝，聊QQ时，支撑这些软件和
+服务的，是后台成千上万的Linux服务器主机，它们时时刻刻都在进行着忙碌的数据处理和运算，可以说
+世界上大部分软件和服务都是运行在Linux之上的，什么云计算，大数据，移动互联网，说得风起云涌，
+要没用Linux,全都得瘫（除了微软自家的），相比这应用范畴大家也懂了哈，要没有Linux，Windows可
+干不了几个事
+</code></pre><h2 id="Linux学习攻略"><a href="#Linux学习攻略" class="headerlink" title="Linux学习攻略"></a>Linux学习攻略</h2><pre><code>明确目的：为开源而生，为开发而学，为搭建强大的服务器。
+面对现实：Linux大都在命令行下操作，能否接受不用或少用图形界面
+学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不够的）。
+</code></pre><hr>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令</p>
+<pre><code>命令格式 ：【命令名】   【选项】   【参数】
+
+选项：
     短选项用 “-”    表示
     长选项用 “--”表示 
 
@@ -322,7 +348,8 @@ Linus Torvalds：Linux之父，芬兰赫尔辛基大学
 eg:
    ls     -a     /root    //查看/root目录下的所有文件
   【命令】  【选项】  【参数】
-</code></pre><h2 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h2><p>manual的意思，查询某个命令的使用说明<br>我觉得这个命令是所有命令中最重要的。可以查询所有命令怎么使用。</p>
+</code></pre><hr>
+<h2 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h2><p>manual的意思，查询某个命令的使用说明<br>我觉得这个命令是所有命令中最重要的。可以查询所有命令怎么使用。</p>
 <pre><code>eg.  man  man      //查看man命令的使用说明书
 
 NAME        
@@ -358,22 +385,23 @@ OPTIONS
 ？【搜索的关键字】向前搜索关键字
 n:下一个搜索到的关键字
 N:上一个搜索到的关键字
-</code></pre><h2 id="type-which-whatis命令"><a href="#type-which-whatis命令" class="headerlink" title="type,which,whatis命令"></a>type,which,whatis命令</h2><p>这三个命令都和man一样，可以查询命令的信息。换句话说，这三个命令的参数也是一个命令</p>
+</code></pre><hr>
+<h2 id="type-which-whatis命令"><a href="#type-which-whatis命令" class="headerlink" title="type,which,whatis命令"></a>type,which,whatis命令</h2><p>这三个命令都和man一样，可以查询命令的信息。换句话说，这三个命令的参数也是一个命令</p>
 <p>type     【目标命令】：查看目标命令是否是内部命令。（查看命令的类型）如果不是，将输出命令所在位置的路径</p>
 <p>which     【目标命令】：查看目标命令所在位置的路径</p>
 <pre><code>which - shows the full path of (shell) commands.
 </code></pre><p>whatis     【目标命令】：查看命令在系统中使用说明的收录情况</p>
 <pre><code>whatis - search the whatis database for complete words.
-</code></pre><hr>
+</code></pre><p>type|eg</p>
 <pre><code># type man
 man is hashed (/usr/bin/man)     //man是一个内部命令
 
 # type python
 python is /usr/bin/python
-</code></pre><hr>
+</code></pre><p>which|eg</p>
 <pre><code># which man     
 /usr/bin/man     //man命令的路径
-</code></pre><hr>
+</code></pre><p>whatis|eg</p>
 <pre><code># whatis rm
 rm                   (1)  - remove files or directories
 rm                   (1p)  - remove directory entries    //（1p）章介绍删除目录的所有说明
@@ -381,7 +409,7 @@ rm                   (1p)  - remove directory entries    //（1p）章介绍删�
 释[1]所有命令的说明书都记录在Linux中的database中，分章节。不同章节的说明书说明不同的用途。
 上面执行命令whatis rm时，查看rm命令的使用说明说的章节。分别为（1）章 删除文件或文件夹，
 （1p）章 删除文件夹映射。此时再结合man命令查询该章节的使用说明。
-</code></pre><hr>
+</code></pre><p>man|eg</p>
 <pre><code># man 1p rm    //查询（1p）章节的使用说明书
 
 RM(1P)                     POSIX Programmer?. Manual                    RM(1P)
@@ -398,7 +426,8 @@ NAME
 
 SYNOPSIS
        rm [-fiRr] file...
-</code></pre><h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p>（list的意思）查看目录下的内容</p>
+</code></pre><hr>
+<h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p>（list的意思）查看目录下的内容</p>
 <pre><code># man ls     //查看ls的使用说明书
 
 NAME
@@ -406,8 +435,12 @@ NAME
 
 SYNOPSIS
        ls [OPTION]... [FILE]...
-</code></pre><p>字段摘要<br>    -a, –all    //列出所有，包括隐藏文件（Linux中以点开头的文件）<br>              do not ignore entries starting with .</p>
-<pre><code>  -l     use a long listing format    //以长格式显示（显示列表元素的更多信息）
+</code></pre><p>字段摘要</p>
+<pre><code>-a, --all    //列出所有，包括隐藏文件（Linux中以点开头的文件）
+          do not ignore entries starting with .
+
+
+  -l     use a long listing format    //以长格式显示（显示列表元素的更多信息）
 
  -d, --directory    
           list directory entries instead of contents, and do not  derefer-
@@ -423,13 +456,13 @@ SYNOPSIS
 
 # type ls
 ls is aliased to `ls --color=auto&apos; //表明本ls命令起始是  ls --color=auto 的别名
-</code></pre><hr>
-<p>ls|eg  </p>
+</code></pre><p>ls|eg  </p>
 <pre><code># ls -la /root/    
 total 200    //列表200项，案例中有省略
 dr-xr-x---. 25 root root  4096 Apr 14 09:02 .
 dr-xr-xr-x. 21 root root  4096 Apr 14 08:24 ..
-</code></pre><h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>切换目录</p>
+</code></pre><hr>
+<h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>切换目录</p>
 <pre><code># man cd     //查看cd命令的使用说明书，发现cd命令是bash。在下方查到相关说明
 
  cd [-L|-P] [dir]    
@@ -437,17 +470,253 @@ dr-xr-xr-x. 21 root root  4096 Apr 14 08:24 ..
               default dir.  The variable CDPATH defines the  search  path  for
               the  directory  containing  dir. 
 </code></pre><p>至今不是很明白这个段手册，理解如下：<br>cd 【path】：切换到path目录下面</p>
-<hr>
 <p>cd|eg</p>
 <pre><code># cd /usr/local/    //切换到/usr/local/ 目录下
 # ls -l
 total 36    //列表36项，案例中有省略
 drwxr-xr-x. 2 root root 4096 Sep 23  2011 bin
-</code></pre><h2 id="路径"><a href="#路径" class="headerlink" title=". .. ~ 路径"></a>. .. ~ 路径</h2><pre><code>.或者./表示当前路径
-..或者../表示当前路径的父目录
-~或者~/表示当前用户的家目录。家目录将在Linux权限单元介绍
-绝对路径：以/开头，如/root/local
-</code></pre>
+</code></pre><hr>
+<h2 id="路径"><a href="#路径" class="headerlink" title=". .. ~ 路径"></a>. .. ~ 路径</h2><p>.或者./表示当前路径<br>..或者../表示当前路径的父目录<br>~或者~/表示当前用户的家目录。家目录将在Linux权限单元介绍<br>绝对路径：以/开头，如/root/local<br>相对路径：以文件名，或者.开头，或者..开头</p>
+<p>eg</p>
+<pre><code>#cd    /root/local    //绝对路劲，
+#cd    test    //相对路径，切换到当前路径的test文件夹下
+#cd    ./test  //等同于    cd    test  切换到当前路径的test文件夹下
+#cd    ../test    //切换到父目录下的test目录下，相当于于是当前目录的兄弟关系目录
+#echo &quot;alas cls=&apos;clear&apos;&quot; &gt;&gt; ~/.bashrc     //追加一个别名到【家目录下】的.bashrc
+【释】当前登陆用户为root用户，家目录是/root
+</code></pre><hr>
+<h2 id="mkdir-rmdir命令"><a href="#mkdir-rmdir命令" class="headerlink" title="mkdir,rmdir命令"></a>mkdir,rmdir命令</h2><p>mkdir 创建一个空的文件夹/目录<br>rmdir 删除一个空的文件夹/目录</p>
+<pre><code>NAME
+       mkdir - make directories
+
+SYNOPSIS
+       mkdir [OPTION]... DIRECTORY...
+</code></pre><p>字段摘要</p>
+<pre><code>-p, --parents    //如果有多级目录，自动创建父目录
+          no error if existing, make parent directories as needed
+
+-v, --verbose    //创建时，显示创建过程信息
+              print a message for each created directory
+</code></pre><p>rmdir的使用说明和mkdir差不多。</p>
+<p>mkdir|rmdir|eg</p>
+<pre><code># mkdir -pv a/b/c    //创建多级目录，创建时显示创建过程
+mkdir: created directory `a&apos;
+mkdir: created directory `a/b&apos;
+mkdir: created directory `a/b/c&apos;
+
+# rmdir -pv a/b/c    //删除多级目录，删除时显示删除过程
+rmdir: removing directory, `a/b/c&apos;
+rmdir: removing directory, `a/b&apos;
+rmdir: removing directory, `a&apos;
+</code></pre><hr>
+<h2 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h2><p>打印当前目录</p>
+<pre><code>NAME
+       pwd  - print name of current/working direc-
+       tory
+</code></pre><p>pwd|eg</p>
+<pre><code># cd /usr/local/
+# pwd
+/usr/local    //显示当前位置
+</code></pre><hr>
+<h2 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h2><p>更改文件的时间戳<br>创建空文件：在没有该文件的情况下，默认会直接创建一个空文件。</p>
+<pre><code>NAME
+   touch - change file timestamps
+
+SYNOPSIS
+       touch [OPTION]... FILE...
+
+-c, --no-create    //如果没有该文件，不会创建该文件。
+          do not create any files
+
+-a     change only the access time    //仅改变(access time)使用时间
+
+-m     change only the modification time    //仅仅改变修改时间（modify time）
+
+--time=WORD        //--time=atime等同于 -a  --time=mtime等同于 -m    atime请参考info touch
+              change the specified time: WORD is access, atime, or use: equiv-
+              alent to -a WORD is modify or mtime: equivalent to -m    
+</code></pre><p>touch|eg</p>
+<pre><code># stat anaconda-ks.cfg //查看anaconda-ks.cfg的时间戳信息
+Access: 2016-04-14 05:05:13.435999672 -0700
+Modify: 2016-04-14 05:05:13.437999672 -0700
+Change: 2016-04-14 05:05:17.910999668 -0700
+
+# date    
+Fri Apr 15 20:48:50 PDT 2016 //查看系统现在时间（如果系统时间不准确，可能会让你误会touch没生效）
+
+**修改access time**
+# touch -a  anaconda-ks.cfg     //更改最后使用时间(access time)
+# stat anaconda-ks.cfg 
+Access: 2016-04-15 20:49:08.056005657 -0700    //access time更改了
+Modify: 2016-04-14 05:05:13.437999672 -0700
+Change: 2016-04-15 20:49:08.056005657 -0700    //Access或Modify更改，这个字段就会更改
+
+**修改Modify time**
+# touch -m  anaconda-ks.cfg    //更改  最后修改时间（Modify time）
+# stat anaconda-ks.cfg 
+Access: 2016-04-15 20:49:08.056005657 -0700
+Modify: 2016-04-15 20:49:23.867005845 -0700
+Change: 2016-04-15 20:49:23.867005845 -0700
+
+**默认touch修改时间戳**
+# touch anaconda-ks.cfg //不加参数，两种时间都会更改
+# stat anaconda-ks.cfg 
+Access: 2016-04-15 20:50:31.895005698 -0700
+Modify: 2016-04-15 20:50:31.895005698 -0700
+Change: 2016-04-15 20:50:31.895005698 -0700
+
+**创建文件**
+#touch haima.txt    //当前没有文件hello.txt,touch命令会默认创建hello.txt的空文件
+#touch -c  vicky.txt    //-c，touch命令不会创建vicky.txt文件
+# ls
+anaconda-ks.cfg  Downloads    install.log.syslog  Public     Videos
+Desktop          hello.txt    Music               Templates
+Documents        install.log  Pictures            test
+
+【释】stat命令可以查看文件的属性，本案例中只选取了文件时间戳的属性，其他属性，本文省略了
+</code></pre><hr>
+<h2 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h2><p>移动文件或文件夹，相当于windows中的剪切功能<br>重命名文件或文件夹</p>
+<pre><code>NAME
+       mv - move (rename) files
+
+SYNOPSIS
+       mv [OPTION]... [-T] SOURCE DEST
+       mv [OPTION]... SOURCE... DIRECTORY
+
+Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
+
+
+--backup[=CONTROL]    //复制时，目标文件如果存在，将备份已经存在的文件
+          make a backup of each existing destination file
+
+-n, --no-clobber    //不覆盖已存在文件
+          do not overwrite an existing file    
+
+-i, --interactive    //如果需要覆盖，会征求用户的同意。
+          prompt before overwrite
+
+-f, --force    //如果会覆盖，不给用户提示信息，和-i相反
+          do not prompt before overwriting
+
+-b     //和--backup相同功能，但是不需要再跟其他参数
+    like --backup but does not accept an argument
+
+【解】--backup[=CONTROL]中CONTROL可以有多种，如simple，numbered，off.更多请查询man文档
+    所以可以组合成：mv --backup=simple haima.txt ./test
+                   mv --backup=numbered haima.txt ./test    
+</code></pre><p>mv|移动|eg</p>
+<pre><code># mv vicky.txt  ./test/    //移动vicky.txt到 ./test目录下
+
+# touch vicky.txt    //再次创建vicky.txt
+# mv --backup=numbered  vicky.txt ./test/    //移动文件时，如果需要覆盖，采用numbered的方式备份
+mv: overwrite `./test/vicky.txt&apos;? y    //为什么会提示我是否需要覆盖？,放心覆盖，有备份参数
+
+# ls ./test/
+vicky.txt  vicky.txt.~1~    //第一次移动进来的vicky.txt备份为“vicky.txt.~1~”了
+
+# type mv
+mv is aliased to `mv -i&apos;    //原来mv是 mv -i的别名。执行mv时相当于已经加入了-i选项了。
+
+# touch vicky.txt
+
+# mv -b vicky.txt ./test/     //使用-b代替--backup 发现-b备份的方式为--backup上次设置的值
+mv: overwrite `./test/vicky.txt&apos;? y
+# ls ./test/
+vicky.txt  vicky.txt.~1~  vicky.txt.~2~
+</code></pre><p>mv|重命名|eg</p>
+<pre><code># touch vicky.txt    再次创建vicky.txt
+# mv vicky.txt  haima.txt    //vicky.txt 重命名为haima.txt
+
+# mv -b  haima.txt  ./test/vicky.txt    //重命名和移动一步到位
+mv: overwrite `./test/vicky.txt&apos;? y        //用户输入“y” 表示同意覆盖操作。有备份，放心覆盖
+# ls ./test/
+vicky.txt  vicky.txt.~1~  vicky.txt.~2~  vicky.txt.~3~
+</code></pre><hr>
+<h2 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h2><p>拷贝文件或文件夹</p>
+<pre><code>NAME
+       cp - copy files and directories
+
+SYNOPSIS
+       cp [OPTION]... [-T] SOURCE DEST
+       cp [OPTION]... SOURCE... DIRECTORY
+
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+
+-R, -r, --recursive    //递归拷贝。当拷贝文件夹时，如果文件夹里有还有子文件，需要用到该参数
+          copy directories recursively
+
+-l, --link    //创建该文件的链接，而不再拷贝文件本身
+          link files instead of copying
+
+
+-s, --symbolic-link    //创建软链接，而不再拷贝文件，相当于创建了一个快捷方式
+          make symbolic links instead of copying
+
+-i, --interactive    和mv指令相同，如果目的地已经有文件了，提示用户
+          prompt before overwrite (overrides a previous -n option)
+
+-f, --force    //和mv指令相同，如果目的地已经有文件了，不给用户提示，直接覆盖
+          if an existing destination file cannot be opened, remove it  and
+          try again (redundant if the -n option is used)
+
+--backup[=CONTROL]    //和rm命令相同，备份要覆盖的文件
+          make a backup of each existing destination file
+</code></pre><p>cp|eg</p>
+<pre><code># cp -r test/  test2/    //递归拷贝test文件夹，拷贝到当前文件夹下，并命名为test2
+# ls -l
+total 100    //列表有所省略
+drwxr-xr-x. 3 root root  4096 Apr 16 01:24 test
+drwxr-xr-x. 3 root root  4096 Apr 16 01:24 test2
+
+# cp -l vicky.txt  viky.lin
+# cp -s vicky.txt  viky.sy
+# ls -l
+-rw-r--r--. 2 root root     0 Apr 16 01:27 vicky.txt
+drwxr-xr-x. 2 root root  4096 Apr 13 21:07 Videos
+-rw-r--r--. 2 root root     0 Apr 16 01:27 viky.lin
+lrwxrwxrwx. 1 root root     9 Apr 16 01:29 viky.sy -&gt; vicky.txt //
+
+？？硬软链接给忘了，老师的图也好像没给？？
+</code></pre><hr>
+<h2 id="rm指令"><a href="#rm指令" class="headerlink" title="rm指令"></a>rm指令</h2><p>删除文件，文件夹</p>
+<pre><code>NAME
+       rm - remove files or directories
+
+SYNOPSIS
+       rm [OPTION]... FILE...    //可以跟多个选项，可以跟多个文件，一次删除多个文件/文件夹
+
+
+
+-f, --force    //和mv文件中的-f相似，不询问用户
+          ignore nonexistent files, never prompt
+
+ -i     prompt before every removal    //和mv文件中的-f相似，询问用户
+
+ -r, -R, --recursive    //递归删除，文件夹包含子文件夹的情况
+          remove directories and their contents recursively
+</code></pre><p>rm|eg</p>
+<pre><code># rm vicky.txt    //删除文件
+rm: remove regular empty file `vicky.txt&apos;? y
+
+# type rm
+rm is aliased to `rm -i&apos;    //rm相当于rm -i
+
+# rm -f vicky.txt.~ vicky.txt.~2~ vicky.txt.~3    //一次删除三个文件，并且不询问
+
+# cd ..
+# rm test    //删除文件夹失败
+rm: cannot remove `test&apos;: Is a directory
+
+
+# rm -r test    //删除文件夹。如果使用  rm -rf test 则下面不会出现我询问提示
+rm: descend into directory `test&apos;? y
+rm: remove regular file `test/.hello.txt.swp&apos;? y
+rm: remove regular empty file `test/vicky.txt.~1~&apos;? y
+rm: remove directory `test&apos;? y
+</code></pre><hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文主要介绍了使用特别频繁的一些命令。更多的是以阅读命令使用说明书的形式来阐述每个命令的。更多关于Linux的学习文章，将陆续更新。笔者也是初学，记录学习Linux的学习过程，不足之处，见谅。</p>
+
       
     </div>
     
@@ -604,7 +873,7 @@ drwxr-xr-x. 2 root root 4096 Sep 23  2011 bin
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux简介"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux重要人物"><span class="nav-number">2.</span> <span class="nav-text">linux重要人物</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux原则"><span class="nav-number">3.</span> <span class="nav-text">Linux原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">4.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man命令"><span class="nav-number">5.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-which-whatis命令"><span class="nav-number">6.</span> <span class="nav-text">type,which,whatis命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls命令"><span class="nav-number">7.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd命令"><span class="nav-number">8.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径"><span class="nav-number">9.</span> <span class="nav-text">. .. ~ 路径</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux简介"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux重要人物"><span class="nav-number">2.</span> <span class="nav-text">linux重要人物</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux原则"><span class="nav-number">3.</span> <span class="nav-text">Linux原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Vs-windows"><span class="nav-number">4.</span> <span class="nav-text">Linux Vs windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux应用范畴"><span class="nav-number">5.</span> <span class="nav-text">Linux应用范畴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux学习攻略"><span class="nav-number">6.</span> <span class="nav-text">Linux学习攻略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">7.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man命令"><span class="nav-number">8.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-which-whatis命令"><span class="nav-number">9.</span> <span class="nav-text">type,which,whatis命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls命令"><span class="nav-number">10.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd命令"><span class="nav-number">11.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径"><span class="nav-number">12.</span> <span class="nav-text">. .. ~ 路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir-rmdir命令"><span class="nav-number">13.</span> <span class="nav-text">mkdir,rmdir命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd-命令"><span class="nav-number">14.</span> <span class="nav-text">pwd 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch命令"><span class="nav-number">15.</span> <span class="nav-text">touch命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv命令"><span class="nav-number">16.</span> <span class="nav-text">mv命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp命令"><span class="nav-number">17.</span> <span class="nav-text">cp命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm指令"><span class="nav-number">18.</span> <span class="nav-text">rm指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">19.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
