@@ -333,8 +333,10 @@ Linux没有的
 学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不够的）。
 
 掌握学习技巧，学会使用Linux自带的使用说明书，如man,info,--help
-</code></pre><h2 id="阅读本文"><a href="#阅读本文" class="headerlink" title="阅读本文"></a>阅读本文</h2><p>【释】对前文做更多的补充<br>eg代表案例<br>案例中的代码都是笔者在Linux检验过，所以命令都用#开头</p>
-<hr>
+</code></pre><h2 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h2><pre><code>【释】对前文做更多的补充
+eg代表案例
+案例中的代码都是笔者在Linux检验过，所以命令都用#开头
+</code></pre><hr>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令</p>
 <pre><code>命令格式 ：【命令名】   【选项】   【参数】
 
@@ -464,6 +466,9 @@ ls is aliased to `ls --color=auto&apos; //表明本ls命令起始是  ls --color
 total 200    //列表200项，案例中有省略
 dr-xr-x---. 25 root root  4096 Apr 14 09:02 .
 dr-xr-xr-x. 21 root root  4096 Apr 14 08:24 ..
+
+# ls -dl    //-d，只显示目录的属性，其他的都不显示
+dr-xr-x---. 25 root root 4096 Apr 16 01:57 .
 </code></pre><hr>
 <h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>切换目录</p>
 <pre><code># man cd     //查看cd命令的使用说明书，发现cd命令是bash。在下方查到相关说明

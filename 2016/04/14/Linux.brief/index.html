@@ -90,7 +90,7 @@ Stallman：著名黑客，GNU创">
 linux重要人物Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
 Stallman：著名黑客，GNU创">
-<meta property="og:updated_time" content="2016-04-16T09:37:01.540Z">
+<meta property="og:updated_time" content="2016-04-16T09:45:02.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux入门">
 <meta name="twitter:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 开发。
@@ -336,8 +336,10 @@ Linux没有的
 学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不够的）。
 
 掌握学习技巧，学会使用Linux自带的使用说明书，如man,info,--help
-</code></pre><h2 id="阅读本文"><a href="#阅读本文" class="headerlink" title="阅读本文"></a>阅读本文</h2><p>【释】对前文做更多的补充<br>eg代表案例<br>案例中的代码都是笔者在Linux检验过，所以命令都用#开头</p>
-<hr>
+</code></pre><h2 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h2><pre><code>【释】对前文做更多的补充
+eg代表案例
+案例中的代码都是笔者在Linux检验过，所以命令都用#开头
+</code></pre><hr>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令</p>
 <pre><code>命令格式 ：【命令名】   【选项】   【参数】
 
@@ -467,6 +469,9 @@ ls is aliased to `ls --color=auto&apos; //表明本ls命令起始是  ls --color
 total 200    //列表200项，案例中有省略
 dr-xr-x---. 25 root root  4096 Apr 14 09:02 .
 dr-xr-xr-x. 21 root root  4096 Apr 14 08:24 ..
+
+# ls -dl    //-d，只显示目录的属性，其他的都不显示
+dr-xr-x---. 25 root root 4096 Apr 16 01:57 .
 </code></pre><hr>
 <h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>切换目录</p>
 <pre><code># man cd     //查看cd命令的使用说明书，发现cd命令是bash。在下方查到相关说明
@@ -879,7 +884,7 @@ rm: remove directory `test&apos;? y
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux简介"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux重要人物"><span class="nav-number">2.</span> <span class="nav-text">linux重要人物</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux原则"><span class="nav-number">3.</span> <span class="nav-text">Linux原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Vs-windows"><span class="nav-number">4.</span> <span class="nav-text">Linux Vs windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux应用范畴"><span class="nav-number">5.</span> <span class="nav-text">Linux应用范畴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux学习攻略"><span class="nav-number">6.</span> <span class="nav-text">Linux学习攻略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读本文"><span class="nav-number">7.</span> <span class="nav-text">阅读本文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">8.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man命令"><span class="nav-number">9.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-which-whatis命令"><span class="nav-number">10.</span> <span class="nav-text">type,which,whatis命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls命令"><span class="nav-number">11.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd命令"><span class="nav-number">12.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径"><span class="nav-number">13.</span> <span class="nav-text">. .. ~ 路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir-rmdir命令"><span class="nav-number">14.</span> <span class="nav-text">mkdir,rmdir命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd-命令"><span class="nav-number">15.</span> <span class="nav-text">pwd 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch命令"><span class="nav-number">16.</span> <span class="nav-text">touch命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv命令"><span class="nav-number">17.</span> <span class="nav-text">mv命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp命令"><span class="nav-number">18.</span> <span class="nav-text">cp命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm指令"><span class="nav-number">19.</span> <span class="nav-text">rm指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">20.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux简介"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux重要人物"><span class="nav-number">2.</span> <span class="nav-text">linux重要人物</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux原则"><span class="nav-number">3.</span> <span class="nav-text">Linux原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Vs-windows"><span class="nav-number">4.</span> <span class="nav-text">Linux Vs windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux应用范畴"><span class="nav-number">5.</span> <span class="nav-text">Linux应用范畴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux学习攻略"><span class="nav-number">6.</span> <span class="nav-text">Linux学习攻略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读须知"><span class="nav-number">7.</span> <span class="nav-text">阅读须知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">8.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man命令"><span class="nav-number">9.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-which-whatis命令"><span class="nav-number">10.</span> <span class="nav-text">type,which,whatis命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls命令"><span class="nav-number">11.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd命令"><span class="nav-number">12.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径"><span class="nav-number">13.</span> <span class="nav-text">. .. ~ 路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir-rmdir命令"><span class="nav-number">14.</span> <span class="nav-text">mkdir,rmdir命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd-命令"><span class="nav-number">15.</span> <span class="nav-text">pwd 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch命令"><span class="nav-number">16.</span> <span class="nav-text">touch命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv命令"><span class="nav-number">17.</span> <span class="nav-text">mv命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp命令"><span class="nav-number">18.</span> <span class="nav-text">cp命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm指令"><span class="nav-number">19.</span> <span class="nav-text">rm指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">20.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
