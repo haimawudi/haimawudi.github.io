@@ -297,7 +297,7 @@
       
         
           
-            <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><p>Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,如果你学习过前面的入门课程，应该会有个基本概念了,这里简单介绍下操作系统在整个计算机系统中的角色</p>
+            <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><p>Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 开发。</p>
 <h2 id="linux重要人物"><a href="#linux重要人物" class="headerlink" title="linux重要人物"></a>linux重要人物</h2><pre><code>Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
 Stallman：著名黑客，GNU创始人，开发了Emacs、gcc、bash shell
@@ -305,13 +305,13 @@ Linus Torvalds：Linux之父，芬兰赫尔辛基大学
 </code></pre><h2 id="Linux原则"><a href="#Linux原则" class="headerlink" title="Linux原则"></a>Linux原则</h2><p>linux系统的基本原则</p>
 <pre><code>1.由目的的小程序组成     组合小程序完成复杂任务
 2.一切皆文件
-3.尽量避免捕获用户接口
+3.尽量避免捕获用户接口    //笔者不是特别明白
 4.配置文件，保存为纯文本
 5.严格区分大小写
 </code></pre><h2 id="Linux-Vs-windows"><a href="#Linux-Vs-windows" class="headerlink" title="Linux Vs windows"></a>Linux Vs windows</h2><pre><code>windows没有的
     稳定的系统
     安全性和漏洞的快速修补
-    多用户
+    多用户    //貌似都一样
     用户和用户组的规划
     相对较少的系统资源占用
     可定制裁剪，移植到嵌入式平台（如安卓设备）
@@ -331,7 +331,10 @@ Linux没有的
 </code></pre><h2 id="Linux学习攻略"><a href="#Linux学习攻略" class="headerlink" title="Linux学习攻略"></a>Linux学习攻略</h2><pre><code>明确目的：为开源而生，为开发而学，为搭建强大的服务器。
 面对现实：Linux大都在命令行下操作，能否接受不用或少用图形界面
 学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不够的）。
-</code></pre><hr>
+
+掌握学习技巧，学会使用Linux自带的使用说明书，如man,info,--help
+</code></pre><h2 id="阅读本文"><a href="#阅读本文" class="headerlink" title="阅读本文"></a>阅读本文</h2><p>【释】对前文做更多的补充<br>eg代表案例<br>案例中的代码都是笔者在Linux检验过，所以命令都用#开头</p>
+<hr>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令</p>
 <pre><code>命令格式 ：【命令名】   【选项】   【参数】
 
@@ -345,9 +348,12 @@ Linux没有的
 eg:
    ls     -a     /root    //查看/root目录下的所有文件
   【命令】  【选项】  【参数】
+
+【释】多个短选项是可以连写。如-r -f 可以连写为 -rf 。长选项本来较少，不做讨论
 </code></pre><hr>
-<h2 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h2><p>manual的意思，查询某个命令的使用说明<br>我觉得这个命令是所有命令中最重要的。可以查询所有命令怎么使用。</p>
-<pre><code>eg.  man  man      //查看man命令的使用说明书
+<h2 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h2><p>manual的意思，查询某个命令的使用说明。<br>我觉得这个命令是所有命令中最重要的。可以查询所有命令怎么使用。</p>
+<p>man|eg</p>
+<pre><code>#man  man      //查看man命令的使用说明书
 
 NAME        
        man - format and display the on-line manual pages
@@ -506,7 +512,7 @@ rmdir: removing directory, `a/b/c&apos;
 rmdir: removing directory, `a/b&apos;
 rmdir: removing directory, `a&apos;
 </code></pre><hr>
-<h2 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h2><p>打印当前目录</p>
+<h2 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h2><p>查看当前目录或位置</p>
 <pre><code>NAME
        pwd  - print name of current/working direc-
        tory
