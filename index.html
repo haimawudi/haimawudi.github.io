@@ -494,19 +494,33 @@ drwxr-xr-x. 2 root root 4096 Sep 23  2011 bin
 【释】当前登陆用户为root用户，家目录是/root
 </code></pre><hr>
 <h2 id="mkdir-rmdir命令"><a href="#mkdir-rmdir命令" class="headerlink" title="mkdir,rmdir命令"></a>mkdir,rmdir命令</h2><p>mkdir 创建一个空的文件夹/目录<br>rmdir 删除一个空的文件夹/目录</p>
+<p>mkdir的man文档</p>
 <pre><code>NAME
        mkdir - make directories
 
 SYNOPSIS
        mkdir [OPTION]... DIRECTORY...
-</code></pre><p>字段摘要</p>
-<pre><code>-p, --parents    //如果有多级目录，自动创建父目录
+
+
+-p, --parents    //如果有多级目录，自动创建父目录
           no error if existing, make parent directories as needed
 
 -v, --verbose    //创建时，显示创建过程信息
               print a message for each created directory
-</code></pre><p>rmdir的使用说明和mkdir差不多。</p>
-<p>mkdir|rmdir|eg</p>
+</code></pre><p>rmdir的man文档</p>
+<pre><code>NAME
+       rmdir - remove empty directories
+
+SYNOPSIS
+       rmdir [OPTION]... DIRECTORY...
+
+
+-p, --parents    //如果有多级目录，删除祖先目录
+          remove DIRECTORY and its ancestors;
+
+ -v, --verbose    //删除时，显示删除过程信息
+          output a diagnostic for every directory processed
+</code></pre><p>mkdir|rmdir|eg</p>
 <pre><code># mkdir -pv a/b/c    //创建多级目录，创建时显示创建过程
 mkdir: created directory `a&apos;
 mkdir: created directory `a/b&apos;
@@ -516,6 +530,20 @@ mkdir: created directory `a/b/c&apos;
 rmdir: removing directory, `a/b/c&apos;
 rmdir: removing directory, `a/b&apos;
 rmdir: removing directory, `a&apos;
+
+# mkdir -p a/b/c    //创建多级目录a/b/c
+# ls
+# mkdir a/d            //再创建 a/d
+# rmdir -p a/b/c    //删除多级目录，
+rmdir: failed to remove directory `a&apos;: Directory not empty    //提示删除a失败
+# ls -l                //发现，并没真正删除文件夹a,因为a中还有d文件夹
+drwxr-xr-x. 3 root root  4096 Apr 17 08:09 a
+# ls a
+d
+
+【释】**-p并不是递归删除**，可能很多人都觉得效果和递归一样，就直接下一个递归删除文件夹的定义。从最后一
+个案例看出，并不是递归删除。只要父目录中还有文件，父级目录将删除失败。Linux的man文档还是比较考究的，很
+准确，反而很多做技术的不喜欢阅读英文文档，总拿自己感觉作定论，最后以讹传讹了。
 </code></pre><hr>
 <h2 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h2><p>查看当前目录或位置</p>
 <pre><code>NAME
@@ -685,7 +713,8 @@ drwxr-xr-x. 2 root root  4096 Apr 13 21:07 Videos
 -rw-r--r--. 2 root root     0 Apr 16 01:27 viky.lin
 lrwxrwxrwx. 1 root root     9 Apr 16 01:29 viky.sy -&gt; vicky.txt //
 
-？？硬软链接给忘了，老师的图也好像没给？？
+【释】软连接就是windows中的快捷方式，大小比较小。删除文件本身时，软连接失效。
+    硬链接相当于对于源文件的复制，删除时互不影响。但编辑时，任意操纵一个，另外一个也会有相同改变。硬链接不能是目录。
 </code></pre><hr>
 <h2 id="rm指令"><a href="#rm指令" class="headerlink" title="rm指令"></a>rm指令</h2><p>删除文件，文件夹</p>
 <pre><code>NAME
