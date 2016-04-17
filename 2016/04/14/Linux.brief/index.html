@@ -78,25 +78,25 @@
 
 
 
-<meta name="description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 开发。
+<meta name="description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 发布原始版。
 linux重要人物Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
-Stallman：著名黑客，GNU创">
+Stallman：著名黑客，G">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux入门">
 <meta property="og:url" content="http://yoursite.com/2016/04/14/Linux.brief/index.html">
 <meta property="og:site_name" content="梦想家 Haima's">
-<meta property="og:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 开发。
+<meta property="og:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 发布原始版。
 linux重要人物Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
-Stallman：著名黑客，GNU创">
-<meta property="og:updated_time" content="2016-04-17T15:33:05.350Z">
+Stallman：著名黑客，G">
+<meta property="og:updated_time" content="2016-04-17T16:39:14.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux入门">
-<meta name="twitter:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 开发。
+<meta name="twitter:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 发布原始版。
 linux重要人物Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
-Stallman：著名黑客，GNU创">
+Stallman：著名黑客，G">
 
 
 
@@ -300,7 +300,7 @@ Stallman：著名黑客，GNU创">
       
 
       
-        <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><p>Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 开发。</p>
+        <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><p>Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 发布原始版。</p>
 <h2 id="linux重要人物"><a href="#linux重要人物" class="headerlink" title="linux重要人物"></a>linux重要人物</h2><pre><code>Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
 Stallman：著名黑客，GNU创始人，开发了Emacs、gcc、bash shell
@@ -336,9 +336,10 @@ Linux没有的
 学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不够的）。
 
 掌握学习技巧，学会使用Linux自带的使用说明书，如man,info,--help
-</code></pre><h2 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h2><pre><code>【释】对前文做更多的补充
-eg代表案例
+</code></pre><h2 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h2><pre><code>【释】：对前文做更多的补充
+eg:代表案例
 案例中的代码都是笔者在Linux检验过，所以命令都用#开头
+本文案例用的是Centos6.5，可能各个平台略有差异。
 </code></pre><hr>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>Linux中交互主要的手段是通过命令</p>
 <pre><code>命令格式 ：【命令名】   【选项】   【参数】
@@ -476,16 +477,24 @@ dr-xr-x---. 25 root root 4096 Apr 16 01:57 .
 <h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>切换目录</p>
 <pre><code># man cd     //查看cd命令的使用说明书，发现cd命令是bash。在下方查到相关说明
 
- cd [-L|-P] [dir]    
-              Change  the  current directory to dir.  The variable HOME is the
-              default dir.  The variable CDPATH defines the  search  path  for
-              the  directory  containing  dir. 
-</code></pre><p>至今不是很明白这个段手册，理解如下：<br>cd 【path】：切换到path目录下面</p>
-<p>cd|eg</p>
+
+cd [-L|-P] [dir]    
+              Change  the  current directory to dir.  //改变当前目录，到[dir] 下面，cd命令仅有-P和-L两种选项
+
+the -P    //-p 表示用的是物理路径
+          option  says  to use the physical directory structure instead of
+          following symbolic links 
+
+the -L    //-L表示后面是符号链接，也就后面讲到的软连接。
+         option forces symbolic links to be fol-lowed.
+</code></pre><p>cd|eg</p>
 <pre><code># cd /usr/local/    //切换到/usr/local/ 目录下
 # ls -l
 total 36    //列表36项，案例中有省略
 drwxr-xr-x. 2 root root 4096 Sep 23  2011 bin
+
+【释】虽然说cd有两个参数，-P,-L，但笔者尝试了一下，这两个参数好像却是没起作用。
+甚至可以这样用cd -PL d.ln      d.ln是一个软连接。笔者使用的是centos 6.5
 </code></pre><hr>
 <h2 id="路径"><a href="#路径" class="headerlink" title=". .. ~ 路径"></a>. .. ~ 路径</h2><p>.或者./表示当前路径<br>..或者../表示当前路径的父目录<br>~或者~/表示当前用户的家目录。家目录将在Linux权限单元介绍<br>绝对路径：以/开头，如/root/local<br>相对路径：以文件名，或者.开头，或者..开头</p>
 <p>eg</p>
