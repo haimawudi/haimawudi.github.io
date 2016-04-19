@@ -1,0 +1,883 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,脚本," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="shell简介shell脚本是一组命令的组合，通常写在一个文本中。shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。
+第一个脚本bash 的申明是在行首申明为#!/bin/bash除了首行中申明脚本外，#表示注释，以#开头的行将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux之shell脚本入门">
+<meta property="og:url" content="http://yoursite.com/2016/04/19/Linux.shell/index.html">
+<meta property="og:site_name" content="梦想家 Haima's">
+<meta property="og:description" content="shell简介shell脚本是一组命令的组合，通常写在一个文本中。shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。
+第一个脚本bash 的申明是在行首申明为#!/bin/bash除了首行中申明脚本外，#表示注释，以#开头的行将">
+<meta property="og:updated_time" content="2016-04-19T16:05:33.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux之shell脚本入门">
+<meta name="twitter:description" content="shell简介shell脚本是一组命令的组合，通常写在一个文本中。shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。
+第一个脚本bash 的申明是在行首申明为#!/bin/bash除了首行中申明脚本外，#表示注释，以#开头的行将">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: false,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Linux之shell脚本入门 | 梦想家 Haima's </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">梦想家 Haima's</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Life is beautiful,so make IT wonderful.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux之shell脚本入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-19T23:13:42+08:00" content="2016-04-19">
+              2016-04-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/19/Linux.shell/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/Linux.shell/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="shell简介"><a href="#shell简介" class="headerlink" title="shell简介"></a>shell简介</h2><p>shell脚本是一组命令的组合，通常写在一个文本中。<br>shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。<br>shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。</p>
+<h2 id="第一个脚本"><a href="#第一个脚本" class="headerlink" title="第一个脚本"></a>第一个脚本</h2><p>bash 的申明是在行首申明为#!/bin/bash<br>除了首行中申明脚本外，#表示注释，以#开头的行将不被执行。</p>
+<p><strong>普通的方式</strong><br>步骤1：编辑一个纯文本文档</p>
+<pre><code># vi bash1.sh
+
+#!/bin/bash            //文本首行申明为bash
+#my first bashell!    //#号注释整行
+echo &quot;I am Haima&quot;;    //脚本的具体内容
+echo &quot;I am Vicky&quot;;
+</code></pre><p>步骤2：授予文本执行权限</p>
+<pre><code># chmod u+x bash1.sh // 第一种方式，授权当前用户拥有执行选项
+</code></pre><p>步骤3：执行脚本</p>
+<pre><code># ./bash1.sh     //执行脚本
+I am Haima
+I am Vicky
+</code></pre><p><strong>bash命令方式</strong><br>步骤1：编辑一个纯文本文档</p>
+<pre><code># vi bash2.sh
+
+#no need declare    //普通注释，不用申明bash
+#my first bashell!    //#号注释整行
+echo &quot;I am Haima&quot;;    //脚本的具体内容
+echo &quot;I am Vicky&quot;;
+</code></pre><p>步骤2：直接执行命令bash启动shell脚本</p>
+<pre><code># bash bash2.sh 
+I am Haima
+I am Vicky
+</code></pre><p><strong>关于调试</strong></p>
+<pre><code>显示执行步骤    //没什么用
+ bash -x bash1.sh
+bash语法检查
+ bash -n bash2.sh
+
+【释】shell脚本执行时，如果中间有错误，脚本不会停止，所以  语法检查时非常有必要的。
+</code></pre><h2 id="变量简介"><a href="#变量简介" class="headerlink" title="变量简介"></a>变量简介</h2><p>1：只能使用数字，字母和下划线，且不能以数字开头<br>2：变量名区分大小写<br>3：建议命令要通俗易懂<br>4：变量分为：本地变量、环境变量、局部变量、位置变量、</p>
+<h2 id="本地变量"><a href="#本地变量" class="headerlink" title="本地变量"></a>本地变量</h2><p>声明：VAR_NAME=VAR_NAME  </p>
+<p>使用：$VAR_NAME 或者 $(VAR_NAME) </p>
+<p>撤销变量：unset VAR_NAME</p>
+<p>eg|本地变量</p>
+<pre><code># val=&quot;vicky&quot;
+# echo $val
+vicky
+# echo $valhhh
+                    //什么也没打印，因为没有找到 $valhhh
+# echo ${val}hhh
+vickyhhh
+# unset val            //撤销变量
+# echo $val
+                    //撤销后什么也不打印
+</code></pre><h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>声明：export VAR_NAME=VALUE 使用和普通变量相同<br>该变量对当前会话shell和子shell有效</p>
+<p>eg1|环境变量</p>
+<pre><code># export eveVal=&quot;hello&quot;    //申明一个环境变量
+# evalVal1=&quot;vicky&quot;
+# bash
+# echo $eveVal         //打印环境变量
+hello
+# echo  $eveVal1    //打印普通变量
+    //普通变量无法在子shell会话中使用，什么也没打出来
+</code></pre><p>eg2|环境变量</p>
+<pre><code>#vi    /etc/profile    //编辑linux环境变量配置文件
+JAVA_HOME=&quot;Jdk_Path&quot;
+export PATH=$PATH:$JAVA_HOME    //拼接环境变量JAVA_HOME，Linux中用&quot;:&quot;，windows中配置JAVA用的 &quot;;&quot;
+
+#source /etc/profile    //将/etc/profile在当前shell会话执行一次
+# echo  $PATH
+.:.:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:Jdk_Path
+
+【释】配置在/etc/profile中的环境变量，每次会话开启，Linux会默认被执行一次，所以对所有的会话有效
+</code></pre><h2 id="source和pstree"><a href="#source和pstree" class="headerlink" title="source和pstree"></a>source和pstree</h2><p>source：在当前shell会话中执行文件中的所有指令。</p>
+<pre><code>source filename [arguments]    //man文档摘要
+        Read  and  execute  commands   from filename in the current shell envi-ronment
+        and return the exit  status of  the  last command executed from filename. 
+</code></pre><p>eg:source</p>
+<pre><code>案例详情见环境变量案例  【eg2|环境变量】
+</code></pre><p>pstree:打印当前Linux中运行的所有进程的进程树</p>
+<pre><code>NAME    //man文档摘要
+       pstree - display a tree of processes
+</code></pre><p>eg|pstree</p>
+<pre><code># bash     //新建一个子shell会话
+# pstree 
+├─gnome-terminal──bash───bash───pstree    
+# exit    //退出子shell会话，回到原shell会话
+# pstree
+├─gnome-terminal─┬─bash───pstree
+
+【释】案例中只截取pstree中部分，用于展示
+</code></pre><h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>在函数体内的变量是局部变量。局部变量的</p>
+<p>申明：local VAR_NAME=VALUE   使用时，在函数内使用</p>
+<p>eg|局部变量</p>
+<pre><code># local hah=&quot;halo&quot;    //局部变量只能在函数中使用
+bash: local: can only be used in a function
+
+1 #!/bin/bash
+2 
+3 function main(){
+4         local val=&quot;hello&quot; //局部变量的申明
+5         echo $val    //打印
+6 }
+7 
+8 main
+9 
+10 echo $val
+
+# ./test3.sh 
+hello    //调用main时打印出来
+        //第10行代码中，并没有找到变量$val
+</code></pre><h2 id="位置变量"><a href="#位置变量" class="headerlink" title="位置变量"></a>位置变量</h2><pre><code>$1,$2,.....${10}....
+test.sh 3 89
+$0：脚本自身
+$1：脚本的第一个参数
+$2：脚本的第二个参数
+..
+
+$?：接收上一条命令的返回状态码
+返回状态码在0-255之间
+$#：参数个数
+$*：或者$@：所有的参数
+$$：获取当前shell的进程号（PID）(可以实现脚本自杀)(或者使用exit命令直接退出也可以使用exit [num])
+</code></pre><p>eg|位置变量</p>
+<pre><code># vi fun.sh        //编辑脚本
+
+  1 #position argument
+
+  2 function main(){
+  3         echo $1
+  4         echo $2
+  5         echo $0
+  6 
+  7 }
+  8 
+  9 main                 
+ 10         echo $0
+ 11         echo $1
+ 12         echo $2
+
+# bash fun.sh  aa bb    //执行脚本
+                        //第3行未能打出$1
+                        //第4行未能打出$2
+fun.sh                    //第5行能打出$0        
+fun.sh                    //第10行执行结果
+aa                        //第11行执行结果
+bb                         //第12行执行结果
+
+【释】方法中无法接收到shell外面穿的参数，只能接受方法参数。但是方法体内也能引用$0.
+</code></pre><h2 id="三种引号"><a href="#三种引号" class="headerlink" title="三种引号"></a>三种引号</h2><pre><code>&apos;&apos;单引号不解析变量
+echo &apos;$crxy&apos;
+&quot;&quot;双引号会解析变量
+echo &quot;$crxy&quot;
+``反引号是执行并引用一个命令的执行结果，类似于$(...)
+echo `$crxy`
+
+# crxy=&quot;hello&quot;
+# echo &quot;$crxy&quot;
+hello
+
+#echo &apos;$crxy&apos;    //你可以理解成为原样输出
+$crxy    
+
+# command=&quot;1+1&quot;
+# `command`
+# echo `$command`
+bash: 1+1: command not found    //执行时出错，会将变量当命令执行
+
+mydate=&quot;date +%Y_%d&quot;
+# echo `$mydate`
+2016_18
+</code></pre><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><pre><code>格式1
+for ((i=0;i&lt;10;i++))
+do
+  ...
+done
+
+格式2
+for i in 0 1 2 3 4 5 6 7 8 9
+do 
+...
+done
+
+格式三
+for i in {0..9}
+do
+  ...
+done
+</code></pre><p>笔者试了一下，以下java的循环格式，也可以执行</p>
+<pre><code>for((i=0;i&lt;10;i++))
+{
+        echo  this is for ${i}
+}
+</code></pre><h2 id="if-elif-else分支语句"><a href="#if-elif-else分支语句" class="headerlink" title="if elif else分支语句"></a>if elif else分支语句</h2><p><strong>if    [条件]    then    ..    elif    [条件]    then    ..    else    ..     fi</strong></p>
+<pre><code>多分支
+ if 条件1; 
+    then
+分支1
+elif 条件2
+    then
+分支2
+    else 
+分支n
+      fi
+</code></pre><h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><p>相当于JAVA中的swich语句</p>
+<pre><code>case 变量引用 in
+PATTERN1)
+    分支1
+;;
+PATTERN2)
+    分支2
+;;
+...
+    *)
+分支n
+;;
+esac
+</code></pre><p>eg|case</p>
+<pre><code># tail -20 case.sh 
+var=10
+case $var in 
+5)
+ echo &quot;5&quot;
+;;
+10)
+echo &quot;10&quot;
+;;
+*)
+echo &quot;don&apos;t know&quot;
+;;
+esac
+
+# bash -x  case.sh //-x可以打印执行过程
++ var=10
++ case $var in
++ echo 10
+10
+</code></pre><h2 id="break，continue"><a href="#break，continue" class="headerlink" title="break，continue"></a>break，continue</h2><p>和java中的break和continue相同<br>break，跳出循环体，不再执行循环<br>continue提过本次循环，执行下次循环</p>
+<h2 id="算数表达式"><a href="#算数表达式" class="headerlink" title="算数表达式"></a>算数表达式</h2><p>let varName=算术表达式</p>
+<p>varName=$[算术表达式]</p>
+<p>varName=$((算术表达式))</p>
+<p>eg|算数表达式</p>
+<pre><code># let var=1+1    //注意赋值时，变量名(var)和赋值号(=)之间不能有空格，有空格会被认为
+# echo $var
+2
+
+# var=$[1+1]
+# echo $var
+2    
+
+# var=$((1+1))
+# echo $var
+2
+</code></pre><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>申明一个方法的方式function methodName</p>
+<p>调用的时候：methodName</p>
+<pre><code># tail -20  function.sh //查看脚本内容
+
+function main(){
+    echo $1 firstmeber
+    echo $0 proceName
+    echo $@ all members
+    echo $$ proceId
+    echo $* all mebbers
+    echo $# count
+}
+
+echo $0
+
+main var1 var2 var3    //调用函数
+
+
+# bash function.sh    //执行脚本
+function.sh
+var1 firstmeber
+function.sh proceName
+var1 var2 var3 all members
+4981 proceId
+var1 var2 var3 all mebbers
+3 count
+</code></pre><h2 id="date命令"><a href="#date命令" class="headerlink" title="date命令"></a>date命令</h2><p>显示当前时间</p>
+<p>格式化输出 +%Y-%m-%d</p>
+<p>格式%s表示自1970-01-01 00:00:00以来的秒数</p>
+<p>指定时间输出  –date=’2009-01-01 11:11:11’</p>
+<p>指定时间输出  –date=’3 days ago’</p>
+<pre><code># echo $(date  +%Y-%m-%d)
+2016-04-18
+
+# echo $(date  --date=&apos;1 days ago&apos;)        //一天前
+Sun Apr 17 07:00:49 PDT 2016
+
+# echo $(date  --date=&apos;-1 days ago&apos;)    //一天后
+Tue Apr 19 07:01:45 PDT 2016    
+</code></pre><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/脚本/" rel="tag">#脚本</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/14/Linux.brief/" rel="next" title="Linux入门">
+                <i class="fa fa-chevron-left"></i> Linux入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/19/Linux.shell/"
+           data-title="Linux之shell脚本入门" data-url="http://yoursite.com/2016/04/19/Linux.shell/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.gif"
+               alt="Haima" />
+          <p class="site-author-name" itemprop="name">Haima</p>
+          <p class="site-description motion-element" itemprop="description">649766951|北京</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell简介"><span class="nav-number">1.</span> <span class="nav-text">shell简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个脚本"><span class="nav-number">2.</span> <span class="nav-text">第一个脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量简介"><span class="nav-number">3.</span> <span class="nav-text">变量简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地变量"><span class="nav-number">4.</span> <span class="nav-text">本地变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">5.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#source和pstree"><span class="nav-number">6.</span> <span class="nav-text">source和pstree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量"><span class="nav-number">7.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置变量"><span class="nav-number">8.</span> <span class="nav-text">位置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种引号"><span class="nav-number">9.</span> <span class="nav-text">三种引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for循环"><span class="nav-number">10.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-elif-else分支语句"><span class="nav-number">11.</span> <span class="nav-text">if elif else分支语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case语句"><span class="nav-number">12.</span> <span class="nav-text">case语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break，continue"><span class="nav-number">13.</span> <span class="nav-text">break，continue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算数表达式"><span class="nav-number">14.</span> <span class="nav-text">算数表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">15.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#date命令"><span class="nav-number">16.</span> <span class="nav-text">date命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续"><span class="nav-number">17.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haima</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"refly"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
