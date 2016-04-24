@@ -1535,7 +1535,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e22878;
+  background: #ff038f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2128,6 +2128,9 @@ body {
     width: 118%;
     margin: 0 -9%;
   }
+}
+.content-wrap {
+  min-width: 715px;
 }
 .header {
   position: relative;
