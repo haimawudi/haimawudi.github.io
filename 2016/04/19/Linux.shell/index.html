@@ -71,7 +71,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/ico.jpg?v=5.0.1" />
 
 
 
@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="梦想家 Haima's">
 <meta property="og:description" content="shell简介shell脚本是一组命令的组合，通常写在一个文本中。shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。
 第一个脚本bash 的申明是在行首申明为#!/bin/bash除了首行中申明脚本外，#表示注释，以#开头的行将">
-<meta property="og:updated_time" content="2016-04-21T01:14:52.323Z">
+<meta property="og:updated_time" content="2016-04-24T04:11:11.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之shell脚本入门">
 <meta name="twitter:description" content="shell简介shell脚本是一组命令的组合，通常写在一个文本中。shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。
@@ -116,6 +116,16 @@
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?3ac5f8b8df6b35a880573a54a64eddd5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -197,6 +207,16 @@
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -365,17 +385,20 @@ hello
 </code></pre><p>eg2|环境变量</p>
 <pre><code>#vi    /etc/profile    //编辑linux环境变量配置文件
 JAVA_HOME=&quot;Jdk_Path&quot;
-export PATH=$PATH:$JAVA_HOME    //拼接环境变量JAVA_HOME，Linux中用&quot;:&quot;，windows中配置JAVA用的 &quot;;&quot;
+export PATH=$PATH:$JAVA_HOME    //拼接环境变量JAVA_HOME，Linux中用&quot;:&quot;，windows中配置
+JAVA用的 &quot;;&quot;
 
 #source /etc/profile    //将/etc/profile在当前shell会话执行一次
 # echo  $PATH
 .:.:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:Jdk_Path
 
-【释】配置在/etc/profile中的环境变量，每次会话开启，Linux会默认被执行一次，所以对所有的会话有效
+【释】配置在/etc/profile中的环境变量，每次会话开启，Linux会默认被执行一次，所以对所有的会话
+有效
 </code></pre><h2 id="source和pstree"><a href="#source和pstree" class="headerlink" title="source和pstree"></a>source和pstree</h2><p>source：在当前shell会话中执行文件中的所有指令。</p>
 <pre><code>source filename [arguments]    //man文档摘要
-        Read  and  execute  commands   from filename in the current shell envi-ronment
-        and return the exit  status of  the  last command executed from filename. 
+        Read  and  execute  commands   from filename in the current shell envi-
+        ronment and return the exit  status of  the  last command executed from 
+        filename. 
 </code></pre><p>eg:source</p>
 <pre><code>案例详情见环境变量案例  【eg2|环境变量】
 </code></pre><p>pstree:打印当前Linux中运行的所有进程的进程树</p>
@@ -421,7 +444,8 @@ $?：接收上一条命令的返回状态码
 返回状态码在0-255之间
 $#：参数个数
 $*：或者$@：所有的参数
-$$：获取当前shell的进程号（PID）(可以实现脚本自杀)(或者使用exit命令直接退出也可以使用exit [num])
+$$：获取当前shell的进程号（PID）(可以实现脚本自杀)(或者使用exit命令直接退出也可以使用
+    exit [num])
 </code></pre><p>eg|位置变量</p>
 <pre><code># vi fun.sh        //编辑脚本
 
@@ -598,6 +622,11 @@ Tue Apr 19 07:01:45 PDT 2016
     <div>
       
         
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/qr.png" alt="Haima wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎添加微信和我交流</div>
+</div>
+
       
     </div>
 

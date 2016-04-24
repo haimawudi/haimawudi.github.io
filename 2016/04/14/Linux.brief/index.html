@@ -71,7 +71,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/ico.jpg?v=5.0.1" />
 
 
 
@@ -90,7 +90,7 @@ Stallman：著名黑客，G">
 linux重要人物Ken Thompson：C语言之父和Unix之父
 Dennis Ritchie：C语言之父和Unix之父
 Stallman：著名黑客，G">
-<meta property="og:updated_time" content="2016-04-19T17:33:08.394Z">
+<meta property="og:updated_time" content="2016-04-24T04:07:19.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux入门">
 <meta name="twitter:description" content="Linux简介Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 发布原始版。
@@ -122,6 +122,16 @@ Stallman：著名黑客，G">
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?3ac5f8b8df6b35a880573a54a64eddd5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -203,6 +213,16 @@ Stallman：著名黑客，G">
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -344,7 +364,8 @@ Linux没有的
 干不了几个事
 </code></pre><h2 id="Linux学习攻略"><a href="#Linux学习攻略" class="headerlink" title="Linux学习攻略"></a>Linux学习攻略</h2><pre><code>明确目的：为开源而生，为开发而学，为搭建强大的服务器。
 面对现实：Linux大都在命令行下操作，能否接受不用或少用图形界面
-学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不够的）。
+学习技巧:熟练掌握查询命令方法，装个Linux系统练习，实践性的东西都交给实践（光是看书是完全不
+够的）。
 
 掌握学习技巧，学会使用Linux自带的使用说明书，如man,info,--help
 </code></pre><h2 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h2><pre><code>【释】：对前文做更多的补充
@@ -424,7 +445,8 @@ python is /usr/bin/python
 </code></pre><p>whatis|eg</p>
 <pre><code># whatis rm
 rm                   (1)  - remove files or directories
-rm                   (1p)  - remove directory entries    //（1p）章介绍删除目录的所有说明
+rm                   (1p)  - remove directory entries    //（1p）章介绍删除目录的
+所有说明
 
 释[1]所有命令的说明书都记录在Linux中的database中，分章节。不同章节的说明书说明不同的用途。
 上面执行命令whatis rm时，查看rm命令的使用说明说的章节。分别为（1）章 删除文件或文件夹，
@@ -564,9 +586,10 @@ drwxr-xr-x. 3 root root  4096 Apr 17 08:09 a
 # ls a
 d
 
-【释】**-p并不是递归删除**，可能很多人都觉得效果和递归一样，就直接下一个递归删除文件夹的定义。从最后一
-个案例看出，并不是递归删除。只要父目录中还有文件，父级目录将删除失败。Linux的man文档还是比较考究的，很
-准确，反而很多做技术的不喜欢阅读英文文档，总拿自己感觉作定论，最后以讹传讹了。
+【释】**-p并不是递归删除**，可能很多人都觉得效果和递归一样，就直接下一个递归删除文件夹的定
+义。从最后一个案例看出，并不是递归删除。只要父目录中还有文件，父级目录将删除失败。Linux的
+man文档还是比较考究的，很准确，反而很多做技术的不喜欢阅读英文文档，总拿自己感觉作定论，
+最后以讹传讹了。
 </code></pre><hr>
 <h2 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h2><p>查看当前目录或位置</p>
 <pre><code>NAME
@@ -591,7 +614,8 @@ SYNOPSIS
 
 -m     change only the modification time    //仅仅改变修改时间（modify time）
 
---time=WORD        //--time=atime等同于 -a  --time=mtime等同于 -m    atime请参考info touch
+--time=WORD        //--time=atime等同于 -a  --time=mtime等同于 -m    
+
               change the specified time: WORD is access, atime, or use: equiv-
               alent to -a WORD is modify or mtime: equivalent to -m    
 </code></pre><p>touch|eg</p>
@@ -601,30 +625,31 @@ Modify: 2016-04-14 05:05:13.437999672 -0700
 Change: 2016-04-14 05:05:17.910999668 -0700
 
 # date    
-Fri Apr 15 20:48:50 PDT 2016 //查看系统现在时间（如果系统时间不准确，可能会让你误会touch没生效）
+Fri Apr 15 20:48:50 PDT 2016 //查看系统现在时间（如果系统时间不准确，可能会让你误以为
+touch没生效）
 
-**修改access time**
+//修改access time
 # touch -a  anaconda-ks.cfg     //更改最后使用时间(access time)
 # stat anaconda-ks.cfg 
 Access: 2016-04-15 20:49:08.056005657 -0700    //access time更改了
 Modify: 2016-04-14 05:05:13.437999672 -0700
 Change: 2016-04-15 20:49:08.056005657 -0700    //Access或Modify更改，这个字段就会更改
 
-**修改Modify time**
+//修改Modify time
 # touch -m  anaconda-ks.cfg    //更改  最后修改时间（Modify time）
 # stat anaconda-ks.cfg 
 Access: 2016-04-15 20:49:08.056005657 -0700
 Modify: 2016-04-15 20:49:23.867005845 -0700
 Change: 2016-04-15 20:49:23.867005845 -0700
 
-**默认touch修改时间戳**
+//默认touch修改时间戳
 # touch anaconda-ks.cfg //不加参数，两种时间都会更改
 # stat anaconda-ks.cfg 
 Access: 2016-04-15 20:50:31.895005698 -0700
 Modify: 2016-04-15 20:50:31.895005698 -0700
 Change: 2016-04-15 20:50:31.895005698 -0700
 
-**创建文件**
+//创建文件
 #touch haima.txt    //当前没有文件hello.txt,touch命令会默认创建hello.txt的空文件
 #touch -c  vicky.txt    //-c，touch命令不会创建vicky.txt文件
 # ls
@@ -632,7 +657,7 @@ anaconda-ks.cfg  Downloads    install.log.syslog  Public     Videos
 Desktop          hello.txt    Music               Templates
 Documents        install.log  Pictures            test
 
-【释】stat命令可以查看文件的属性，本案例中只选取了文件时间戳的属性，其他属性，本文省略了
+【释】stat命令可以查看文件的属性，本案例中只选取了文件时间戳的属性，其他属性此处省略
 </code></pre><hr>
 <h2 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h2><p>移动文件或文件夹，相当于windows中的剪切功能<br>重命名文件或文件夹</p>
 <pre><code>NAME
@@ -667,8 +692,8 @@ Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
 <pre><code># mv vicky.txt  ./test/    //移动vicky.txt到 ./test目录下
 
 # touch vicky.txt    //再次创建vicky.txt
-# mv --backup=numbered  vicky.txt ./test/    //移动文件时，如果需要覆盖，采用numbered的方式备份
-mv: overwrite `./test/vicky.txt&apos;? y    //为什么会提示我是否需要覆盖？,放心覆盖，有备份参数
+# mv --backup=numbered  vicky.txt ./test/    //如果需要覆盖，采用numbered的方式备份
+mv: overwrite `./test/vicky.txt&apos;? y    //想想为什么会冒出一行提示？
 
 # ls ./test/
 vicky.txt  vicky.txt.~1~    //第一次移动进来的vicky.txt备份为“vicky.txt.~1~”了
@@ -678,7 +703,7 @@ mv is aliased to `mv -i&apos;    //原来mv是 mv -i的别名。执行mv时相�
 
 # touch vicky.txt
 
-# mv -b vicky.txt ./test/     //使用-b代替--backup 发现-b备份的方式为--backup上次设置的值
+# mv -b vicky.txt ./test/     //使用-b代替--backup  -b会使用上次设置的备份方式
 mv: overwrite `./test/vicky.txt&apos;? y
 # ls ./test/
 vicky.txt  vicky.txt.~1~  vicky.txt.~2~
@@ -687,7 +712,7 @@ vicky.txt  vicky.txt.~1~  vicky.txt.~2~
 # mv vicky.txt  haima.txt    //vicky.txt 重命名为haima.txt
 
 # mv -b  haima.txt  ./test/vicky.txt    //重命名和移动一步到位
-mv: overwrite `./test/vicky.txt&apos;? y        //用户输入“y” 表示同意覆盖操作。有备份，放心覆盖
+mv: overwrite `./test/vicky.txt&apos;? y        //有备份参数 -b，放心的输入y，确认操作
 # ls ./test/
 vicky.txt  vicky.txt.~1~  vicky.txt.~2~  vicky.txt.~3~
 </code></pre><hr>
@@ -702,7 +727,7 @@ SYNOPSIS
 Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
 
 
--R, -r, --recursive    //递归拷贝。当拷贝文件夹时，如果文件夹里有还有子文件，需要用到该参数
+-R, -r, --recursive    //递归拷贝。目标文件夹中如果还有子文件，需要用到该参数
           copy directories recursively
 
 -l, --link    //创建该文件的链接，而不再拷贝文件本身
@@ -737,14 +762,15 @@ drwxr-xr-x. 2 root root  4096 Apr 13 21:07 Videos
 lrwxrwxrwx. 1 root root     9 Apr 16 01:29 viky.sy -&gt; vicky.txt //
 
 【释】软连接就是windows中的快捷方式，大小比较小。删除文件本身时，软连接失效。
-    硬链接相当于对于源文件的复制，删除时互不影响。但编辑时，任意操纵一个，另外一个也会有相同改变。硬链接不能是目录。
+    硬链接相当于对于源文件的复制，删除时互不影响。但编辑时，任意操纵一个，另外一个也会有
+    相同改变。硬链接不能是目录。
 </code></pre><hr>
 <h2 id="rm指令"><a href="#rm指令" class="headerlink" title="rm指令"></a>rm指令</h2><p>删除文件，文件夹</p>
 <pre><code>NAME
-       rm - remove files or directories
+       rm - remove files or directories//删除文件，路径，
 
 SYNOPSIS
-       rm [OPTION]... FILE...    //可以跟多个选项，可以跟多个文件，一次删除多个文件/文件夹
+       rm [OPTION]... FILE...    
 
 
 
@@ -783,6 +809,11 @@ rm: remove directory `test&apos;? y
     <div>
       
         
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/qr.png" alt="Haima wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎添加微信和我交流</div>
+</div>
+
       
     </div>
 
