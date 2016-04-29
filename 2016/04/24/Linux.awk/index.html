@@ -86,13 +86,13 @@ NAME
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux之强大的awk">
 <meta property="og:url" content="http://yoursite.com/2016/04/24/Linux.awk/index.html">
-<meta property="og:site_name" content="Haima's blog">
+<meta property="og:site_name" content="梦想家Haima's blog">
 <meta property="og:description" content="awk简介一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
 awk的man文档简介摘要：
 NAME
 
    gawk - pattern scanning and processing languag">
-<meta property="og:updated_time" content="2016-04-29T17:01:41.711Z">
+<meta property="og:updated_time" content="2016-04-29T17:26:42.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之强大的awk">
 <meta name="twitter:description" content="awk简介一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
@@ -117,7 +117,7 @@ NAME
   };
 </script>
 
-  <title> Linux之强大的awk | Haima's blog </title>
+  <title> Linux之强大的awk | 梦想家Haima's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -158,7 +158,7 @@ NAME
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haima's blog</span>
+      <span class="site-title">梦想家Haima's blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -651,13 +651,16 @@ x evenline
 x evenline
 /sbin/nologin othersLine
 </code></pre><h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>awk也支持for,while,do..while三种循环语句，语法与java中基本相同</p>
-<h1 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环  "></a>for 循环  </h1><p>格式： for(变量;条件;表达式) {语句}</p>
+<p><strong>for 循环  </strong></p>
+<p>格式： for(变量;条件;表达式) {语句}</p>
 <pre><code># awk &apos;BEGIN{ total=0; i=0; do {total+=i;i++;} while(i&lt;=100) print total; }&apos;
 5050
-</code></pre><h1 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h1><p>格式：while(表达式) {语句}</p>
+</code></pre><p><strong>while循环</strong></p>
+<p>格式：while(表达式) {语句}</p>
 <pre><code># awk &apos;BEGIN{ test=100; total=0; while(i&lt;=test){ total+=i; i++; } print total; }&apos;
 5050
-</code></pre><h1 id="do-while"><a href="#do-while" class="headerlink" title="do..while"></a>do..while</h1><p>格式：do {语句} while(条件)</p>
+</code></pre><p><strong>do..while</strong></p>
+<p>格式：do {语句} while(条件)</p>
 <pre><code># awk &apos;BEGIN{ total=0; i=0; do {total+=i;i++;} while(i&lt;=100) print total; }&apos;
 5050
 
@@ -914,7 +917,7 @@ rtkit
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk简介"><span class="nav-number">1.</span> <span class="nav-text">awk简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-F-fs"><span class="nav-number">3.</span> <span class="nav-text">选项-F fs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置变量-0-1-2"><span class="nav-number">4.</span> <span class="nav-text">位置变量 $0,$1,$2..</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-f-program-file"><span class="nav-number">5.</span> <span class="nav-text">选项-f program-file    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk程序结构"><span class="nav-number">6.</span> <span class="nav-text">awk程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令变量"><span class="nav-number">8.</span> <span class="nav-text">命令变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置变量"><span class="nav-number">9.</span> <span class="nav-text">内置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">10.</span> <span class="nav-text">awk的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">11.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">12.</span> <span class="nav-text">循环语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-循环"><span class="nav-number"></span> <span class="nav-text">for 循环  </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while循环"><span class="nav-number"></span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#do-while"><span class="nav-number"></span> <span class="nav-text">do..while</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk中的正则表达式"><span class="nav-number">1.</span> <span class="nav-text">awk中的正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于记录筛选"><span class="nav-number"></span> <span class="nav-text">用于记录筛选</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于字段筛选"><span class="nav-number"></span> <span class="nav-text">用于字段筛选</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用在表达式中"><span class="nav-number"></span> <span class="nav-text">用在表达式中</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk简介"><span class="nav-number">1.</span> <span class="nav-text">awk简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-F-fs"><span class="nav-number">3.</span> <span class="nav-text">选项-F fs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置变量-0-1-2"><span class="nav-number">4.</span> <span class="nav-text">位置变量 $0,$1,$2..</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-f-program-file"><span class="nav-number">5.</span> <span class="nav-text">选项-f program-file    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk程序结构"><span class="nav-number">6.</span> <span class="nav-text">awk程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令变量"><span class="nav-number">8.</span> <span class="nav-text">命令变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置变量"><span class="nav-number">9.</span> <span class="nav-text">内置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">10.</span> <span class="nav-text">awk的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">11.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">12.</span> <span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk中的正则表达式"><span class="nav-number">13.</span> <span class="nav-text">awk中的正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于记录筛选"><span class="nav-number"></span> <span class="nav-text">用于记录筛选</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于字段筛选"><span class="nav-number"></span> <span class="nav-text">用于字段筛选</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用在表达式中"><span class="nav-number"></span> <span class="nav-text">用在表达式中</span></a></div>
             
           </div>
         </section>
