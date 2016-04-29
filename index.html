@@ -80,12 +80,12 @@
 
 <meta name="description" content="649766951|北京">
 <meta property="og:type" content="website">
-<meta property="og:title" content="梦想家 Haima's">
+<meta property="og:title" content="Haima's blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="梦想家 Haima's">
+<meta property="og:site_name" content="Haima's blog">
 <meta property="og:description" content="649766951|北京">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="梦想家 Haima's">
+<meta name="twitter:title" content="Haima's blog">
 <meta name="twitter:description" content="649766951|北京">
 
 
@@ -104,7 +104,7 @@
   };
 </script>
 
-  <title> 梦想家 Haima's </title>
+  <title> Haima's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +147,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">梦想家 Haima's</span>
+      <span class="site-title">Haima's blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -326,8 +326,7 @@
 
       
         
-          
-            <h2 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h2><p>一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。<br>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
+          <h2 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h2><p>一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。<br>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
 <p>awk的man文档简介摘要：</p>
 <pre><code>NAME
 
@@ -385,241 +384,12 @@ hello
 hh
 
 【解释】通过-F指定分隔符为&quot;:&quot; 分隔 hello:hh ，然后同 [案例1]
-</code></pre><h2 id="位置变量-0-1-2"><a href="#位置变量-0-1-2" class="headerlink" title="位置变量 $0,$1,$2.."></a>位置变量 $0,$1,$2..</h2><p>$n 是位置参数，表示第n个字段或者说分隔后 第n位置上的字符串<br>$0表示整行<br>$NF：表示倒数第一个位置上的字符串。$NF-1表示倒数第二个位置，以此类推</p>
-<p>eg<br>    [案例1]</p>
-<pre><code># cat pass.log //要处理的目标文件 pass.log  笔者截取了一段/etc/passwd 
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-
-# awk -F : &apos;{print ;}&apos; pass.log 
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-
-【解释】 &quot;print;&quot; 默认也是打印整行，同$0 
-
-
-[案例2]
-# awk -F : &apos;{print $0;}&apos; pass.log 
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-
-【解释】 &quot;print $0;&quot; 打印整行
-</code></pre><p>eg</p>
-<pre><code># awk -F : &apos;{print $1 &quot;   &quot;  $NF;}&apos; pass.log 
-root   /bin/bash
-bin   /sbin/nologin
-daemon   /sbin/nologin
-
-【解释】打印被 &quot;:&quot; 分隔后第一个位置上的字符串，然后再打印最后一个位置，中间输入空格方便查看
-</code></pre><h2 id="选项-f-program-file"><a href="#选项-f-program-file" class="headerlink" title="选项-f program-file    "></a>选项-f program-file    </h2><p>将脚本写到文本文件中去,通过选项-f将awk命令的处理程序指定到某个脚本文件中，当处理程序复杂的时候通常采用这种方式。</p>
-<p>man文档摘要</p>
-<pre><code>-f program-file    
-    --file program-file    //--file 和-f效果相同
-         Read the AWK program source from the file program-file,  instead
-         of  from  the  first  command  line  argument.   Multiple -f (or
-         --file) options may be used.
-</code></pre><p>eg</p>
-<pre><code>[案例一]
-
-# vi sc.awk    //编辑脚本
-{print $1 &quot;   &quot;  $NF} //将执行文件写入 sc.awk中
-//vi编辑器，保存sc.awk文档退出。
-
-
-# awk -F : -f sc.awk  pass.log  //pass.log和前文中pass.log相同。
-root   /bin/bash
-bin   /sbin/nologin
-daemon   /sbin/nologin
-
-【解释】 将前文中案例 【#awk -F : &apos;{print $1 &quot;   &quot;  $NF;}&apos; pass.log】 中的
-&apos;{print $1 &quot;   &quot; $NF;}&apos;写到了 sc.awk中，此时，处理程序不用再用放在单引号&apos;&apos;中了。
-
-【注意】如果对vi不熟悉，可以用echo &quot;{print $1 &quot;   &quot;  $NF}&quot; &gt;sc.awk  来新建程序文件
-</code></pre><h2 id="awk程序结构"><a href="#awk程序结构" class="headerlink" title="awk程序结构"></a>awk程序结构</h2><p>awk处理程序由  BEGIN，主体，END 构成<br>BEGIN语句块 BEGIN{}</p>
-<p>eg</p>
-<pre><code># vi sc.awk    //编辑脚本
-# awk program&apos;s Begin block  //【注意】这句话是脚本里的注释，不是命令
-BEGIN{print &quot;here is the awk begin!!&quot;} //BEGIN语句快
-{print $1 &quot;   &quot;  $NF}    
-
-
-# awk -F : -f sc.awk  pass.log 
-here is the awk begin!!    //BEGIN语句块 的输出效果 
-root   /bin/bash
-bin   /sbin/nologin
-daemon   /sbin/nologin
-
-【解释】 上面案例可以看出，BEGIN语句块中的代码会在程序最前面执行。且只执行一次。
-</code></pre><p>主体部分，主题部分用 {} 表示，写在BEGIN之后，END之前。前文中使用的’{print}’都是程序主体。</p>
-<p>eg</p>
-<pre><code># vi sc.awk    //编辑脚本
-# awk program&apos;s main block //【注意】这句话是脚本里的注释，不是命令
-BEGIN{print &quot;here is the awk begin!!&quot;}
-{
-        print &quot;this is main&quot;
-        print $1
-}
-
-# awk -F : -f sc.awk  pass.log 
-here is the awk begin!!
-this is main    // 执行 主体部分中的　print &quot;this is main&quot;
-root            // 执行 主体中的print $1
-this is main
-bin
-this is main
-daemon
-
-
-【解释】 主体中的代码，没处理一行就会被执行一次。
-</code></pre><p>END语句块<br>和BEGIN语句块相似 END{} 命令最后会被执行，也仅被执行一次 </p>
-<p>eg</p>
-<pre><code># vi sc.awk    //编辑脚本
-# awk program&apos;s end block //【注意】这句话是脚本里的注释，不是命令
-BEGIN{print &quot;here is the awk begin!!&quot;}
-{
-    print $1
-}
-
-END{    
-    print &quot;ok,awk operate to the end&quot;    //end模块打印语句
-}
-
-# awk -F : -f sc.awk  pass.log 
-here is the awk begin!!
-root
-bin
-daemon
-ok,awk operate to the end    //end模块的执行效果
-</code></pre><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在awk的处理程序中可以申明变量，和使用变量。<br>申明方式 varName=varValue  </p>
-<p>eg | 通过变量，计算文件的行数</p>
-<pre><code># vi sc.awk    //编辑脚本
-# awk program&apos;s var block //【注意】这句话是脚本里的注释，不是命令
-BEGIN{
-        nu=0;            //申明一个变量表示行号
-}
-
-{
-    nu ++;                //每处理一行数据，行号自动增加1
-    print nu &quot; &quot; $0     //输出行号和 第一个字段
-}
-
-END { 
-    print &quot;totall lines is &quot; nu;    //最后打印总共的行数，即最后一行行号
-}
-
-# awk -F : -f sc.awk  pass.log 
-1 root:x:0:0:root:/root:/bin/bash
-2 bin:x:1:1:bin:/bin:/sbin/nologin
-3 daemon:x:2:2:daemon:/sbin:/sbin/nologin
-totall lines is 3
-
-【解释】 nu=0为变量申明，使用的时候，直接使用nu即可。不用像bash里用$打头
-</code></pre><h2 id="命令变量"><a href="#命令变量" class="headerlink" title="命令变量"></a>命令变量</h2><p>我把它叫做命令变量，是因为变量是从命令中传入的，而并非awk命令中自定义的。<br>从命令外部引入变量，可以通过命令选项 [var=value] 把shell中的变量引入到awk处理程序中</p>
-<pre><code>方式一： awk [options]  -v varname=varvalue &apos;script&apos; file(s) 
-方式二： awk [options] &apos;script&apos; varname=varvalue  file(s) 
-
-【解释】方式一是通过-v选项传入，方式二是 man手册里的选项[--]
-</code></pre><p>eg | 方式一</p>
-<pre><code># awk -F : -v  aa=&quot;haima&quot;  &apos;{print aa &quot; &quot; $1}&apos; pass.log 
-haima root
-haima bin
-haima daemon
-
-【解释】 {print aa &quot; &quot; $1} 打印了命令中传入的变量aa,aa的值是haima。然后再打印 $1
-</code></pre><p>eg | 方式二</p>
-<pre><code># awk -F :  &apos;{print aa &quot; &quot; $1}&apos; aa=&quot;haima&quot;  pass.log 
-haima root
-haima bin
-haima daemon
-</code></pre><h2 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h2><p>内置变量是awk程序中系统自带的变量，分别都有各自的意义</p>
-<pre><code>FS 字段分割符，在程序中【FS=&quot;:&quot;;】相当于 命令中使用 【-F :】
-IGNORECASE 是否忽略大小写，IGNORECASE=true则匹配时不区分大小写 
-NF 表示字段数，在执行过程中对应于当前的字段数 
-NR 表示记录数，在执行过程中对应于当前的行号
-OFS 输出字段分隔符（默认值是一个空格）
-ORS 输出行记录分隔符（默认值是一个换行符）
-
-IGNORECASE在笔者系统上没测试通过 centos6.5
-</code></pre><p>eg    | FS </p>
-<pre><code># vi sc.awk 
-# awk program&apos;s FS  //【注意】这句话是脚本里的注释，不是命令
-BEGIN{
-        FS=&quot;:&quot; //用HAIMA 去分割，
-}
-
-{
-        print $1
-}
-
-# awk -f sc.awk  pass2.log 
-root
-bin
-daemon
-
-【解释】 FS=&quot;:&quot; 需要在BEGIN中指定，效果与令行中使用 -F :相同
-</code></pre><p>eg | NF NR</p>
-<pre><code># vi sc.awk 
-
-# awk program&apos;s NF NR //【注意】这句话是脚本里的注释，不是命令
-{
-        print  NR   &quot; totall fileds&quot; NF // 打印行号，打印切割后的段
-}
-
-END{
-        print &quot;line numbers:&quot; NR //END中能打印到行数
-
- }
-
-# awk -F:  -f sc.awk pass.log 
-1 totall files:7
-2 totall files:7
-3 totall files:7
-line numbers:3
-
-【注意】 在END中不能打印到字段数NF
-</code></pre><p>eg|OFS  ORS</p>
-<pre><code># awk -F : &apos;BEGIN{OFS=&quot;|&quot;;ORS=&quot; LinEnd\n&quot;}{print $1, $2;}&apos;  pass.log 
-root|x LinEnd
-bin|x LinEnd
-daemon|x LinEnd
-
-
-【解释】 在BEGIN模块中申明了OFS=&quot;|&quot;，输出字段分隔符是“|” ，而 ORS=&quot; LinEnd\n&quot; 申明了输出
-行分隔符为&quot;linEnd\n&quot;  其中&quot;\n&quot;是 换行符，如果没有“\n” ,将直接输出一行
-
-【注意】 “{print $1, $2;}” 时，必须用 &quot;,&quot; 连接。如果 {print $1 $2} 字段分隔符将失效。因为
-空格在awk程序中可以连接两个字符串。
-</code></pre><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>if … else if… else<br>awk可以用类似java中的if语句来做逻辑控制</p>
-<p>语法结构如下：</p>
-<pre><code>if(表达式)
-    {语句1} 
-else if(表达式) 
-    {语句2}
-else
-    {语句3} 
-</code></pre><p>eg </p>
-<pre><code># vi nsc.awk  //新建一个awk程序
-# test for  &quot;if.. else if.. else &quot; //程序注释，非指令
-{
- if(NR%2==0)
-    { print $2 &quot; evenline&quot;}    //偶数行就 输出第二个字段和 evenline                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-else if (NR%3==0) 
-    {print $3 &quot; thrirdline&quot;} //被3整除的行，就输出第三个字段 和 thrirdline
-else
-     {print $NF &quot; othersLine&quot;} //其他就输出 最后一个字段 和 othersLine
-}
-
-# awk -F :  -f nsc.awk  /etc/passwd 
-/bin/bash othersLine
-x evenline
-2 thrirdline
-x evenline
-/sbin/nologin othersLine
 </code></pre>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/24/Linux.awk/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
