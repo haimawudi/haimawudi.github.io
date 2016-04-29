@@ -112,7 +112,7 @@ history 查看命令执行历史
 
 命令和路径补全   tab键
 man使用文档">
-<meta property="og:updated_time" content="2016-04-18T09:03:01.660Z">
+<meta property="og:updated_time" content="2016-04-25T07:12:29.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用技巧">
 <meta name="twitter:description" content="普通命令
@@ -160,7 +160,7 @@ man使用文档">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?3ac5f8b8df6b35a880573a54a64eddd5";
+      hm.src = "//hm.baidu.com/hm.js?5c87d4c7234ccd7738367ee9a577fd58";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -392,7 +392,7 @@ history 查看命令执行历史
 n:下一个搜索到的关键字
 N:上一个搜索到的关键字
 
-默认搜索的时候是不区分大小写的，怎么样区分大小写呢？
+默认搜索的时候是不区分大小写的
 </code></pre><h2 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h2><hr>
 <pre><code>以下命令均区分大小写，以下指令均在  命令模式下生效
 
@@ -401,15 +401,12 @@ dd 删除当前光标所在行
 dw 删除当前光标所在位置的单词
 d$  删除当前光标到行行尾的内容
 J  删除当前光标所在行行尾的换行符（拼接行）   【大写的J】
-u 撤销，相当于windows里的ctrl+u
+u 撤销，相当于windows里的ctrl+z
 o 从下一行开始追加数据
 
 没有删除到行首??
 </code></pre><hr>
-<pre><code>命令行模式
-
-u撤销前一编辑命令
-ctrl+R 相当于ctrl+y
+<pre><code>ctrl+R 相当于ctrl+y
 a在当前光标后追加数据
 A在当前光标所在行行为追加数据
 r char 用char 替换当前光标所在位置的单个字符
@@ -428,11 +425,11 @@ yw复制单词
 y$复制光标到行尾
 yy复制整行
 </code></pre><hr>
-<pre><code>替换，底行模式
+<pre><code>替换，底行模式 (底行模式，输入完成之后需要回车生效)
 
-:s/old/new/g:  使用new替换本行中的old
-:%s/old/new/g:  使用new替换全文中的old
-:%s/old/new/gc:  使用new替换全文中的old，但是逐个替换，每次替换会询问
+:s/old/new/g  使用new替换本行中的old
+:%s/old/new/g  使用new替换全文中的old
+:%s/old/new/gc 使用new替换全文中的old，但是逐个替换，每次替换会询问
 </code></pre><hr>
 <pre><code>查找，命令模式按 /，
 
@@ -446,6 +443,11 @@ N：上一个匹配到的
 <pre><code>可视化模式，在命令模式时按v,或者V   此功能使vi的加强版 vim才有的
 v   按字符选取
 V   按矩形选取
+</code></pre><hr>
+<pre><code>显示行号，底行模式 
+
+:set nu   显示行号
+:set nonu  隐藏行号
 </code></pre>
       
     </div>

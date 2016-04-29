@@ -92,7 +92,7 @@ awk的man文档简介摘要：
 NAME
 
    gawk - pattern scanning and processing languag">
-<meta property="og:updated_time" content="2016-04-24T12:22:22.884Z">
+<meta property="og:updated_time" content="2016-04-25T14:47:28.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之强大的awk">
 <meta name="twitter:description" content="awk简介一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
@@ -130,7 +130,7 @@ NAME
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?3ac5f8b8df6b35a880573a54a64eddd5";
+      hm.src = "//hm.baidu.com/hm.js?5c87d4c7234ccd7738367ee9a577fd58";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -570,7 +570,7 @@ root
 bin
 daemon
 
-【解释】 FS=&quot;:&quot; 需要在BEGIN中指定，同命令行中的 -F :
+【解释】 FS=&quot;:&quot; 需要在BEGIN中指定，效果与令行中使用 -F :相同
 </code></pre><p>eg | NF NR</p>
 <pre><code># vi sc.awk 
 
@@ -591,6 +591,44 @@ END{
 line numbers:3
 
 【注意】 在END中不能打印到字段数NF
+</code></pre><p>eg|OFS  ORS</p>
+<pre><code># awk -F : &apos;BEGIN{OFS=&quot;|&quot;;ORS=&quot; LinEnd\n&quot;}{print $1, $2;}&apos;  pass.log 
+root|x LinEnd
+bin|x LinEnd
+daemon|x LinEnd
+
+
+【解释】 在BEGIN模块中申明了OFS=&quot;|&quot;，输出字段分隔符是“|” ，而 ORS=&quot; LinEnd\n&quot; 申明了输出
+行分隔符为&quot;linEnd\n&quot;  其中&quot;\n&quot;是 换行符，如果没有“\n” ,将直接输出一行
+
+【注意】 “{print $1, $2;}” 时，必须用 &quot;,&quot; 连接。如果 {print $1 $2} 字段分隔符将失效。因为
+空格在awk程序中可以连接两个字符串。
+</code></pre><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>if … else if… else<br>awk可以用类似java中的if语句来做逻辑控制</p>
+<p>语法结构如下：</p>
+<pre><code>if(表达式)
+    {语句1} 
+else if(表达式) 
+    {语句2}
+else
+    {语句3} 
+</code></pre><p>eg </p>
+<pre><code># vi nsc.awk  //新建一个awk程序
+# test for  &quot;if.. else if.. else &quot; //程序注释，非指令
+{
+ if(NR%2==0)
+    { print $2 &quot; evenline&quot;}    //偶数行就 输出第二个字段和 evenline                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+else if (NR%3==0) 
+    {print $3 &quot; thrirdline&quot;} //被3整除的行，就输出第三个字段 和 thrirdline
+else
+     {print $NF &quot; othersLine&quot;} //其他就输出 最后一个字段 和 othersLine
+}
+
+# awk -F :  -f nsc.awk  /etc/passwd 
+/bin/bash othersLine
+x evenline
+2 thrirdline
+x evenline
+/sbin/nologin othersLine
 </code></pre>
       
     </div>
@@ -757,7 +795,7 @@ line numbers:3
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk简介"><span class="nav-number">1.</span> <span class="nav-text">awk简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-F-fs"><span class="nav-number">3.</span> <span class="nav-text">选项-F fs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置变量-0-1-2"><span class="nav-number">4.</span> <span class="nav-text">位置变量 $0,$1,$2..</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-f-program-file"><span class="nav-number">5.</span> <span class="nav-text">选项-f program-file    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk程序结构"><span class="nav-number">6.</span> <span class="nav-text">awk程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令变量"><span class="nav-number">8.</span> <span class="nav-text">命令变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置变量"><span class="nav-number">9.</span> <span class="nav-text">内置变量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk简介"><span class="nav-number">1.</span> <span class="nav-text">awk简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-F-fs"><span class="nav-number">3.</span> <span class="nav-text">选项-F fs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置变量-0-1-2"><span class="nav-number">4.</span> <span class="nav-text">位置变量 $0,$1,$2..</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-f-program-file"><span class="nav-number">5.</span> <span class="nav-text">选项-f program-file    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk程序结构"><span class="nav-number">6.</span> <span class="nav-text">awk程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令变量"><span class="nav-number">8.</span> <span class="nav-text">命令变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置变量"><span class="nav-number">9.</span> <span class="nav-text">内置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">10.</span> <span class="nav-text">流程控制</span></a></li></ol></div>
             
           </div>
         </section>
