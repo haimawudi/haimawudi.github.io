@@ -78,28 +78,37 @@
 
 
 
-<meta name="description" content="awk简介一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
+<meta name="description" content="awk简介awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
 awk的man文档简介摘要：
 NAME
 
-   gawk - pattern scanning and processing languag">
+   gawk - pattern scanning and processing language    //awk其实是gawk，文本匹配查询和
+处理语言，
+
+SYNOPSIS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux之强大的awk">
 <meta property="og:url" content="http://yoursite.com/2016/04/24/Linux.awk/index.html">
 <meta property="og:site_name" content="梦想家Haima's blog">
-<meta property="og:description" content="awk简介一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
+<meta property="og:description" content="awk简介awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
 awk的man文档简介摘要：
 NAME
 
-   gawk - pattern scanning and processing languag">
-<meta property="og:updated_time" content="2016-04-29T17:26:42.341Z">
+   gawk - pattern scanning and processing language    //awk其实是gawk，文本匹配查询和
+处理语言，
+
+SYNOPSIS">
+<meta property="og:updated_time" content="2016-04-30T08:04:13.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之强大的awk">
-<meta name="twitter:description" content="awk简介一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
+<meta name="twitter:description" content="awk简介awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。
 awk的man文档简介摘要：
 NAME
 
-   gawk - pattern scanning and processing languag">
+   gawk - pattern scanning and processing language    //awk其实是gawk，文本匹配查询和
+处理语言，
+
+SYNOPSIS">
 
 
 
@@ -338,7 +347,7 @@ NAME
       
 
       
-        <h2 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h2><p>一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。<br>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
+        <h1 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h1><p>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
 <p>awk的man文档简介摘要：</p>
 <pre><code>NAME
 
@@ -368,14 +377,14 @@ and a number of GNU-specific extensions.
 
 【释】第一段英文大致说了，Gawk是GNU(通用许可开源)项目，源于unix awk，并支持更多的贝尔实验
 室awk的扩展。看起来Linux中的awk(gawk)是很牛叉的。废话不多说，马上就来认真学习一下。
-</code></pre><h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>命令常见使用方式如下</p>
+</code></pre><h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><p>命令常见使用方式如下</p>
 <pre><code>方式一：awk [options] &apos;script&apos; [var=value] file(s) 
 方式二：awk [options] -f scriptfile [var=value] file(s)
 
 【解释】 其中 options是命令选项。方式一：&apos;script&apos;指awk的处理程序，执行程序。var=value是
 变量，file(s) 表示被处理的文本文件，可以一次性处理多个文本文件。方式二中-f scriptfile
 表示将处理程序放到一个文本中，当作脚本文件。
-</code></pre><h2 id="选项-F-fs"><a href="#选项-F-fs" class="headerlink" title="选项-F fs"></a>选项-F fs</h2><p>指定分隔符，awk中的默认分隔符是空格 “ “，默认以空格符分隔行文本。</p>
+</code></pre><h1 id="选项-F-fs"><a href="#选项-F-fs" class="headerlink" title="选项-F fs"></a>选项-F fs</h1><p>指定分隔符，awk中的默认分隔符是空格 “ “，默认以空格符分隔行文本。</p>
 <p>选项在man文档中的摘要</p>
 <pre><code>-F fs
    --field-separator fs    //指定分隔符
@@ -397,7 +406,7 @@ hh
 
 【解释】通过-F指定分隔符为&quot;:&quot; 分隔 hello:hh ，然后同 [案例1]
 </code></pre><a id="more"></a>
-<h2 id="位置变量-0-1-2"><a href="#位置变量-0-1-2" class="headerlink" title="位置变量 $0,$1,$2.."></a>位置变量 $0,$1,$2..</h2><p>$n 是位置参数，表示第n个字段或者说分隔后 第n位置上的字符串<br>$0表示整行<br>$NF：表示倒数第一个位置上的字符串。$NF-1表示倒数第二个位置，以此类推</p>
+<h1 id="位置变量-0-1-2"><a href="#位置变量-0-1-2" class="headerlink" title="位置变量 $0,$1,$2.."></a>位置变量 $0,$1,$2..</h1><p>$n 是位置参数，表示第n个字段或者说分隔后 第n位置上的字符串<br>$0表示整行<br>$NF：表示倒数第一个位置上的字符串。$NF-1表示倒数第二个位置，以此类推</p>
 <p>eg<br>    [案例1]</p>
 <pre><code># cat pass.log //要处理的目标文件 pass.log  笔者截取了一段/etc/passwd 
 root:x:0:0:root:/root:/bin/bash
@@ -426,7 +435,7 @@ bin   /sbin/nologin
 daemon   /sbin/nologin
 
 【解释】打印被 &quot;:&quot; 分隔后第一个位置上的字符串，然后再打印最后一个位置，中间输入空格方便查看
-</code></pre><h2 id="选项-f-program-file"><a href="#选项-f-program-file" class="headerlink" title="选项-f program-file    "></a>选项-f program-file    </h2><p>将脚本写到文本文件中去,通过选项-f将awk命令的处理程序指定到某个脚本文件中，当处理程序复杂的时候通常采用这种方式。</p>
+</code></pre><h1 id="选项-f-program-file"><a href="#选项-f-program-file" class="headerlink" title="选项-f program-file"></a>选项-f program-file</h1><p>将脚本写到文本文件中去,通过选项-f将awk命令的处理程序指定到某个脚本文件中，当处理程序复杂的时候通常采用这种方式。</p>
 <p>man文档摘要</p>
 <pre><code>-f program-file    
     --file program-file    //--file 和-f效果相同
@@ -450,7 +459,7 @@ daemon   /sbin/nologin
 &apos;{print $1 &quot;   &quot; $NF;}&apos;写到了 sc.awk中，此时，处理程序不用再用放在单引号&apos;&apos;中了。
 
 【注意】如果对vi不熟悉，可以用echo &quot;{print $1 &quot;   &quot;  $NF}&quot; &gt;sc.awk  来新建程序文件
-</code></pre><h2 id="awk程序结构"><a href="#awk程序结构" class="headerlink" title="awk程序结构"></a>awk程序结构</h2><p>awk处理程序由  BEGIN，主体，END 构成<br>BEGIN语句块 BEGIN{}</p>
+</code></pre><h1 id="awk程序结构"><a href="#awk程序结构" class="headerlink" title="awk程序结构"></a>awk程序结构</h1><p>awk处理程序由  BEGIN，主体，END 构成<br>BEGIN语句块 BEGIN{}</p>
 <p>eg</p>
 <pre><code># vi sc.awk    //编辑脚本
 # awk program&apos;s Begin block  //【注意】这句话是脚本里的注释，不是命令
@@ -505,7 +514,7 @@ root
 bin
 daemon
 ok,awk operate to the end    //end模块的执行效果
-</code></pre><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在awk的处理程序中可以申明变量，和使用变量。<br>申明方式 varName=varValue  </p>
+</code></pre><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>在awk的处理程序中可以申明变量，和使用变量。<br>申明方式 varName=varValue  </p>
 <p>eg | 通过变量，计算文件的行数</p>
 <pre><code># vi sc.awk    //编辑脚本
 # awk program&apos;s var block //【注意】这句话是脚本里的注释，不是命令
@@ -529,7 +538,7 @@ END {
 totall lines is 3
 
 【解释】 nu=0为变量申明，使用的时候，直接使用nu即可。不用像bash里用$打头
-</code></pre><h2 id="命令变量"><a href="#命令变量" class="headerlink" title="命令变量"></a>命令变量</h2><p>我把它叫做命令变量，是因为变量是从命令中传入的，而并非awk命令中自定义的。<br>从命令外部引入变量，可以通过命令选项 [var=value] 把shell中的变量引入到awk处理程序中</p>
+</code></pre><h1 id="命令变量"><a href="#命令变量" class="headerlink" title="命令变量"></a>命令变量</h1><p>我把它叫做命令变量，是因为变量是从命令中传入的，而并非awk命令中自定义的。<br>从命令外部引入变量，可以通过命令选项 [var=value] 把shell中的变量引入到awk处理程序中</p>
 <pre><code>方式一： awk [options]  -v varname=varvalue &apos;script&apos; file(s) 
 方式二： awk [options] &apos;script&apos; varname=varvalue  file(s) 
 
@@ -546,7 +555,7 @@ haima daemon
 haima root
 haima bin
 haima daemon
-</code></pre><h2 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h2><p>内置变量是awk程序中系统自带的变量，分别都有各自的意义</p>
+</code></pre><h1 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h1><p>内置变量是awk程序中系统自带的变量，分别都有各自的意义</p>
 <pre><code>FS 字段分割符，在程序中【FS=&quot;:&quot;;】相当于 命令中使用 【-F :】
 IGNORECASE 是否忽略大小写，IGNORECASE=true则匹配时不区分大小写 
 NF 表示字段数，在执行过程中对应于当前的字段数 
@@ -604,7 +613,7 @@ daemon|x LinEnd
 
 【注意】 “{print $1, $2;}” 时，必须用 &quot;,&quot; 连接。如果 {print $1 $2} 字段分隔符将失效。因
 为空格在awk程序中可以连接两个字符串。
-</code></pre><h2 id="awk的工作原理"><a href="#awk的工作原理" class="headerlink" title="awk的工作原理"></a>awk的工作原理</h2><p>通过前面的案例，已经大概了解awk的功能。下面再总结一下awk的工作流程。</p>
+</code></pre><h1 id="awk的工作原理"><a href="#awk的工作原理" class="headerlink" title="awk的工作原理"></a>awk的工作原理</h1><p>通过前面的案例，已经大概了解awk的功能。下面再总结一下awk的工作流程。</p>
 <pre><code>awk &apos;BEGIN{ commands } pattern{ commands } END{ commands }&apos;  
 
 第一步：执行BEGIN{ commands }语句块中的语句；
@@ -625,7 +634,7 @@ pattern语句块中的通用命令是最重要的部分，它也是可选的。�
 
 【注意】awk中的内置变量。不同的内置变量的作用域有所不同。使用的时候，需要注意在awk执行的某
 些阶段，该内置变量是否可用。
-</code></pre><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>if … else if… else<br>awk可以用类似java中的if语句来做逻辑控制</p>
+</code></pre><h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><p>if … else if… else<br>awk可以用类似java中的if语句来做逻辑控制</p>
 <p>语法结构如下：</p>
 <pre><code>if(表达式)
     {语句1} 
@@ -650,17 +659,14 @@ x evenline
 2 thrirdline
 x evenline
 /sbin/nologin othersLine
-</code></pre><h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>awk也支持for,while,do..while三种循环语句，语法与java中基本相同</p>
-<p><strong>for 循环  </strong></p>
-<p>格式： for(变量;条件;表达式) {语句}</p>
+</code></pre><h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><p>awk也支持for,while,do..while三种循环语句，语法与java中基本相同</p>
+<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p>格式： for(变量;条件;表达式) {语句}</p>
 <pre><code># awk &apos;BEGIN{ total=0; i=0; do {total+=i;i++;} while(i&lt;=100) print total; }&apos;
 5050
-</code></pre><p><strong>while循环</strong></p>
-<p>格式：while(表达式) {语句}</p>
+</code></pre><h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><p>格式：while(表达式) {语句}</p>
 <pre><code># awk &apos;BEGIN{ test=100; total=0; while(i&lt;=test){ total+=i; i++; } print total; }&apos;
 5050
-</code></pre><p><strong>do..while</strong></p>
-<p>格式：do {语句} while(条件)</p>
+</code></pre><h2 id="do-while"><a href="#do-while" class="headerlink" title="do..while"></a>do..while</h2><p>格式：do {语句} while(条件)</p>
 <pre><code># awk &apos;BEGIN{ total=0; i=0; do {total+=i;i++;} while(i&lt;=100) print total; }&apos;
 5050
 
@@ -668,8 +674,45 @@ x evenline
 1000    //虽然i一开始就满足i&lt;=100  但do中还是执行了一次，所以打印total为 1000
 
 【注意】do.. while 循环语句至少一次循环，先执行do里面的内容，再判断，所以这样。
-</code></pre><h2 id="awk中的正则表达式"><a href="#awk中的正则表达式" class="headerlink" title="awk中的正则表达式"></a>awk中的正则表达式</h2><p>awk可以利用正则表达式来筛选数据，以达到更强大的处理能力</p>
-<h1 id="用于记录筛选"><a href="#用于记录筛选" class="headerlink" title="用于记录筛选"></a>用于记录筛选</h1><p>记录筛选，以一条记录作为筛选的单位</p>
+</code></pre><h2 id="break-continue"><a href="#break-continue" class="headerlink" title="break,continue"></a>break,continue</h2><p>awk同样也支持break和continue控制。break和continue必须在循环体中使用。<br>break是直接跳出循环，不再执行循环<br>continue是跳到下次循环</p>
+<h1 id="next控制"><a href="#next控制" class="headerlink" title="next控制"></a>next控制</h1><p>next 从单词的意思看起来和我continue相似。确实如此，next具有continue很相似的功能，只是next是跳出本行数据处理，处理下一行数据，而continue是跳出本次循环，执行下次循环。</p>
+<p>eg | 跳过 行号为6-9行的数据</p>
+<pre><code># awk -F :  &apos;{if(NR&gt;5&amp;&amp;NR&lt;10)next; print NR, $1}&apos; /etc/passwd
+1 root
+2 bin
+3 daemon
+4 adm
+5 lp
+10 uucp
+11 operator
+12 games
+13 gopher
+14 ftp
+15 nobody
+
+【解释】 if(NR&gt;5&amp;&amp;NR&lt;10)next; 当行号在 6-10，直接跳过本行数据的处理。
+【注意】 因为next是跳过某个记录，或者说某行数据的处理，所以next只能出现在awk的主体中，不能
+出现在BEGIN 块，也不能出现在 END模块中，会报错。
+</code></pre><h1 id="exit-控制"><a href="#exit-控制" class="headerlink" title="exit 控制"></a>exit 控制</h1><p>退出当前还没有执行的主体内容，如果END块中有内容，则执行END块中的内容。此时就会出现三种情况。</p>
+<p>情况一：exit在BEGIN块中使用，从exit当前位置退出，直接执行END块<br>情况二：exit在主体中使用，从exit当前位置退出，直接执行END块<br>情况二：exit在END块中使用，从exit当前位置退出，已经退出END快，所以不再执行了。</p>
+<p>eg | exit在主体中使用。</p>
+<pre><code># awk -F :  &apos;{if(NR&gt;5){exit};print NR, $1}END{print &quot;end&quot;}&apos; /etc/passwd
+1 root
+2 bin
+3 daemon
+4 adm
+5 lp
+end
+
+【解释】当行号NR&gt;5时，退出主体，再执行print &quot;end&quot;
+</code></pre><p>eg | exit在BEGIN或END中使用</p>
+<pre><code># awk -F : &apos;{print&quot;begin&quot;;exit;print&quot;hh&quot;}{print NR, $1}END{print &quot;end&quot;}&apos; /etc/passwd
+begin
+end
+
+【解释】print &quot;begin&quot; 执行完后，直接跳到了END模块执行 print &quot;end&quot;
+</code></pre><h1 id="awk中的正则表达式"><a href="#awk中的正则表达式" class="headerlink" title="awk中的正则表达式"></a>awk中的正则表达式</h1><p>awk可以利用正则表达式来筛选数据，以达到更强大的处理能力</p>
+<h2 id="用于记录筛选"><a href="#用于记录筛选" class="headerlink" title="用于记录筛选"></a>用于记录筛选</h2><p>记录筛选，以一条记录作为筛选的单位</p>
 <p>awk [options] ‘script’ [var=value] file(s) 在此主体格式不变的情况下，在script前面加入筛<br>选，此时，’script’ 程序形式变成：’(/express/){awk处理程序}’，其中/express/是正则表达式</p>
 <p>手动创建一个文件target.log 并写好内容如下</p>
 <pre><code># cat target.log //查看target.log
@@ -686,7 +729,7 @@ x evenline
 110.44 -  GET /static/image/common/logo.png HTTP/1.1&quot; 200 4542
 
 【注意】 最后一行数据是  不正常的数据。ip 的格式不对
-</code></pre><p><strong>eg | 筛选出包含.gif的行</strong></p>
+</code></pre><p>eg | 筛选出包含.gif的行</p>
 <pre><code># awk &apos;(/gif/){print $0}&apos; target.log 
 27.19.74.143 - - GET /static/image/common/faq.gif HTTP/1.1&quot; 200 1127
 27.19.74.143 - - GET /static/image/common/hot_1.gif HTTP/1.1&quot; 200 680
@@ -703,7 +746,7 @@ x evenline
 
 【注意】笔者查询了一下， 在gawk 4.0以下版本中使用{n,m}这样的正则，需要在在前面加上
 --re-interval或--posix选项。
-</code></pre><h1 id="用于字段筛选"><a href="#用于字段筛选" class="headerlink" title="用于字段筛选"></a>用于字段筛选</h1><p>awk也可通过筛选某个字段，来筛选某一行<br>在正则表达式前面 $n ~ 表示 $n字段满足正则筛选  $n表示第n个字段<br>在正则表达式前面 $n !~ 表示 $n字段不满足正则筛选 $n表示第n个字段<br>使用$0~ 也可以对行进行筛选，$0表示整行的意思</p>
+</code></pre><h2 id="用于字段筛选"><a href="#用于字段筛选" class="headerlink" title="用于字段筛选"></a>用于字段筛选</h2><p>awk也可通过筛选某个字段，来筛选某一行<br>在正则表达式前面 $n ~ 表示 $n字段满足正则筛选  $n表示第n个字段<br>在正则表达式前面 $n !~ 表示 $n字段不满足正则筛选 $n表示第n个字段<br>使用$0~ 也可以对行进行筛选，$0表示整行的意思</p>
 <p>eg| 用 “:” 切割/etc/passwd，筛选出用户名长度为4的用户</p>
 <pre><code># awk --posix -F :  &apos;$1~/^.{4}$/{print $1}&apos; /etc/passwd
 root
@@ -736,7 +779,7 @@ rtkit
 
 【注意】笔者查询了一下， 在gawk 4.0以下版本中使用^$这样的正则，需要在在前面加上
 --re-interval或--posix选项。
-</code></pre><h1 id="用在表达式中"><a href="#用在表达式中" class="headerlink" title="用在表达式中"></a>用在表达式中</h1><p>正则表达式用在返回值为true/false的表达式中，同样用~，!~匹配，匹配成功则返回true</p>
+</code></pre><h2 id="用在表达式中"><a href="#用在表达式中" class="headerlink" title="用在表达式中"></a>用在表达式中</h2><p>正则表达式用在返回值为true/false的表达式中，同样用~，!~匹配，匹配成功则返回true</p>
 <p>eg | 处理/etc/passwd 匹配行数为二十多的 </p>
 <pre><code># awk --posix -F :  &apos;{if(NR ~ /^[2][0-9]$/)print NR,$1}&apos; /etc/passwd
 20 avahi-autoipd
@@ -917,7 +960,7 @@ rtkit
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk简介"><span class="nav-number">1.</span> <span class="nav-text">awk简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-F-fs"><span class="nav-number">3.</span> <span class="nav-text">选项-F fs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置变量-0-1-2"><span class="nav-number">4.</span> <span class="nav-text">位置变量 $0,$1,$2..</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项-f-program-file"><span class="nav-number">5.</span> <span class="nav-text">选项-f program-file    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk程序结构"><span class="nav-number">6.</span> <span class="nav-text">awk程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令变量"><span class="nav-number">8.</span> <span class="nav-text">命令变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置变量"><span class="nav-number">9.</span> <span class="nav-text">内置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">10.</span> <span class="nav-text">awk的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">11.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">12.</span> <span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk中的正则表达式"><span class="nav-number">13.</span> <span class="nav-text">awk中的正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于记录筛选"><span class="nav-number"></span> <span class="nav-text">用于记录筛选</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于字段筛选"><span class="nav-number"></span> <span class="nav-text">用于字段筛选</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用在表达式中"><span class="nav-number"></span> <span class="nav-text">用在表达式中</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#awk简介"><span class="nav-number">1.</span> <span class="nav-text">awk简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方式"><span class="nav-number">2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选项-F-fs"><span class="nav-number">3.</span> <span class="nav-text">选项-F fs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#位置变量-0-1-2"><span class="nav-number">4.</span> <span class="nav-text">位置变量 $0,$1,$2..</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选项-f-program-file"><span class="nav-number">5.</span> <span class="nav-text">选项-f program-file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk程序结构"><span class="nav-number">6.</span> <span class="nav-text">awk程序结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令变量"><span class="nav-number">8.</span> <span class="nav-text">命令变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内置变量"><span class="nav-number">9.</span> <span class="nav-text">内置变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">10.</span> <span class="nav-text">awk的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程控制"><span class="nav-number">11.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环语句"><span class="nav-number">12.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-循环"><span class="nav-number">12.1.</span> <span class="nav-text">for 循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while循环"><span class="nav-number">12.2.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do-while"><span class="nav-number">12.3.</span> <span class="nav-text">do..while</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break-continue"><span class="nav-number">12.4.</span> <span class="nav-text">break,continue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next控制"><span class="nav-number">13.</span> <span class="nav-text">next控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exit-控制"><span class="nav-number">14.</span> <span class="nav-text">exit 控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk中的正则表达式"><span class="nav-number">15.</span> <span class="nav-text">awk中的正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用于记录筛选"><span class="nav-number">15.1.</span> <span class="nav-text">用于记录筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于字段筛选"><span class="nav-number">15.2.</span> <span class="nav-text">用于字段筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用在表达式中"><span class="nav-number">15.3.</span> <span class="nav-text">用在表达式中</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

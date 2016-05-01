@@ -326,7 +326,7 @@
 
       
         
-          <h2 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h2><p>一个命令就是一门语言，Linux完爆windows的理由有很多，或许awk命令就是其中之一。<br>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
+          <h1 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h1><p>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
 <p>awk的man文档简介摘要：</p>
 <pre><code>NAME
 
@@ -356,14 +356,14 @@ and a number of GNU-specific extensions.
 
 【释】第一段英文大致说了，Gawk是GNU(通用许可开源)项目，源于unix awk，并支持更多的贝尔实验
 室awk的扩展。看起来Linux中的awk(gawk)是很牛叉的。废话不多说，马上就来认真学习一下。
-</code></pre><h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>命令常见使用方式如下</p>
+</code></pre><h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><p>命令常见使用方式如下</p>
 <pre><code>方式一：awk [options] &apos;script&apos; [var=value] file(s) 
 方式二：awk [options] -f scriptfile [var=value] file(s)
 
 【解释】 其中 options是命令选项。方式一：&apos;script&apos;指awk的处理程序，执行程序。var=value是
 变量，file(s) 表示被处理的文本文件，可以一次性处理多个文本文件。方式二中-f scriptfile
 表示将处理程序放到一个文本中，当作脚本文件。
-</code></pre><h2 id="选项-F-fs"><a href="#选项-F-fs" class="headerlink" title="选项-F fs"></a>选项-F fs</h2><p>指定分隔符，awk中的默认分隔符是空格 “ “，默认以空格符分隔行文本。</p>
+</code></pre><h1 id="选项-F-fs"><a href="#选项-F-fs" class="headerlink" title="选项-F fs"></a>选项-F fs</h1><p>指定分隔符，awk中的默认分隔符是空格 “ “，默认以空格符分隔行文本。</p>
 <p>选项在man文档中的摘要</p>
 <pre><code>-F fs
    --field-separator fs    //指定分隔符
