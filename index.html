@@ -257,6 +257,162 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/03/Redis.brief/" itemprop="url">
+                  Redis 入门基础篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T11:53:16+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/Redis.brief/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/Redis.brief/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。</p>
+<p><strong>官方介绍摘要</strong></p>
+<blockquote>
+<p>Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.</p>
+</blockquote>
+<h1 id="安装运行"><a href="#安装运行" class="headerlink" title="安装运行"></a>安装运行</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code># wget http://download.redis.io/releases/redis-3.0.7.tar.gz
+# tar xzf redis-3.0.7.tar.gz
+# cd redis-3.0.7
+# make
+# make install
+</code></pre><ul>
+<li>第一步 下载redis压缩包  在Linux中用wget命令。前提是当前linux能联网。或者手动去官网下载再上传到Linux环境。</li>
+<li>接下来：解压压缩包，再进入（cd）到解压后的目录 redis-3.0.7  再编译构建（make命令）。最后安装(make install命令)</li>
+</ul>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code># redis-server 
+</code></pre><blockquote>
+<p>执行 redis-server命令后，如下面所示，则证明安装成功。</p>
+</blockquote>
+<pre><code>10714:C 03 May 22:24:47.216 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+10714:M 03 May 22:24:47.216 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ &apos;&apos;-._                                             
+      _.-``    `.  `_.  &apos;&apos;-._           Redis 3.0.7 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ &apos;&apos;-._                                   
+ (    &apos;      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|&apos;` _.-&apos;|     Port: 6379
+ |    `-._   `._    /     _.-&apos;    |     PID: 10714
+  `-._    `-._  `-./  _.-&apos;    _.-&apos;                                   
+ |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
+ |    `-._`-._        _.-&apos;_.-&apos;    |           http://redis.io        
+  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;                                   
+ |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
+ |    `-._`-._        _.-&apos;_.-&apos;    |                                  
+  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;        
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/03/Redis.brief/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/01/Tools.mark/" itemprop="url">
                   Markdown编写博客
                 </a>
@@ -871,152 +1027,6 @@ Linux没有的
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/Python.sequence/" itemprop="url">
-                  python 序列sequence
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T20:25:39+08:00" content="2016-04-13">
-              2016-04-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/13/Python.sequence/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/Python.sequence/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>有点像数组，可以用下标索引访问到容器中的数值，索引以0开始<br>序列中可以是不同类型的内容<br>字符串也能用索引脚标访问<br>逆序访问序列的元素，用负数表示索引</p>
-<pre><code>&gt;&gt;&gt; arr=[&quot;haima&quot;,1] 
-&gt;&gt;&gt; arr[0]  
-&apos;haima&apos;
-&gt;&gt;&gt; arr[1]
-1
-
-
-&gt;&gt;&gt; name=&quot;haima&quot; 
-&gt;&gt;&gt; name[3]
-&apos;m&apos;
-
-&gt;&gt;&gt; arr=[&quot;haima&quot;,1]  
-&gt;&gt;&gt; arr[-1]
-1
-</code></pre><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>序列相乘，序列相加</p>
-<pre><code>&gt;&gt;&gt; arrbig=arr+[&quot;hailong&quot;,2]   //序列相加：简单的元素组合
-&gt;&gt;&gt; arrbig
-[&apos;haima&apos;, 1, &apos;hailong&apos;, 2]
-
-
-&gt;&gt;&gt; arrM=arr*5    //序列*数字   元素的简单重复
-&gt;&gt;&gt; arrM
-[&apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1]
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/Python.sequence/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1062,7 +1072,7 @@ Linux没有的
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1070,7 +1080,7 @@ Linux没有的
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1079,7 +1089,7 @@ Linux没有的
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

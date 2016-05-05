@@ -1,0 +1,897 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="入门,Redis," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/ico.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="简介redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。
+官方介绍摘要
+
+Redis is an open source (BSD lice">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 入门基础篇">
+<meta property="og:url" content="http://yoursite.com/2016/05/03/Redis.brief/index.html">
+<meta property="og:site_name" content="梦想家Haima's blog">
+<meta property="og:description" content="简介redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。
+官方介绍摘要
+
+Redis is an open source (BSD lice">
+<meta property="og:updated_time" content="2016-05-05T16:14:10.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis 入门基础篇">
+<meta name="twitter:description" content="简介redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。
+官方介绍摘要
+
+Redis is an open source (BSD lice">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: false,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Redis 入门基础篇 | 梦想家Haima's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5c87d4c7234ccd7738367ee9a577fd58";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">梦想家Haima's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Life is beautiful,so make IT wonderful.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Redis 入门基础篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T11:53:16+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/Redis.brief/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/Redis.brief/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文阅读量<i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。</p>
+<p><strong>官方介绍摘要</strong></p>
+<blockquote>
+<p>Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.</p>
+</blockquote>
+<h1 id="安装运行"><a href="#安装运行" class="headerlink" title="安装运行"></a>安装运行</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code># wget http://download.redis.io/releases/redis-3.0.7.tar.gz
+# tar xzf redis-3.0.7.tar.gz
+# cd redis-3.0.7
+# make
+# make install
+</code></pre><ul>
+<li>第一步 下载redis压缩包  在Linux中用wget命令。前提是当前linux能联网。或者手动去官网下载再上传到Linux环境。</li>
+<li>接下来：解压压缩包，再进入（cd）到解压后的目录 redis-3.0.7  再编译构建（make命令）。最后安装(make install命令)</li>
+</ul>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code># redis-server 
+</code></pre><blockquote>
+<p>执行 redis-server命令后，如下面所示，则证明安装成功。</p>
+</blockquote>
+<pre><code>10714:C 03 May 22:24:47.216 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+10714:M 03 May 22:24:47.216 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ &apos;&apos;-._                                             
+      _.-``    `.  `_.  &apos;&apos;-._           Redis 3.0.7 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ &apos;&apos;-._                                   
+ (    &apos;      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|&apos;` _.-&apos;|     Port: 6379
+ |    `-._   `._    /     _.-&apos;    |     PID: 10714
+  `-._    `-._  `-./  _.-&apos;    _.-&apos;                                   
+ |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
+ |    `-._`-._        _.-&apos;_.-&apos;    |           http://redis.io        
+  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;                                   
+ |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
+ |    `-._`-._        _.-&apos;_.-&apos;    |                                  
+  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;        
+</code></pre><a id="more"></a>
+<blockquote>
+<p>执行type命令查看 redis-server。</p>
+</blockquote>
+<pre><code># type redis-server 
+redis-server is hashed (/usr/local/bin/redis-server) 
+</code></pre><blockquote>
+<p>make install命令会将redis相关的命令放到/usr/local/bin，/usr/local/bin在Linux的环境变量中<br>【注意】当前Linux的编译相关的依赖如果没有全部安装，可能会构建(make)失败</p>
+</blockquote>
+<h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><blockquote>
+<p>redis提供了一个redis.conf的文件，可以作为redis-server命令的参数,redis.conf默认放在解压后的目录中（redis-3.0.7）。</p>
+</blockquote>
+<pre><code># mv redis.conf  /etc/              //将配置文件移动到/etc便于统一管理
+# redis-server  /etc/redis.conf     //redis.conf 中配置启动redis服务
+</code></pre><blockquote>
+<p>修改：redis.conf中的 daemonize no 为  daemonize yes  </p>
+</blockquote>
+<pre><code># redis-server  /etc/redis.conf    //此时再次运行时，为后台运行了。
+</code></pre><blockquote>
+<p>测试后台运行是否成功</p>
+</blockquote>
+<pre><code># ps -ef|grep redis
+root     14206     1  0 23:25 ?        00:00:00 redis-server *:6379         
+root     14218  6826  0 23:26 pts/1    00:00:00 grep redis
+</code></pre><h2 id="连接到redis"><a href="#连接到redis" class="headerlink" title="连接到redis"></a>连接到redis</h2><blockquote>
+<p>用redis-cli命令连接到redis服务器</p>
+<p>格式 【redis-cli -h ip -p port(端口号)】 ip为具体ip,port为具体端口号。不指定-h，和-p，则默认连接到本地6379端口</p>
+</blockquote>
+<pre><code># redis-cli
+127.0.0.1:6379&gt;  //表明连接到了 127.0.0.1的redis服务器，端口号为6379
+
+# redis-cli -h 127.0.0.1 -p 6379
+127.0.0.1:6379&gt; 
+</code></pre><h1 id="redis数据库的特点"><a href="#redis数据库的特点" class="headerlink" title="redis数据库的特点"></a>redis数据库的特点</h1><blockquote>
+<p>每个数据库对外都是以一个从0开始的递增数字命名，不支持自定义的<br>redis默认支持16个数据库，可以通过修改databases参数来修改这个默认值<br>redis默认选择的是0号数据库<br>SELECT 数字： 可以切换数据库<br>多个数据库之间并不是完全隔离的,flushall<br>flushall：清空redis实例下的所有数据<br>flushdb：清空当前数据库中的所有数据</p>
+</blockquote>
+<h1 id="redis-基础命令"><a href="#redis-基础命令" class="headerlink" title="redis 基础命令"></a>redis 基础命令</h1><h2 id="exists-命令"><a href="#exists-命令" class="headerlink" title="exists 命令"></a>exists 命令</h2><blockquote>
+<p>格式： EXISTS key [keyName …]<br>检查数据库中是否存在建为 keyName 的数据，返回存在键的个数</p>
+</blockquote>
+<pre><code># redis-server /etc/redis.conf             //启动数据库服务
+# redis-cli                                //命令行连接数据库
+127.0.0.1:6379&gt; set user1name &quot;haima&quot;    //存入数据 user1name
+OK
+127.0.0.1:6379&gt; EXISTS user1        //存在user1，返回1
+(integer) 1
+127.0.0.1:6379&gt; EXISTS user2        //存在user2，返回0
+(integer) 0
+127.0.0.1:6379&gt; EXISTS user2 user1    //只存在user1，还是返回1
+(integer) 1
+</code></pre><h2 id="keys命令"><a href="#keys命令" class="headerlink" title="keys命令"></a>keys命令</h2><blockquote>
+<p>格式： KEYS pattern<br>查看数据库中匹配到的键</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set user1 &quot;haima&quot;
+OK
+127.0.0.1:6379&gt; set user2 &quot;vicky&quot;
+OK
+&gt; keys *     //查看数据库中所有键
+1) &quot;user1&quot;
+2) &quot;user2&quot;
+
+&gt; keys *1    //查看数据库中所有以1结尾的键
+1) &quot;user1&quot;
+</code></pre><h2 id="del命令"><a href="#del命令" class="headerlink" title="del命令"></a>del命令</h2><blockquote>
+<p>格式 DEL key [key …]<br>删除一条或多条数据，根据键来删除该条数据</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; del user1 user2
+(integer) 2
+</code></pre><h2 id="type命令"><a href="#type命令" class="headerlink" title="type命令"></a>type命令</h2><blockquote>
+<p>格式：TYPE key<br>获得键值的数据类型</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set user1 &quot;haima&quot;
+OK
+127.0.0.1:6379&gt; type user1
+string
+</code></pre><h2 id="help命令"><a href="#help命令" class="headerlink" title="help命令"></a>help命令</h2><p>格式：HELP commond<br>查看某个命令的使用方法，commond表示具体的命令名称</p>
+<pre><code>127.0.0.1:6379&gt; help type
+
+  TYPE key
+  summary: Determine the type stored at key
+  since: 1.0.0
+  group: generic
+</code></pre><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><blockquote>
+<p>数据类型均是指Key-value中的value，Redis中的键均为String型。而value有string, hashe, list, set, sorted set 等 数据类型。其中string型是最基本的类型。比如list中存放的每个元素都是string型。</p>
+</blockquote>
+<h1 id="string型数据"><a href="#string型数据" class="headerlink" title="string型数据"></a>string型数据</h1><p>string型数据是redis中最基础的数据，也作为一种独立的类型存在。</p>
+<h2 id="set命令"><a href="#set命令" class="headerlink" title="set命令"></a>set命令</h2><blockquote>
+<p>set 存储一条String 型的数据<br>格式 SET key value [EX seconds] [PX milliseconds] [NX|XX]</p>
+</blockquote>
+<ol>
+<li>EX seconds – Set the specified expire time, in seconds.</li>
+<li>PX milliseconds – Set the specified expire time, in milliseconds.</li>
+<li>NX – Only set the key if it does not already exist.</li>
+<li>XX – Only set the key if it already exist.</li>
+</ol>
+<ul>
+<li>EX seconds 设置失效时间，seconds为具体的时间，单位为秒</li>
+<li>PX milliseconds 设置失效时间，milliseconds为具体的时间，单位为毫秒</li>
+<li>NX 如果没有此键，才添加该条数据。如果数据库中有此键，添加失败。（只添加，不覆盖）</li>
+<li>XX 如果有此键，才添加。没有此键，则不操作。（相当于只做修改操作）</li>
+</ul>
+<p>eg | 1、</p>
+<pre><code>127.0.0.1:6379&gt; set user1 &quot;haima&quot; ex 5    //设置5秒后，数据失效，自动销毁。
+OK
+127.0.0.1:6379&gt; get user1
+&quot;haimda&quot;
+
+//等五秒后再执行下一条命令
+
+127.0.0.1:6379&gt; get user1
+(nil) //已经自动销毁
+</code></pre><p>eg |2、</p>
+<pre><code>127.0.0.1:6379&gt; set user1 &quot;haima&quot; PX 5000 //设置5秒(5000毫秒)后，数据失效，自动销毁。
+OK
+127.0.0.1:6379&gt; get user1
+&quot;haimda&quot;
+
+//等五秒后再执行下一条命令
+
+127.0.0.1:6379&gt; get user1
+(nil) //已经自动销毁
+</code></pre><h2 id="SETNX-SETEX-PSETEX"><a href="#SETNX-SETEX-PSETEX" class="headerlink" title="SETNX, SETEX, PSETEX"></a>SETNX, SETEX, PSETEX</h2><blockquote>
+<p>SETNX命令，格式【SETNX key value】，相当于 set key value NX<br>SETEX命令，格式【SETEX key seconds value】，相当与 set key value EX seconds<br>PSETEX命令，格式【PSETEX key milliseconds value】，相当与 set key value PX milliseconds</p>
+</blockquote>
+<h2 id="get-命令"><a href="#get-命令" class="headerlink" title="get 命令"></a>get 命令</h2><blockquote>
+<p>显示string类型的数据，或者说取出string类型的值，也就是使用set存如的值。<br>格式 GET key</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set user1 &quot;haima&quot;
+OK
+127.0.0.1:6379&gt; get user1
+&quot;haima&quot;
+127.0.0.1:6379&gt; del user1
+(integer) 1
+127.0.0.1:6379&gt; get user1    //没有该数据就返回nil
+(nil)
+</code></pre><h2 id="mset，mget命令"><a href="#mset，mget命令" class="headerlink" title="mset，mget命令"></a>mset，mget命令</h2><blockquote>
+<p>一次性存取多组键值对。<br>格式： MSET key value [key value …]，MGET key [key …]</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; mset user1 &quot;haima&quot; user2 &quot;vicky&quot;
+OK
+127.0.0.1:6379&gt; mget user1 user2
+1) &quot;haima&quot;
+2) &quot;vicky&quot;
+</code></pre><h2 id="incr，decr命令"><a href="#incr，decr命令" class="headerlink" title="incr，decr命令"></a>incr，decr命令</h2><blockquote>
+<p>incr：自增加1，在值为整数的前提下，否则操作失败。<br>decr：自减减1，在值为整数的前提下，否则操作失败。<br>格式 ：INCR key，DECR key</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set int1 1.1
+OK
+127.0.0.1:6379&gt; incr int1    //整数型才能自增加1
+(error) ERR value is not an integer or out of range
+
+127.0.0.1:6379&gt; set int1 1
+OK
+127.0.0.1:6379&gt; incr int1
+(integer) 2
+127.0.0.1:6379&gt; get int1
+&quot;2&quot;
+
+127.0.0.1:6379&gt; decr int1
+(integer) 1
+127.0.0.1:6379&gt; get int1
+&quot;1&quot;
+</code></pre><h2 id="incrby，decrby命令"><a href="#incrby，decrby命令" class="headerlink" title="incrby，decrby命令"></a>incrby，decrby命令</h2><blockquote>
+<p>同incr,和 decr相似，还可以指定一个自增或自减的数<br>格式 INCRBY key increment， DECRBY key decrement 。 decrement是具体的数字</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set int1 1
+OK
+127.0.0.1:6379&gt; incrby int1 3
+(integer) 4
+127.0.0.1:6379&gt; get int1
+&quot;4&quot;
+
+127.0.0.1:6379&gt; decrby int1 3
+(integer) 1
+127.0.0.1:6379&gt; get int1
+&quot;1&quot;
+</code></pre><h2 id="incrbyfloat命令"><a href="#incrbyfloat命令" class="headerlink" title="incrbyfloat命令"></a>incrbyfloat命令</h2><blockquote>
+<p>在原基础上加一个float型的数值，原数值也可以是float型的<br>格式 INCRBYFLOAT key increment</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set fl1 1.5
+OK
+127.0.0.1:6379&gt; INCRBYFLOAT fl1 4.5
+&quot;6&quot;
+127.0.0.1:6379&gt; INCRBYFLOAT fl1 4.1
+&quot;10.1&quot;
+</code></pre><h2 id="append-命令"><a href="#append-命令" class="headerlink" title="append 命令"></a>append 命令</h2><blockquote>
+<p>追加字符串到原来的值中，如果值是数字，也会类型自动转换</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; get int2
+&quot;1&quot;
+127.0.0.1:6379&gt; append int2 &quot;haima&quot;
+(integer) 6
+127.0.0.1:6379&gt; get int2
+&quot;1haima&quot;
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/入门/" rel="tag">#入门</a>
+          
+            <a href="/tags/Redis/" rel="tag">#Redis</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/01/Tools.mark/" rel="next" title="Markdown编写博客">
+                <i class="fa fa-chevron-left"></i> Markdown编写博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/03/Redis.brief/"
+           data-title="Redis 入门基础篇" data-url="http://yoursite.com/2016/05/03/Redis.brief/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.gif?wo"
+               alt="Haima" />
+          <p class="site-author-name" itemprop="name">Haima</p>
+          <p class="site-description motion-element" itemprop="description">649766951|北京</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">亲情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.xiaoxiaomo.com/" target="_blank">小小默的blog</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装运行"><span class="nav-number">2.</span> <span class="nav-text">安装运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台运行"><span class="nav-number">2.3.</span> <span class="nav-text">后台运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接到redis"><span class="nav-number">2.4.</span> <span class="nav-text">连接到redis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis数据库的特点"><span class="nav-number">3.</span> <span class="nav-text">redis数据库的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis-基础命令"><span class="nav-number">4.</span> <span class="nav-text">redis 基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exists-命令"><span class="nav-number">4.1.</span> <span class="nav-text">exists 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keys命令"><span class="nav-number">4.2.</span> <span class="nav-text">keys命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#del命令"><span class="nav-number">4.3.</span> <span class="nav-text">del命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type命令"><span class="nav-number">4.4.</span> <span class="nav-text">type命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#help命令"><span class="nav-number">4.5.</span> <span class="nav-text">help命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">4.6.</span> <span class="nav-text">数据类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#string型数据"><span class="nav-number">5.</span> <span class="nav-text">string型数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#set命令"><span class="nav-number">5.1.</span> <span class="nav-text">set命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SETNX-SETEX-PSETEX"><span class="nav-number">5.2.</span> <span class="nav-text">SETNX, SETEX, PSETEX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-命令"><span class="nav-number">5.3.</span> <span class="nav-text">get 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mset，mget命令"><span class="nav-number">5.4.</span> <span class="nav-text">mset，mget命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incr，decr命令"><span class="nav-number">5.5.</span> <span class="nav-text">incr，decr命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incrby，decrby命令"><span class="nav-number">5.6.</span> <span class="nav-text">incrby，decrby命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incrbyfloat命令"><span class="nav-number">5.7.</span> <span class="nav-text">incrbyfloat命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#append-命令"><span class="nav-number">5.8.</span> <span class="nav-text">append 命令</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haima</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">总访客数<i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">总访问量<i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"refly"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
