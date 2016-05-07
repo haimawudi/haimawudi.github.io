@@ -90,7 +90,7 @@ Redis is an open source (BSD lice">
 官方介绍摘要
 
 Redis is an open source (BSD lice">
-<meta property="og:updated_time" content="2016-05-05T16:14:10.180Z">
+<meta property="og:updated_time" content="2016-05-07T16:12:57.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis 入门基础篇">
 <meta name="twitter:description" content="简介redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。
@@ -346,7 +346,7 @@ Redis is an open source (BSD lice">
 # make
 # make install
 </code></pre><ul>
-<li>第一步 下载redis压缩包  在Linux中用wget命令。前提是当前linux能联网。或者手动去官网下载再上传到Linux环境。</li>
+<li>第一步 下载redis压缩包  在Linux中用wget命令。前提是当前linux能联网。或者手动去官网下载压缩包再上传到Linux环境。</li>
 <li>接下来：解压压缩包，再进入（cd）到解压后的目录 redis-3.0.7  再编译构建（make命令）。最后安装(make install命令)</li>
 </ul>
 <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code># redis-server 
@@ -489,10 +489,7 @@ OK
 
 127.0.0.1:6379&gt; get user1
 (nil) //已经自动销毁
-</code></pre><h2 id="SETNX-SETEX-PSETEX"><a href="#SETNX-SETEX-PSETEX" class="headerlink" title="SETNX, SETEX, PSETEX"></a>SETNX, SETEX, PSETEX</h2><blockquote>
-<p>SETNX命令，格式【SETNX key value】，相当于 set key value NX<br>SETEX命令，格式【SETEX key seconds value】，相当与 set key value EX seconds<br>PSETEX命令，格式【PSETEX key milliseconds value】，相当与 set key value PX milliseconds</p>
-</blockquote>
-<h2 id="get-命令"><a href="#get-命令" class="headerlink" title="get 命令"></a>get 命令</h2><blockquote>
+</code></pre><h2 id="get-命令"><a href="#get-命令" class="headerlink" title="get 命令"></a>get 命令</h2><blockquote>
 <p>显示string类型的数据，或者说取出string类型的值，也就是使用set存如的值。<br>格式 GET key</p>
 </blockquote>
 <pre><code>127.0.0.1:6379&gt; set user1 &quot;haima&quot;
@@ -503,15 +500,30 @@ OK
 (integer) 1
 127.0.0.1:6379&gt; get user1    //没有该数据就返回nil
 (nil)
-</code></pre><h2 id="mset，mget命令"><a href="#mset，mget命令" class="headerlink" title="mset，mget命令"></a>mset，mget命令</h2><blockquote>
-<p>一次性存取多组键值对。<br>格式： MSET key value [key value …]，MGET key [key …]</p>
+</code></pre><h2 id="getset-命令"><a href="#getset-命令" class="headerlink" title="getset 命令"></a>getset 命令</h2><blockquote>
+<p>设置某个键的值，同时返回该键的原有值<br>格式 GETSET key value</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; get user
+(nil)
+127.0.0.1:6379&gt; getset user &quot;haima&quot;
+(nil)
+127.0.0.1:6379&gt; getset user &quot;vicky&quot;
+&quot;haima&quot;
+</code></pre><h2 id="mset，mget，msetnx-命令"><a href="#mset，mget，msetnx-命令" class="headerlink" title="mset，mget，msetnx 命令"></a>mset，mget，msetnx 命令</h2><blockquote>
+<p>一次性存取多组键值对。<br>格式： MSET key value [key value …]，MGET key [key …]， MSETNX key value [key value …]<br>msetnx 命令设置多组Key-value，仅当key不存在时，才设置，key存在，则不覆盖。</p>
 </blockquote>
 <pre><code>127.0.0.1:6379&gt; mset user1 &quot;haima&quot; user2 &quot;vicky&quot;
 OK
 127.0.0.1:6379&gt; mget user1 user2
 1) &quot;haima&quot;
 2) &quot;vicky&quot;
-</code></pre><h2 id="incr，decr命令"><a href="#incr，decr命令" class="headerlink" title="incr，decr命令"></a>incr，decr命令</h2><blockquote>
+</code></pre><h2 id="setnx-setex-pserex"><a href="#setnx-setex-pserex" class="headerlink" title="setnx, setex, pserex"></a>setnx, setex, pserex</h2><blockquote>
+<p>SETNX命令，格式【SETNX key value】，相当于 set key value NX<br>SETEX命令，格式【SETEX key seconds value】，相当与 set key value EX seconds<br>PSETEX命令，格式【PSETEX key milliseconds value】，相当与 set key value PX milliseconds</p>
+</blockquote>
+<h2 id="expire-expireat"><a href="#expire-expireat" class="headerlink" title="expire expireat"></a>expire expireat</h2><blockquote>
+<p>expire 【 EXPIRE key seconds】 设置过期时间，用秒来设置<br>expireat 【EXPIREAT key timestamp】 设置过期时间，用时间戳</p>
+</blockquote>
+<h2 id="incr，decr命令"><a href="#incr，decr命令" class="headerlink" title="incr，decr命令"></a>incr，decr命令</h2><blockquote>
 <p>incr：自增加1，在值为整数的前提下，否则操作失败。<br>decr：自减减1，在值为整数的前提下，否则操作失败。<br>格式 ：INCR key，DECR key</p>
 </blockquote>
 <pre><code>127.0.0.1:6379&gt; set int1 1.1
@@ -554,7 +566,7 @@ OK
 127.0.0.1:6379&gt; INCRBYFLOAT fl1 4.1
 &quot;10.1&quot;
 </code></pre><h2 id="append-命令"><a href="#append-命令" class="headerlink" title="append 命令"></a>append 命令</h2><blockquote>
-<p>追加字符串到原来的值中，如果值是数字，也会类型自动转换</p>
+<p>追加字符串到原来的值中，如果值是数字，也会类型自动转换<br>格式 APPEND key value</p>
 </blockquote>
 <pre><code>127.0.0.1:6379&gt; get int2
 &quot;1&quot;
@@ -562,6 +574,207 @@ OK
 (integer) 6
 127.0.0.1:6379&gt; get int2
 &quot;1haima&quot;
+</code></pre><h2 id="strlen-命令"><a href="#strlen-命令" class="headerlink" title="strlen 命令"></a>strlen 命令</h2><blockquote>
+<p>获取一个string型字符串的长度，不存的键会返回0<br>格式  STRLEN key</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; set user1 &quot;haima1&quot;
+OK
+127.0.0.1:6379&gt; strlen user1
+(integer) 6
+</code></pre><h2 id="getrange-命令"><a href="#getrange-命令" class="headerlink" title="getrange 命令"></a>getrange 命令</h2><blockquote>
+<p>获取一个子字符串<br>格式  GETRANGE key start end</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; get user1
+&quot;haima1&quot;
+127.0.0.1:6379&gt; getrange user1 2 5
+&quot;ima1&quot;
+</code></pre><h2 id="getbit-命令"><a href="#getbit-命令" class="headerlink" title="getbit 命令"></a>getbit 命令</h2><blockquote>
+<p>某个位置上的二进制数<br>格式  GETBIT key offset</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; get user1
+&quot;haima1&quot;
+127.0.0.1:6379&gt; setbit user1 4 0
+(integer) 1
+127.0.0.1:6379&gt; get user1
+&quot;`aima1&quot;
+</code></pre><h2 id="bitcount-命令"><a href="#bitcount-命令" class="headerlink" title="bitcount 命令"></a>bitcount 命令</h2><blockquote>
+<p>二进制数中1的个数<br>格式 BITCOUNT key [start end]</p>
+</blockquote>
+<h2 id="bittop-命令"><a href="#bittop-命令" class="headerlink" title="bittop 命令"></a>bittop 命令</h2><blockquote>
+<p>对一个或多个保存二进制位的字符串 key 进行位元操作，并将结果保存到 destkey 上<br>格式 BITOP operation destkey key [key …]<br>其中位运算operation包括  AND （位与）、 OR（位或） 、 NOT（位非） 、 XOR（位异或）</p>
+</blockquote>
+<h1 id="hash数据类型"><a href="#hash数据类型" class="headerlink" title="hash数据类型"></a>hash数据类型</h1><blockquote>
+<p>hash数据类型 指数据key-value中的value是一个hash表。而hash表又由多组key-value组成。<br>hash表中的Key- value key 和value都是string型（string型为基本数据类型）</p>
+</blockquote>
+<h2 id="hset-命令"><a href="#hset-命令" class="headerlink" title="hset 命令"></a>hset 命令</h2><blockquote>
+<p>设置创建一个hash类型的数据<br>格式 HSET key field value</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hset userhs name &quot;haima&quot;
+(integer) 1
+127.0.0.1:6379&gt; type userhs
+hash
+</code></pre><h2 id="hsetnx-命令"><a href="#hsetnx-命令" class="headerlink" title="hsetnx 命令"></a>hsetnx 命令</h2><blockquote>
+<p>设置创建一个hash类型的数据，如果这个值存在，则不会生效<br>格式 HSETNX key field value</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hsetnx userhs name &quot;vicky&quot;
+(integer) 0
+127.0.0.1:6379&gt; hget userhs name
+&quot;haima&quot;    //设置vicky时，并未生效
+</code></pre><h2 id="hget-命令"><a href="#hget-命令" class="headerlink" title="hget 命令"></a>hget 命令</h2><blockquote>
+<p>获取hash中的某个键对应的值<br>格式 HGET key field</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hset userhs age 27
+(integer) 1
+127.0.0.1:6379&gt; hget userhs age
+&quot;27&quot;
+</code></pre><h2 id="hmset，hmget"><a href="#hmset，hmget" class="headerlink" title="hmset，hmget"></a>hmset，hmget</h2><blockquote>
+<p>hmset 设置hash中多组键值对，hmset 获取多组键的值<br>格式HMSET key field value [field value …]， HMGET key field [field …]</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hmset userhs job &quot;java&quot; place &quot;beijing&quot;
+OK
+127.0.0.1:6379&gt; hmget userhs job place
+1) &quot;java&quot;
+2) &quot;beijing&quot;
+</code></pre><h2 id="hgetall-命令"><a href="#hgetall-命令" class="headerlink" title="hgetall 命令"></a>hgetall 命令</h2><blockquote>
+<p>获取所有键值对 （注意，其实返回的是hash表本身，在jedis中会返回一个Map，详见后文jedis）<br>格式 HGETALL key</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hgetall userhs
+1) &quot;name&quot;
+2) &quot;haima&quot;
+3) &quot;age&quot;
+4) &quot;27&quot;
+5) &quot;job&quot;
+6) &quot;java&quot;
+7) &quot;place&quot;
+8) &quot;beijing&quot;
+</code></pre><h2 id="hexists-命令"><a href="#hexists-命令" class="headerlink" title="hexists 命令"></a>hexists 命令</h2><blockquote>
+<p>判断hash表中某个字段是否存在  （判断整个hash表直接用基础命令 exists ）<br>格式  HEXISTS key field</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; HEXISTS userhs name
+(integer) 1
+</code></pre><h2 id="hkeys，hvals"><a href="#hkeys，hvals" class="headerlink" title="hkeys，hvals"></a>hkeys，hvals</h2><blockquote>
+<p>获取所有键，获取所有值<br>格式 HKEYS key，HVALS key</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hkeys userhs
+1) &quot;name&quot;
+2) &quot;age&quot;
+3) &quot;job&quot;
+4) &quot;place&quot;
+
+127.0.0.1:6379&gt; hvals userhs
+1) &quot;haima&quot;
+2) &quot;27&quot;
+3) &quot;java&quot;
+4) &quot;beijing&quot;
+</code></pre><h2 id="hlen-命令"><a href="#hlen-命令" class="headerlink" title="hlen 命令"></a>hlen 命令</h2><blockquote>
+<p>查看表中键值对的对数<br>格式 HLEN key<br>    127.0.0.1:6379&gt; HLEN userhs<br>    (integer) 4</p>
+</blockquote>
+<h2 id="hdel-命令"><a href="#hdel-命令" class="headerlink" title="hdel 命令"></a>hdel 命令</h2><blockquote>
+<p>删除一个或多个键值对 （删除整个hash表，用基础命令del）<br>格式 HDEL key field [field …]</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; hdel userhs place
+(integer) 1
+127.0.0.1:6379&gt; HKEYS userhs
+1) &quot;name&quot;
+2) &quot;age&quot;
+3) &quot;job&quot;
+</code></pre><h2 id="hincrby，hincrbyfloat"><a href="#hincrby，hincrbyfloat" class="headerlink" title="hincrby，hincrbyfloat"></a>hincrby，hincrbyfloat</h2><blockquote>
+<p>增加某个键的值<br>格式 HINCRBY key field increment， HINCRBYFLOAT key field increment</p>
+</blockquote>
+<h1 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h1><p>list是一个有序的字符串列表，列表内部实现是使用双向链表(linked list)实现的<br>list 的元素从左到右，脚标从0开始，依次增大</p>
+<h2 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h2><blockquote>
+<p><strong>lpush</strong> 格式：    LPUSH key value [value …] //从左边压入队列<br><strong>rpush</strong> 格式：     RPUSH key value [value …] //从右边压入队列<br><strong>lpop</strong> 格式：        LPOP key //从左边弹出第一个元素（元素会被删除）<br><strong>rpop</strong> 格式：        RPOP key //从右边弹出第一个元素(元素会被删除)<br><strong>llen</strong> 格式：          LLEN key //获取list的长度，即list元素的个数<br><strong>lrange</strong> 格式：      LRANGE key start stop //显示 list中某个范围的元素，可以用-1表示list中最后一个元素脚标<br><strong>lindex</strong> 格式：        LINDEX key    //查询指定角标数据<br><strong>lset</strong> 格式：        LSET key index value //修改指定角标的值。<br><strong>ltrim</strong> 格式： LTRIM key start stop    //保留指定位置的元素<br><strong>rpoplpush</strong> 格式：RPOPLPUSH source destination //将元素从一个列表转到另一个列表</p>
+</blockquote>
+<p>eg| lpush,rpush</p>
+<pre><code>127.0.0.1:6379&gt; LPUSH list1 &quot;haima&quot; &quot;vicky&quot;    //从左边压入队列
+(integer) 2
+127.0.0.1:6379&gt; LRANGE list1 0 -1
+1) &quot;vicky&quot;
+2) &quot;haima&quot;
+127.0.0.1:6379&gt; RPUSH list1 &quot;hanmei&quot;    //从右边压入队列
+(integer) 3
+127.0.0.1:6379&gt; LRANGE list1 0 -1
+1) &quot;vicky&quot;
+2) &quot;haima&quot;
+3) &quot;hanmei&quot;
+</code></pre><p>eg| ltrim</p>
+<pre><code>127.0.0.1:6379&gt; LPUSH list1 &quot;xuandong&quot;
+(integer) 4
+127.0.0.1:6379&gt; LPUSH list1 &quot;aobama&quot;
+(integer) 5
+127.0.0.1:6379&gt; LRANGE list1 0 -1    //显示 list中某个范围的元素
+1) &quot;aobama&quot;
+2) &quot;xuandong&quot;
+3) &quot;vicky&quot;
+4) &quot;haima&quot;
+5) &quot;hanmei&quot;
+
+127.0.0.1:6379&gt; LTRIM list1 1 -1    //从第一个截取到最后
+OK
+
+127.0.0.1:6379&gt; LRANGE list1 0 -1
+1) &quot;xuandong&quot;
+2) &quot;vicky&quot;
+3) &quot;haima&quot;
+4) &quot;hanmei&quot;
+</code></pre><p>eg| lset </p>
+<pre><code>127.0.0.1:6379&gt; LSET list1 3 &quot;haima&quot;    //设置第三个为 haima
+OK
+127.0.0.1:6379&gt; LRANGE list1 0 -1
+1) &quot;xuandong&quot;
+2) &quot;vicky&quot;
+3) &quot;haima&quot;
+4) &quot;haima&quot;
+</code></pre><p>eg| rpoplpush</p>
+<pre><code>127.0.0.1:6379&gt; RPOPLPUSH list1 list2    //list1的右边弹出，list2的左边压入
+&quot;haima&quot;
+127.0.0.1:6379&gt; LRANGE list1 0 -1
+1) &quot;xuandong&quot;
+2) &quot;vicky&quot;
+3) &quot;haima&quot;
+127.0.0.1:6379&gt; LRANGE list2 0 -1
+1) &quot;haima&quot;
+</code></pre><h1 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h1><p>set集合中的元素都是不重复的，无序的<br>set集合中的元素也是string型</p>
+<h2 id="常见命令-1"><a href="#常见命令-1" class="headerlink" title="常见命令"></a>常见命令</h2><blockquote>
+<p><strong>sadd</strong>    【 SADD key member [member …]】　添加元素<br><strong>smembers</strong>　【SMEMBERS key】    　获取所有的元素<br><strong>srem</strong>    【SREM key member [member …]】  删除一个元素，或多个元素<br><strong>sismember</strong>    【 SISMEMBER key member】 判断元素是不是该set中的元素<br><strong>sdiff</strong>    【SDIFF key [key …]】  前一个集合减去后一个集合，返回差集<br><strong>sinter</strong>    【SINTER key [key …]】 返回集合的交集<br><strong>sunion</strong>    【 SUNION key [key …]】 返回集合的并集<br><strong>sdiffstore</strong>    【SDIFFSTORE destination key [key …]】 集合求差集，然后再保存到 destination集合中<br><strong>sinterstore</strong>    【 SINTERSTORE destination key [key …]】集合求交集，然后保存到destination集合中<br><strong>sunionstore</strong>    【SUNIONSTORE destination key [key …]】集合求并集，然后保存到destination集合中<br><strong>scard</strong>    【SCARD key】 集合中元素的个数<br><strong>spop</strong>    【SPOP key】    随机从集合中取出并删除一个元素<br><strong>srandmember</strong>    【 SRANDMEMBER key [count]】  随机返回 集合的子集。注意当count大于零时，返回的元素最多为全集，count小于0时，返回的值中可以重复出现集合中的元素。<br><strong>smove</strong> 【SMOVE source destination member】 将 member 元素从 source 集合移动到 destination 集合。</p>
+</blockquote>
+<h1 id="Sorted-Set-类型"><a href="#Sorted-Set-类型" class="headerlink" title="Sorted Set 类型"></a>Sorted Set 类型</h1><p>有序集合，在集合类型的基础上为集合中的每个元素都关联了一个分数，这样可以很方便的获得分数最高的N个元素(topN)<br>sorted set 中的每个元素也是string型</p>
+<h2 id="常见命令-2"><a href="#常见命令-2" class="headerlink" title="常见命令"></a>常见命令</h2><p><strong>zadd</strong> 【ZADD key score member [[score member] [score member] …]】<br><strong>zscore</strong>    【ZSCORE key member】 返回分值<br><strong>zrange</strong>    【ZRANGE key start stop [WITHSCORES]】返回有序集 key 中，指定区间内的成员，按分值正序，WITHSCORES参数表示连同score一起返回<br><strong>zrevrange</strong> 【zrevrange key start stop [WITHSCORES]】返回有序集 key 中，指定区间内的成员，按分值逆序，WITHSCORES参数表示连同score一起返回<br><strong>zrangebyscore</strong> 【ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]】<br>可选的 LIMIT 参数指定返回结果的数量及区间(就像SQL中的 SELECT LIMIT offset, count )，注意当 offset 很大时，定位 offset 的操作可能需要遍历整个有序集，此过程最坏复杂度为 O(N) 时间。<br><strong>zincrby</strong> 【ZINCRBY key increment member】 为有序集 key 的成员 member 的 score 值加上增量 increment<br><strong>zcard</strong>  【ZCARD key】 返回元素个数<br>zcount    【ZCOUNT key min max】 返回分值在区间内的 元素个数<br><strong>zrem</strong> 【ZREM key member [member …]】 移除有序集 key 中的一个或多个成员，不存在的成员将被忽略</p>
+<h2 id="Sorted-Set-和List类型比较"><a href="#Sorted-Set-和List类型比较" class="headerlink" title="Sorted Set 和List类型比较"></a>Sorted Set 和List类型比较</h2><ul>
+<li>有序集合类型和列表类型的差异</li>
+<li>相同点</li>
+<li>（1）二者都是有序的</li>
+<li>（2）二者都可以获得某一范围的元素</li>
+<li>不同点</li>
+<li>（1）列表类型是通过双向链表实现的，获取靠近两端的数据速度极快，当列表中元素增多后，访问中间的数据速度会很慢，所以它比较适合很少访问中间元素的应用</li>
+<li>（2）有序集合类型是使用散列表和跳跃表（skip list）实现的，所以即使读取位于中间部分的数据速度也很快</li>
+<li>（3）列表中不能简单的调整某个元素的位置，但是有序集合可以（通过更改这个元素的分值）</li>
+<li>（4）有序集合要比列表类型更耗费内存</li>
+</ul>
+<h1 id="HyperLogLog-类型"><a href="#HyperLogLog-类型" class="headerlink" title="HyperLogLog 类型"></a>HyperLogLog 类型</h1><p>Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p>
+<h2 id="PFADD-命令"><a href="#PFADD-命令" class="headerlink" title="PFADD 命令"></a>PFADD 命令</h2><blockquote>
+<p>格式【 PFADD key element [element …]】<br>添加元素，重复元素不会被添加进去</p>
+</blockquote>
+<h2 id="PFCOUNT-命令"><a href="#PFCOUNT-命令" class="headerlink" title="PFCOUNT 命令"></a>PFCOUNT 命令</h2><blockquote>
+<p>格式【PFADD key element [element …]】<br>获取元素个数（会用HyperLogLog数据结构去重）</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; pfadd pf &quot;haima&quot; &quot;xuandong&quot;
+(integer) 1
+127.0.0.1:6379&gt; PFCOUNT pf 
+(integer) 2
+27.0.0.1:6379&gt; PFADD pf1 &quot;hh&quot; &quot;haima&quot;
+(integer) 1
+127.0.0.1:6379&gt; PFCOUNT pf pf1
+(integer) 3    //pf和pf1中共有 hh,haima,xuandong三个元素
+</code></pre><h2 id="PFMERGE命令"><a href="#PFMERGE命令" class="headerlink" title="PFMERGE命令"></a>PFMERGE命令</h2><p>格式 【PFMERGE destkey sourcekey [sourcekey …]】<br>将多个 HyperLogLog 合并（merge）为一个 HyperLogLog</p>
+<pre><code>127.0.0.1:6379&gt; PFADD  nosql  &quot;Redis&quot;  &quot;MongoDB&quot;  &quot;Memcached&quot;
+(integer) 1
+127.0.0.1:6379&gt; PFADD  rdbms  &quot;MySQL&quot; &quot;MSSQL&quot; &quot;PostgreSQL&quot; &quot;Redis&quot;
+(integer) 1
+127.0.0.1:6379&gt; PFMERGE all  nosql rdbms
+OK
+127.0.0.1:6379&gt; PFCOUNT all 
+(integer) 6
 </code></pre>
       
     </div>
@@ -679,7 +892,7 @@ OK
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -688,7 +901,7 @@ OK
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -728,7 +941,7 @@ OK
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装运行"><span class="nav-number">2.</span> <span class="nav-text">安装运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台运行"><span class="nav-number">2.3.</span> <span class="nav-text">后台运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接到redis"><span class="nav-number">2.4.</span> <span class="nav-text">连接到redis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis数据库的特点"><span class="nav-number">3.</span> <span class="nav-text">redis数据库的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis-基础命令"><span class="nav-number">4.</span> <span class="nav-text">redis 基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exists-命令"><span class="nav-number">4.1.</span> <span class="nav-text">exists 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keys命令"><span class="nav-number">4.2.</span> <span class="nav-text">keys命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#del命令"><span class="nav-number">4.3.</span> <span class="nav-text">del命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type命令"><span class="nav-number">4.4.</span> <span class="nav-text">type命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#help命令"><span class="nav-number">4.5.</span> <span class="nav-text">help命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">4.6.</span> <span class="nav-text">数据类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#string型数据"><span class="nav-number">5.</span> <span class="nav-text">string型数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#set命令"><span class="nav-number">5.1.</span> <span class="nav-text">set命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SETNX-SETEX-PSETEX"><span class="nav-number">5.2.</span> <span class="nav-text">SETNX, SETEX, PSETEX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-命令"><span class="nav-number">5.3.</span> <span class="nav-text">get 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mset，mget命令"><span class="nav-number">5.4.</span> <span class="nav-text">mset，mget命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incr，decr命令"><span class="nav-number">5.5.</span> <span class="nav-text">incr，decr命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incrby，decrby命令"><span class="nav-number">5.6.</span> <span class="nav-text">incrby，decrby命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incrbyfloat命令"><span class="nav-number">5.7.</span> <span class="nav-text">incrbyfloat命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#append-命令"><span class="nav-number">5.8.</span> <span class="nav-text">append 命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装运行"><span class="nav-number">2.</span> <span class="nav-text">安装运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台运行"><span class="nav-number">2.3.</span> <span class="nav-text">后台运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接到redis"><span class="nav-number">2.4.</span> <span class="nav-text">连接到redis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis数据库的特点"><span class="nav-number">3.</span> <span class="nav-text">redis数据库的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis-基础命令"><span class="nav-number">4.</span> <span class="nav-text">redis 基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exists-命令"><span class="nav-number">4.1.</span> <span class="nav-text">exists 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keys命令"><span class="nav-number">4.2.</span> <span class="nav-text">keys命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#del命令"><span class="nav-number">4.3.</span> <span class="nav-text">del命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type命令"><span class="nav-number">4.4.</span> <span class="nav-text">type命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#help命令"><span class="nav-number">4.5.</span> <span class="nav-text">help命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">4.6.</span> <span class="nav-text">数据类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#string型数据"><span class="nav-number">5.</span> <span class="nav-text">string型数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#set命令"><span class="nav-number">5.1.</span> <span class="nav-text">set命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-命令"><span class="nav-number">5.2.</span> <span class="nav-text">get 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getset-命令"><span class="nav-number">5.3.</span> <span class="nav-text">getset 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mset，mget，msetnx-命令"><span class="nav-number">5.4.</span> <span class="nav-text">mset，mget，msetnx 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setnx-setex-pserex"><span class="nav-number">5.5.</span> <span class="nav-text">setnx, setex, pserex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expire-expireat"><span class="nav-number">5.6.</span> <span class="nav-text">expire expireat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incr，decr命令"><span class="nav-number">5.7.</span> <span class="nav-text">incr，decr命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incrby，decrby命令"><span class="nav-number">5.8.</span> <span class="nav-text">incrby，decrby命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incrbyfloat命令"><span class="nav-number">5.9.</span> <span class="nav-text">incrbyfloat命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#append-命令"><span class="nav-number">5.10.</span> <span class="nav-text">append 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strlen-命令"><span class="nav-number">5.11.</span> <span class="nav-text">strlen 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getrange-命令"><span class="nav-number">5.12.</span> <span class="nav-text">getrange 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getbit-命令"><span class="nav-number">5.13.</span> <span class="nav-text">getbit 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitcount-命令"><span class="nav-number">5.14.</span> <span class="nav-text">bitcount 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bittop-命令"><span class="nav-number">5.15.</span> <span class="nav-text">bittop 命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hash数据类型"><span class="nav-number">6.</span> <span class="nav-text">hash数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hset-命令"><span class="nav-number">6.1.</span> <span class="nav-text">hset 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hsetnx-命令"><span class="nav-number">6.2.</span> <span class="nav-text">hsetnx 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hget-命令"><span class="nav-number">6.3.</span> <span class="nav-text">hget 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hmset，hmget"><span class="nav-number">6.4.</span> <span class="nav-text">hmset，hmget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hgetall-命令"><span class="nav-number">6.5.</span> <span class="nav-text">hgetall 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexists-命令"><span class="nav-number">6.6.</span> <span class="nav-text">hexists 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hkeys，hvals"><span class="nav-number">6.7.</span> <span class="nav-text">hkeys，hvals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hlen-命令"><span class="nav-number">6.8.</span> <span class="nav-text">hlen 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdel-命令"><span class="nav-number">6.9.</span> <span class="nav-text">hdel 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hincrby，hincrbyfloat"><span class="nav-number">6.10.</span> <span class="nav-text">hincrby，hincrbyfloat</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List-类型"><span class="nav-number">7.</span> <span class="nav-text">List 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见命令"><span class="nav-number">7.1.</span> <span class="nav-text">常见命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set-类型"><span class="nav-number">8.</span> <span class="nav-text">Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见命令-1"><span class="nav-number">8.1.</span> <span class="nav-text">常见命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sorted-Set-类型"><span class="nav-number">9.</span> <span class="nav-text">Sorted Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见命令-2"><span class="nav-number">9.1.</span> <span class="nav-text">常见命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorted-Set-和List类型比较"><span class="nav-number">9.2.</span> <span class="nav-text">Sorted Set 和List类型比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HyperLogLog-类型"><span class="nav-number">10.</span> <span class="nav-text">HyperLogLog 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PFADD-命令"><span class="nav-number">10.1.</span> <span class="nav-text">PFADD 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PFCOUNT-命令"><span class="nav-number">10.2.</span> <span class="nav-text">PFCOUNT 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PFMERGE命令"><span class="nav-number">10.3.</span> <span class="nav-text">PFMERGE命令</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
