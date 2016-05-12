@@ -353,9 +353,14 @@
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="创建-zoo-cfg"><a href="#创建-zoo-cfg" class="headerlink" title="创建 zoo.cfg"></a>创建 zoo.cfg</h3><pre><code>cd /opt/zookeeper/conf        【注意】 /opt/zookeeper/ 为你的zookeeper解压目录
 cp zoo_sample.cfg zoo.cfg
 </code></pre><h3 id="修改zoo-cfg"><a href="#修改zoo-cfg" class="headerlink" title="修改zoo.cfg"></a>修改zoo.cfg</h3><pre><code>dataDir=/opt/zookeeper/tmp
-</code></pre><p>在末尾加上<br>    server.1=haima1:2888:3888<br>    erver.2=haima2:2888:3888<br>    server.3=haima3:2888:3888</p>
-<h3 id="修改log4j配置"><a href="#修改log4j配置" class="headerlink" title="修改log4j配置"></a>修改log4j配置</h3><blockquote>
-<p>在zoo.cfg同目录下修改log4j.properties</p>
+</code></pre><blockquote>
+<p>在末尾追加集群关键配置</p>
+</blockquote>
+<pre><code>server.1=haima1:2888:3888
+server.2=haima2:2888:3888
+server.3=haima3:2888:3888
+</code></pre><h3 id="修改log4j配置"><a href="#修改log4j配置" class="headerlink" title="修改log4j配置"></a>修改log4j配置</h3><blockquote>
+<p>在zoo.cfg同目录下修改log4j.properties，便于查看zookeeper运行日志</p>
 </blockquote>
 <pre><code>zookeeper.log.dir=/opt/zookeeper/logs      
 zookeeper.tracelog.dir=/opt/zookeeper/logs
@@ -374,7 +379,10 @@ scp -r /opt/zookeeper/ root@haima3:/opt/
 <p>修改另外两台linux中zookeeper的id<br>    echo “2” &gt; myid  //在haima2机器中<br>    echo “3” &gt; myid  //在haima3机器中</p>
 </blockquote>
 <h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><blockquote>
-<p>分别启动三个Linux中的zookeeper<br>    /opt/zookeeper/bin/zkServer.sh start</p>
+<p>分别启动三个Linux中的zookeeper</p>
+</blockquote>
+<pre><code>/opt/zookeeper/bin/zkServer.sh start
+</code></pre><blockquote>
 <p>启动完成之后，查看单机运行状态</p>
 </blockquote>
 <pre><code># jps
