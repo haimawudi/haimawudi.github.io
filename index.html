@@ -257,6 +257,608 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/12/Zookeeper.install.distributed/" itemprop="url">
+                  Zookeeper之集群安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T23:16:58+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Zookeeper/" itemprop="url" rel="index">
+                    <span itemprop="name">Zookeeper</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/Zookeeper.install.distributed/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/Zookeeper.install.distributed/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="准备Linux"><a href="#准备Linux" class="headerlink" title="准备Linux"></a>准备Linux</h1><ul>
+<li>目标配置三台Linux，网络相互能通信，可以用虚拟机(vmware)模拟。</li>
+<li>通过/etc/hosts配置好三台机器的hostname。主机名在每台机器中都需要写如。</li>
+<li><p>也就是说在每台机器上的/etc/hosts中都要写入以下主机名配置</p>
+<pre><code>192.168.12.114 haima1
+192.168.12.115 haima2
+192.168.12.116 haima3
+</code></pre></li>
+</ul>
+<blockquote>
+<p>前面为ip,后面为主机名hostname</p>
+</blockquote>
+<p>#单机安装</p>
+<blockquote>
+<p>以下操作都是在其中一台机器上的操作。</p>
+</blockquote>
+<h2 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h2><ul>
+<li>前往官网（<a href="https://zookeeper.apache.org/）下载" target="_blank" rel="external">https://zookeeper.apache.org/）下载</a></li>
+<li><a href="http://www.apache.org/dyn/closer.cgi/zookeeper/" target="_blank" rel="external">http://www.apache.org/dyn/closer.cgi/zookeeper/</a> </li>
+<li>进入到下载列表中选择一个版本，目前是3.4.6稳定版</li>
+<li>下载.tar.gz为结尾的压缩包。通过winscp工具上传Linux环境(笔者放在/opt/ 下面)</li>
+<li>tar -zxvf zookeeper-3.4.6.tar.gz 解压</li>
+<li>mv  zookeeper-3.4.6  zookeeper  重命名</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="创建-zoo-cfg"><a href="#创建-zoo-cfg" class="headerlink" title="创建 zoo.cfg"></a>创建 zoo.cfg</h3><pre><code>cd /opt/zookeeper/conf        【注意】 /opt/zookeeper/ 为你的zookeeper解压目录
+cp zoo_sample.cfg zoo.cfg
+</code></pre><h3 id="修改zoo-cfg"><a href="#修改zoo-cfg" class="headerlink" title="修改zoo.cfg"></a>修改zoo.cfg</h3><pre><code>dataDir=/opt/zookeeper/tmp
+</code></pre><p>在末尾加上<br>    server.1=haima1:2888:3888<br>    erver.2=haima2:2888:3888<br>    server.3=haima3:2888:3888</p>
+<h3 id="修改log4j配置"><a href="#修改log4j配置" class="headerlink" title="修改log4j配置"></a>修改log4j配置</h3><blockquote>
+<p>在zoo.cfg同目录下修改log4j.properties</p>
+</blockquote>
+<pre><code>zookeeper.log.dir=/opt/zookeeper/logs      
+zookeeper.tracelog.dir=/opt/zookeeper/logs
+</code></pre><h3 id="修改zkEnv-sh"><a href="#修改zkEnv-sh" class="headerlink" title="修改zkEnv.sh"></a>修改zkEnv.sh</h3><blockquote>
+<p>vi /opt/zookeeper/bin/zkEnv.sh<br>在ZOOKEEPER_PREFIX=”${ZOOBINDIR}/..”的下面一行<br>添加如下语句：<br>    ZOO_LOG_DIR=/opt/zookeeper/logs</p>
+</blockquote>
+<h2 id="设置id"><a href="#设置id" class="headerlink" title="设置id"></a>设置id</h2><blockquote>
+<p>在/opt/zookeeper/data 的myid文件中 写入该zookeeper服务的id<br>    echo “1” &gt; myid    //写入的”1”与server.1=haima1:2888:3888 对应</p>
+</blockquote>
+<h1 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h1><blockquote>
+<p>将配置好的zookeeper拷贝到另外两台Linux机器上，这样可以减少工作量</p>
+</blockquote>
+<pre><code>scp -r /opt/zookeeper/ root@haima2:/opt/
+scp -r /opt/zookeeper/ root@haima3:/opt/
+</code></pre><blockquote>
+<p>修改另外两台linux中zookeeper的id<br>    echo “2” &gt; myid  //在haima2机器中<br>    echo “3” &gt; myid  //在haima3机器中</p>
+</blockquote>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><blockquote>
+<p>分别启动三个Linux中的zookeeper<br>    /opt/zookeeper/bin/zkServer.sh start</p>
+<p>启动完成之后，查看单机运行状态</p>
+</blockquote>
+<pre><code># jps
+3757 Jps
+2963 QuorumPeerMain //zookeeper的进程名，表示成功
+</code></pre><blockquote>
+<p>如果未运行成功，查看日志排查单机启动问题</p>
+</blockquote>
+<pre><code>tail -f /opt/zookeeper/logs/zookeeper.out
+</code></pre><blockquote>
+<p>三台机器都运行成功后，查看集群状态</p>
+</blockquote>
+<pre><code># /usr/local/zookeeper/bin/zkServer.sh status
+JMX enabled by default
+Using config: /usr/local/zookeeper/bin/../conf/zoo.cfg
+Mode: leader    //主节点leader,
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/11/Linux.network/" itemprop="url">
+                  Linux 之 网络
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T20:08:36+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/11/Linux.network/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Linux.network/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/09/Hadoop.MapReduce/" itemprop="url">
+                  Hadoop 之MapReduce（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-09T19:56:57+08:00" content="2016-05-09">
+              2016-05-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/09/Hadoop.MapReduce/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/09/Hadoop.MapReduce/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>MapReduce是一种编程模型。是一种分布式计算模型。MapReduce计算模型是基于Hadoop 文件系统Hdfs的文件系统。</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><blockquote>
+<p>映射（Mapping）对集合里的每个目标应用同一个操作。即，如果你想把表单里每个单元格乘以二，那么把这个函数单独地应用在每个单元格上的操作就属于mapping。</p>
+</blockquote>
+<h2 id="分组排列"><a href="#分组排列" class="headerlink" title="分组排列"></a>分组排列</h2><blockquote>
+<p>在Reduce任务开始之前，会将Map中的键值对进行分组排序，相同的键将被分为同一组，而值将被保存到一个队列中。然后再按值排序。</p>
+</blockquote>
+<h2 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h2><blockquote>
+<p>化简（Reducing ）遍历集合中的元素来返回一个综合的结果。即，输出表单里一列数字的和这个任务属reducing。</p>
+</blockquote>
+<p><img src="/images/hadoop.maperduce_1.png" alt="MapReduce原理"></p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><blockquote>
+<p>我自己关于mapreduce的理解是，好比炒菜，将食材切片则像是map，而下过烹饪则像是reduce的过程，而只是map和reduce的过程是分布式的。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/09/Hadoop.MapReduce/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/08/Hadoop.hdfs/" itemprop="url">
+                  Hadoop 之hdfs（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-08T19:46:17+08:00" content="2016-05-08">
+              2016-05-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/08/Hadoop.hdfs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/08/Hadoop.hdfs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="hdfs-命令行shell"><a href="#hdfs-命令行shell" class="headerlink" title="hdfs 命令行shell"></a>hdfs 命令行shell</h1><p>hdfs 命令行shell 是在Linux操作 hdfs 的接口，或者说工具</p>
+<blockquote>
+<p>shell列表</p>
+</blockquote>
+<pre><code>[-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;]
+[-cat [-ignoreCrc] &lt;src&gt; ...]
+[-checksum &lt;src&gt; ...]
+[-chgrp [-R] GROUP PATH...]
+[-chmod [-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...]
+[-chown [-R] [OWNER][:[GROUP]] PATH...]
+[-copyFromLocal [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+[-copyToLocal [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+[-count [-q] [-h] &lt;path&gt; ...]
+[-cp [-f] [-p | -p[topax]] &lt;src&gt; ... &lt;dst&gt;]
+[-createSnapshot &lt;snapshotDir&gt; [&lt;snapshotName&gt;]]
+[-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;]
+[-df [-h] [&lt;path&gt; ...]]
+[-du [-s] [-h] &lt;path&gt; ...]
+[-expunge]
+[-get [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+[-getfacl [-R] &lt;path&gt;]
+[-getfattr [-R] {-n name | -d} [-e en] &lt;path&gt;]
+[-getmerge [-nl] &lt;src&gt; &lt;localdst&gt;]
+[-help [cmd ...]]
+[-ls [-d] [-h] [-R] [&lt;path&gt; ...]]
+[-mkdir [-p] &lt;path&gt; ...]
+[-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;]
+[-moveToLocal &lt;src&gt; &lt;localdst&gt;]
+[-mv &lt;src&gt; ... &lt;dst&gt;]
+[-put [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+[-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;]
+[-rm [-f] [-r|-R] [-skipTrash] &lt;src&gt; ...]
+[-rmdir [--ignore-fail-on-non-empty] &lt;dir&gt; ...]
+[-setfacl [-R] [{-b|-k} {-m|-x &lt;acl_spec&gt;} &lt;path&gt;]|[--set &lt;acl_spec&gt; &lt;path&gt;]]
+[-setfattr {-n name [-v value] | -x name} &lt;path&gt;]
+[-setrep [-R] [-w] &lt;rep&gt; &lt;path&gt; ...]
+[-stat [format] &lt;path&gt; ...]
+[-tail [-f] &lt;file&gt;]
+[-test -[defsz] &lt;path&gt;]
+[-text [-ignoreCrc] &lt;src&gt; ...]
+[-touchz &lt;path&gt; ...]
+[-usage [cmd ...]]
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/08/Hadoop.hdfs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/03/Redis.brief/" itemprop="url">
                   Redis 入门基础篇
                 </a>
@@ -392,646 +994,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/01/Tools.mark/" itemprop="url">
-                  Markdown编写博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-01T20:17:14+08:00" content="2016-05-01">
-              2016-05-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/01/Tools.mark/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/Tools.mark/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="欢迎使用Markdown编辑器写博客"><a href="#欢迎使用Markdown编辑器写博客" class="headerlink" title="欢迎使用Markdown编辑器写博客"></a>欢迎使用Markdown编辑器写博客</h1><p>本Markdown编辑器使用<a href="https://github.com/benweet/stackedit">StackEdit</a>修改而来，用它写博客，将会带来全新的体验哦：</p>
-<ul>
-<li><strong>Markdown和扩展Markdown简洁的语法</strong></li>
-<li><strong>代码块高亮</strong></li>
-<li><strong>图片链接和图片上传</strong></li>
-<li><strong><em>LaTex</em>数学公式</strong></li>
-<li><strong>UML序列图和流程图</strong></li>
-<li><strong>离线写博客</strong></li>
-<li><strong>导入导出Markdown文件</strong></li>
-<li><strong>丰富的快捷键</strong></li>
-</ul>
-<hr>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li>加粗    <code>Ctrl + B</code> </li>
-<li>斜体    <code>Ctrl + I</code> </li>
-<li>引用    <code>Ctrl + Q</code></li>
-<li>插入链接    <code>Ctrl + L</code></li>
-<li>插入代码    <code>Ctrl + K</code></li>
-<li>插入图片    <code>Ctrl + G</code></li>
-<li>提升标题    <code>Ctrl + H</code></li>
-<li>有序列表    <code>Ctrl + O</code></li>
-<li>无序列表    <code>Ctrl + U</code></li>
-<li>横线    <code>Ctrl + R</code></li>
-<li>撤销    <code>Ctrl + Z</code></li>
-<li>重做    <code>Ctrl + Y</code></li>
-</ul>
-<h2 id="Markdown及扩展"><a href="#Markdown及扩展" class="headerlink" title="Markdown及扩展"></a>Markdown及扩展</h2><blockquote>
-<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank"> [ 维基百科 ]</p>
-</blockquote>
-<p>使用简单的符号标识不同的标题，将某些文字标记为<strong>粗体</strong>或者<em>斜体</em>，创建一个<a href="http://www.csdn.net">链接</a>等，详细语法参考帮助？。</p>
-<p>本编辑器支持 <strong>Markdown Extra</strong> , 　扩展了很多好用的功能。具体请参考<a href="https://github.com/jmcmanus/pagedown-extra" title="Pagedown Extra">Github</a>.  </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/01/Tools.mark/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/24/Linux.awk/" itemprop="url">
-                  Linux之强大的awk
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-24T13:43:24+08:00" content="2016-04-24">
-              2016-04-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/24/Linux.awk/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/24/Linux.awk/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="awk简介"><a href="#awk简介" class="headerlink" title="awk简介"></a>awk简介</h1><p>awk是Linux中的一个命令，用来做文本处理与分析，功能简单强悍，同时它也是一门编程语言。<br>awk处理文本文件时，以行为单位，可以高效的对日志文件进行处理。</p>
-<p>awk的man文档简介摘要：</p>
-<pre><code>NAME
-
-   gawk - pattern scanning and processing language    //awk其实是gawk，文本匹配查询和
-处理语言，
-
-SYNOPSIS
-
-    gawk [ POSIX or GNU style options ] -f program-file [ -- ] file ...
-    gawk [ POSIX or GNU style options ] [ -- ] program-text file ...
-
-    pgawk [ POSIX or GNU style options ] -f program-file [ -- ] file ...
-    pgawk [ POSIX or GNU style options ] [ -- ] program-text file ...
-
-
-    Gawk is the GNU Project?. implementation of the AWK programming language.  It
-    conforms to the definition of the lan-
-    guage in the POSIX 1003.1 Standard.  This version in turn is based on the 
-description in The  AWK  Programming  Lan-
-    guage,  by  Aho,  Kernighan, and Weinberger, with the additional features
- found in the System V Release 4 version of
-    UNIX awk.  Gawk also provides more recent Bell Laboratories awk extensions, 
-and a number of GNU-specific extensions.
-
-
-
-
-【释】第一段英文大致说了，Gawk是GNU(通用许可开源)项目，源于unix awk，并支持更多的贝尔实验
-室awk的扩展。看起来Linux中的awk(gawk)是很牛叉的。废话不多说，马上就来认真学习一下。
-</code></pre><h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><p>命令常见使用方式如下</p>
-<pre><code>方式一：awk [options] &apos;script&apos; [var=value] file(s) 
-方式二：awk [options] -f scriptfile [var=value] file(s)
-
-【解释】 其中 options是命令选项。方式一：&apos;script&apos;指awk的处理程序，执行程序。var=value是
-变量，file(s) 表示被处理的文本文件，可以一次性处理多个文本文件。方式二中-f scriptfile
-表示将处理程序放到一个文本中，当作脚本文件。
-</code></pre><h1 id="选项-F-fs"><a href="#选项-F-fs" class="headerlink" title="选项-F fs"></a>选项-F fs</h1><p>指定分隔符，awk中的默认分隔符是空格 “ “，默认以空格符分隔行文本。</p>
-<p>选项在man文档中的摘要</p>
-<pre><code>-F fs
-   --field-separator fs    //指定分隔符
-          Use fs for the input field separator (the value of the FS prede-
-          fined variable).    
-</code></pre><p>eg</p>
-<pre><code>[案例1] //默认字段分隔符为&quot; &quot;
-# echo &quot;hello hh&quot;| awk &apos;{print $1;print $2}&apos;
-hello
-hh
-
-【解释】 案例中，并没有出现-F选项，此时默认分隔符为&quot; &quot; 将hello hh分隔为两段，再分别打印
-字段一：“hello”,再打印字段二：“hh”。$1和$2是位置变量，分别表示第一个字段和第二个字段。
-
-[案例2]
-# echo &quot;hello:hh&quot;| awk -F :  &apos;{print $1;print $2}&apos;
-hello
-hh
-
-【解释】通过-F指定分隔符为&quot;:&quot; 分隔 hello:hh ，然后同 [案例1]
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/24/Linux.awk/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/19/Linux.shell/" itemprop="url">
-                  Linux之shell脚本入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T23:13:42+08:00" content="2016-04-19">
-              2016-04-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/19/Linux.shell/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/Linux.shell/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="shell简介"><a href="#shell简介" class="headerlink" title="shell简介"></a>shell简介</h2><p>shell脚本是一组命令的组合，通常写在一个文本中。<br>shell是壳子的意思，在Linux中，可以把Linux内核执行命令看作是一个模型，而命令就像内核的壳。<br>shell包括sh,csh,ksh,bash,tcsh,zsh。现在最广泛的是bash，本文也是对bash的入门介绍。</p>
-<h2 id="第一个脚本"><a href="#第一个脚本" class="headerlink" title="第一个脚本"></a>第一个脚本</h2><p>bash 的申明是在行首申明为#!/bin/bash<br>除了首行中申明脚本外，#表示注释，以#开头的行将不被执行。</p>
-<p><strong>普通的方式</strong><br>步骤1：编辑一个纯文本文档</p>
-<pre><code># vi bash1.sh
-
-#!/bin/bash            //文本首行申明为bash
-#my first bashell!    //#号注释整行
-echo &quot;I am Haima&quot;;    //脚本的具体内容
-echo &quot;I am Vicky&quot;;
-</code></pre><p>步骤2：授予文本执行权限</p>
-<pre><code># chmod u+x bash1.sh // 第一种方式，授权当前用户拥有执行选项
-</code></pre><p>步骤3：执行脚本</p>
-<pre><code># ./bash1.sh     //执行脚本
-I am Haima
-I am Vicky
-</code></pre><p><strong>bash命令方式</strong><br>步骤1：编辑一个纯文本文档</p>
-<pre><code># vi bash2.sh
-
-#no need declare    //普通注释，不用申明bash
-#my first bashell!    //#号注释整行
-echo &quot;I am Haima&quot;;    //脚本的具体内容
-echo &quot;I am Vicky&quot;;
-</code></pre><p>步骤2：直接执行命令bash启动shell脚本</p>
-<pre><code># bash bash2.sh 
-I am Haima
-I am Vicky
-</code></pre><p><strong>关于调试</strong></p>
-<pre><code>显示执行步骤    //没什么用
- bash -x bash1.sh
-bash语法检查
- bash -n bash2.sh
-
-【释】shell脚本执行时，如果中间有错误，脚本不会停止，所以  语法检查时非常有必要的。
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/19/Linux.shell/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/Linux.brief/" itemprop="url">
-                  Linux入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T18:03:21+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/14/Linux.brief/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/Linux.brief/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><p>Linux就是一个操作系统，就像你多少已经了解的Windows（xp,7,8）和Max OS,至于操作系统是什么，就不用过多解释了,Linux是基于unix内核的操作系统。1991年由 Linus Torvalds 发布原始版。</p>
-<h2 id="linux重要人物"><a href="#linux重要人物" class="headerlink" title="linux重要人物"></a>linux重要人物</h2><pre><code>Ken Thompson：C语言之父和Unix之父
-Dennis Ritchie：C语言之父和Unix之父
-Stallman：著名黑客，GNU创始人，开发了Emacs、gcc、bash shell
-Linus Torvalds：Linux之父，芬兰赫尔辛基大学
-</code></pre><h2 id="Linux原则"><a href="#Linux原则" class="headerlink" title="Linux原则"></a>Linux原则</h2><p>linux系统的基本原则</p>
-<pre><code>1.由目的的小程序组成     组合小程序完成复杂任务
-2.一切皆文件
-3.尽量避免捕获用户接口    //笔者不是特别明白
-4.配置文件，保存为纯文本
-5.严格区分大小写
-</code></pre><h2 id="Linux-Vs-windows"><a href="#Linux-Vs-windows" class="headerlink" title="Linux Vs windows"></a>Linux Vs windows</h2><pre><code>windows没有的
-    稳定的系统
-    安全性和漏洞的快速修补
-    多用户    //貌似都一样
-    用户和用户组的规划
-    相对较少的系统资源占用
-    可定制裁剪，移植到嵌入式平台（如安卓设备）
-    可选择的多种图形用户界面（如GNOME,KDE）
-    为开源而生，Linux系统本生开源的同时，在Linux平台的软件也大多开源 
-
-
-Linux没有的
-    没有特定的支持厂商
-    游戏娱乐支持度不足
-    专业软件支持度不足
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/14/Linux.brief/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1072,7 +1039,7 @@ Linux没有的
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1080,7 +1047,7 @@ Linux没有的
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1089,7 +1056,7 @@ Linux没有的
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

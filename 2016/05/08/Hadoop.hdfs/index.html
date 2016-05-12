@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dfs,Hadoop," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/ico.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="hdfs 命令行shellhdfs 命令行shell 是在Linux操作 hdfs 的接口，或者说工具
+
+shell列表
+
+[-appendToFile &amp;lt;localsrc&amp;gt; ... &amp;lt;dst&amp;gt;]
+[-cat [-ignoreCrc] &amp;lt;src&amp;gt; ...]
+[-checksum &amp;lt;src&amp;gt; ...]
+[-chgrp [-R] GROUP PATH..">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop 之hdfs（一）">
+<meta property="og:url" content="http://yoursite.com/2016/05/08/Hadoop.hdfs/index.html">
+<meta property="og:site_name" content="梦想家Haima's blog">
+<meta property="og:description" content="hdfs 命令行shellhdfs 命令行shell 是在Linux操作 hdfs 的接口，或者说工具
+
+shell列表
+
+[-appendToFile &amp;lt;localsrc&amp;gt; ... &amp;lt;dst&amp;gt;]
+[-cat [-ignoreCrc] &amp;lt;src&amp;gt; ...]
+[-checksum &amp;lt;src&amp;gt; ...]
+[-chgrp [-R] GROUP PATH..">
+<meta property="og:updated_time" content="2016-05-09T12:37:05.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop 之hdfs（一）">
+<meta name="twitter:description" content="hdfs 命令行shellhdfs 命令行shell 是在Linux操作 hdfs 的接口，或者说工具
+
+shell列表
+
+[-appendToFile &amp;lt;localsrc&amp;gt; ... &amp;lt;dst&amp;gt;]
+[-cat [-ignoreCrc] &amp;lt;src&amp;gt; ...]
+[-checksum &amp;lt;src&amp;gt; ...]
+[-chgrp [-R] GROUP PATH..">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: false,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hadoop 之hdfs（一） | 梦想家Haima's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5c87d4c7234ccd7738367ee9a577fd58";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">梦想家Haima's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Life is beautiful,so make IT wonderful.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hadoop 之hdfs（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-08T19:46:17+08:00" content="2016-05-08">
+              2016-05-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/08/Hadoop.hdfs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/08/Hadoop.hdfs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文阅读量<i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="hdfs-命令行shell"><a href="#hdfs-命令行shell" class="headerlink" title="hdfs 命令行shell"></a>hdfs 命令行shell</h1><p>hdfs 命令行shell 是在Linux操作 hdfs 的接口，或者说工具</p>
+<blockquote>
+<p>shell列表</p>
+</blockquote>
+<pre><code>[-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;]
+[-cat [-ignoreCrc] &lt;src&gt; ...]
+[-checksum &lt;src&gt; ...]
+[-chgrp [-R] GROUP PATH...]
+[-chmod [-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...]
+[-chown [-R] [OWNER][:[GROUP]] PATH...]
+[-copyFromLocal [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+[-copyToLocal [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+[-count [-q] [-h] &lt;path&gt; ...]
+[-cp [-f] [-p | -p[topax]] &lt;src&gt; ... &lt;dst&gt;]
+[-createSnapshot &lt;snapshotDir&gt; [&lt;snapshotName&gt;]]
+[-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;]
+[-df [-h] [&lt;path&gt; ...]]
+[-du [-s] [-h] &lt;path&gt; ...]
+[-expunge]
+[-get [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+[-getfacl [-R] &lt;path&gt;]
+[-getfattr [-R] {-n name | -d} [-e en] &lt;path&gt;]
+[-getmerge [-nl] &lt;src&gt; &lt;localdst&gt;]
+[-help [cmd ...]]
+[-ls [-d] [-h] [-R] [&lt;path&gt; ...]]
+[-mkdir [-p] &lt;path&gt; ...]
+[-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;]
+[-moveToLocal &lt;src&gt; &lt;localdst&gt;]
+[-mv &lt;src&gt; ... &lt;dst&gt;]
+[-put [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+[-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;]
+[-rm [-f] [-r|-R] [-skipTrash] &lt;src&gt; ...]
+[-rmdir [--ignore-fail-on-non-empty] &lt;dir&gt; ...]
+[-setfacl [-R] [{-b|-k} {-m|-x &lt;acl_spec&gt;} &lt;path&gt;]|[--set &lt;acl_spec&gt; &lt;path&gt;]]
+[-setfattr {-n name [-v value] | -x name} &lt;path&gt;]
+[-setrep [-R] [-w] &lt;rep&gt; &lt;path&gt; ...]
+[-stat [format] &lt;path&gt; ...]
+[-tail [-f] &lt;file&gt;]
+[-test -[defsz] &lt;path&gt;]
+[-text [-ignoreCrc] &lt;src&gt; ...]
+[-touchz &lt;path&gt; ...]
+[-usage [cmd ...]]
+</code></pre><a id="more"></a>
+<h2 id="hdfs-dfs-ls"><a href="#hdfs-dfs-ls" class="headerlink" title="hdfs dfs -ls"></a>hdfs dfs -ls</h2><blockquote>
+<p>格式    【[-ls [-d] [-h] [-R] [<path></path> …]]】<br>查看 hdfs 上的文件列表，与Linux中的ls命令相似，只是查询的是hdfs中的文件</p>
+</blockquote>
+<pre><code># dfs -ls /
+Found 5 items
+-rw-r--r--   1 root supergroup      87027 2016-05-06 05:37 /hadoop.log
+drwxr-xr-x   - root supergroup          0 2016-05-06 06:08 /hhh
+drwx------   - root supergroup          0 2016-05-06 06:07 /history
+-rw-r--r--   1 root supergroup  142376665 2016-05-08 05:17 /jdk
+drwxr-xr-x   - root supergroup          0 2016-05-06 06:07 /tmp
+</code></pre><blockquote>
+<p>-R 递归查看。如果是路劲，则显示路劲下的文件<br>-d 仅显示路径<br>-h 格式化显示大小，人易读的格式</p>
+</blockquote>
+<h2 id="hdfs-dfs-put"><a href="#hdfs-dfs-put" class="headerlink" title="hdfs dfs -put"></a>hdfs dfs -put</h2><blockquote>
+<p>格式 【[-put [-f] [-p] [-l] <localsrc> … <dst>]】<br>上传文件到hdfs文件系统中</dst></localsrc></p>
+</blockquote>
+<pre><code># dfs -put  /usr/local/log/redis.log  /
+# dfs -ls /
+Found 6 items
+-rw-r--r--   1 root supergroup      87027 2016-05-06 05:37 /hadoop.log
+drwxr-xr-x   - root supergroup          0 2016-05-06 06:08 /hhh
+drwx------   - root supergroup          0 2016-05-06 06:07 /history
+-rw-r--r--   1 root supergroup  142376665 2016-05-08 05:17 /jdk
+-rw-r--r--   1 root supergroup      21187 2016-05-08 05:29 /redis.log
+drwxr-xr-x   - root supergroup          0 2016-05-06 06:07 /tmp
+</code></pre><blockquote>
+<p>-f 不询问而直接覆盖<br>-l 上传时策略改为延迟加载的模式</p>
+</blockquote>
+<h2 id="hdfs-dfs-get"><a href="#hdfs-dfs-get" class="headerlink" title="hdfs dfs -get"></a>hdfs dfs -get</h2><blockquote>
+<p>格式[-get [-p] [-ignoreCrc] [-crc] <src> … <localdst>]<br>从hdfs上下载文件文件</localdst></src></p>
+</blockquote>
+<pre><code># dfs -get /redis.log   /usr/local/
+# tail redis.log 
+[3812] 28 Apr 03:00:27.486 # WARNING overcommit_memory is set tthis to take effect.
+[3812] 28 Apr 03:00:27.4
+</code></pre><h2 id="hdfs-dfs-text"><a href="#hdfs-dfs-text" class="headerlink" title="hdfs dfs -text"></a>hdfs dfs -text</h2><blockquote>
+<p>格式 [-text [-ignoreCrc] <src> …]<br>查看文本文件内容</src></p>
+</blockquote>
+<pre><code># dfs -text /redis.log
+[9190] 26 Apr 23:12:02.789 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ &apos;&apos;-._                                             
+      _.-``    `.  `_.  &apos;&apos;-._           Redis 2.8.24 (00000000/0) 64 bit
+</code></pre><h2 id="hdfs-dfs-tail"><a href="#hdfs-dfs-tail" class="headerlink" title="hdfs dfs -tail"></a>hdfs dfs -tail</h2><blockquote>
+<p>格式 [-tail [-f] <file>]<br>显示文本文件末尾内容，默认显示1k内容</file></p>
+</blockquote>
+<pre><code># dfs -tail /redis.log
+is to take effect.
+[3812] 28 Apr 03:00:27.486 # WARNING you have Transparent Huge Pages 
+(THP) support enabled in your kernel. This will create latency and memory
+ usage issues with Redis. To fix this issue run the command &apos;echo never &gt;
+ /sys/kernel/mm/transparent_hugepage/enabled&apos; as root, and add it to your
+ /etc/rc.local in order to retain the setting after a r
+</code></pre><blockquote>
+<p>-f 表示动态显示，会随时显示文档当前被追加进来的数据</p>
+</blockquote>
+<h2 id="hdfs-dfs-mkdir"><a href="#hdfs-dfs-mkdir" class="headerlink" title="hdfs dfs -mkdir"></a>hdfs dfs -mkdir</h2><blockquote>
+<p>格式 【[-mkdir [-p] <path></path> …]】<br>创建文件夹<br>-p 如果有多级文件夹，则使用该参数，创建多级文件夹</p>
+</blockquote>
+<h2 id="hdfs-dfs-tail-1"><a href="#hdfs-dfs-tail-1" class="headerlink" title="hdfs dfs -tail"></a>hdfs dfs -tail</h2><blockquote>
+<p>格式 【[-cp [-f] [-p | -p[topax]] <src> … <dst>]】<br>拷贝文件</dst></src></p>
+</blockquote>
+<h2 id="hdfs-dfs-count"><a href="#hdfs-dfs-count" class="headerlink" title="hdfs dfs -count"></a>hdfs dfs -count</h2><blockquote>
+<p>格式 【[-count [-q] [-h] <path></path> …]】<br>查看路劲的信息<br>-h 格式化文件大小，使得易读性<br>默认顺序 DIR_COUNT FILE_COUNT CONTENT_SIZE FILE_NAME</p>
+</blockquote>
+<h2 id="hdfs-dfs-help"><a href="#hdfs-dfs-help" class="headerlink" title="hdfs dfs -help"></a>hdfs dfs -help</h2><blockquote>
+<p>格式【[-help [cmd …]]】<br>查看其他命令的使用方式</p>
+</blockquote>
+<pre><code># dfs -help count
+-count [-q] [-h] &lt;path&gt; ... :
+  Count the number of directories, files and bytes under the paths
+  that match the specified file pattern.  The output columns are:
+  DIR_COUNT FILE_COUNT CONTENT_SIZE FILE_NAME or
+  QUOTA REMAINING_QUOTA SPACE_QUOTA REMAINING_SPACE_QUOTA 
+        DIR_COUNT FILE_COUNT CONTENT_SIZE FILE_NAME
+  The -h option shows file sizes in human readable format.
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dfs/" rel="tag">#dfs</a>
+          
+            <a href="/tags/Hadoop/" rel="tag">#Hadoop</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/03/Redis.brief/" rel="next" title="Redis 入门基础篇">
+                <i class="fa fa-chevron-left"></i> Redis 入门基础篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/09/Hadoop.MapReduce/" rel="prev" title="Hadoop 之MapReduce（一）">
+                Hadoop 之MapReduce（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/08/Hadoop.hdfs/"
+           data-title="Hadoop 之hdfs（一）" data-url="http://yoursite.com/2016/05/08/Hadoop.hdfs/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.gif?wo"
+               alt="Haima" />
+          <p class="site-author-name" itemprop="name">Haima</p>
+          <p class="site-description motion-element" itemprop="description">649766951|北京</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">亲情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.xiaoxiaomo.com/" target="_blank">小小默的blog</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hdfs-命令行shell"><span class="nav-number">1.</span> <span class="nav-text">hdfs 命令行shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-ls"><span class="nav-number">1.1.</span> <span class="nav-text">hdfs dfs -ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-put"><span class="nav-number">1.2.</span> <span class="nav-text">hdfs dfs -put</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-get"><span class="nav-number">1.3.</span> <span class="nav-text">hdfs dfs -get</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-text"><span class="nav-number">1.4.</span> <span class="nav-text">hdfs dfs -text</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-tail"><span class="nav-number">1.5.</span> <span class="nav-text">hdfs dfs -tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-mkdir"><span class="nav-number">1.6.</span> <span class="nav-text">hdfs dfs -mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-tail-1"><span class="nav-number">1.7.</span> <span class="nav-text">hdfs dfs -tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-count"><span class="nav-number">1.8.</span> <span class="nav-text">hdfs dfs -count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-dfs-help"><span class="nav-number">1.9.</span> <span class="nav-text">hdfs dfs -help</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haima</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">总访客数<i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">总访问量<i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"refly"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
