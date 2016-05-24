@@ -257,6 +257,270 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/24/Poem.lianmei/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T19:40:17+08:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/24/Poem.lianmei/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/Poem.lianmei/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>title: 恋梅<br>tags: </p>
+<pre><code>- 诗词
+- 梅
+</code></pre><p>categories:</p>
+<pre><code>- 诗词
+
+
+几度看尽万花林，一簇冬梅傲雪银。
+
+坐待风撼花已落，落地成泥芳菲腾。
+
+来年梢头欲再识，钟情寻他需相闻。
+
+故人相见若相问，梦里那枝仍销魂。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/22/Log4J/" itemprop="url">
+                  Log4J简单应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-22T20:04:26+08:00" content="2016-05-22">
+              2016-05-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/22/Log4J/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/22/Log4J/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>log4j.properties 内容：</p>
+<pre><code>log4j.rootLogger=DEBUG,stdout,
+log4j.logger.access =INFO,stdout,access
+
+### stdout ###
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern= %d{yyyy -MM-dd HH:mm:ss} %c{1} [%p] %m%n
+
+### access ###
+log4j.appender.access=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.access.File=/opt/data/access.log
+log4j.appender.access.Append=true
+log4j.appender.access.DatePattern=&apos;.&apos;yyyy-MM-dd
+log4j.appender.access.layout=org.apache.log4j.PatternLayout
+log4j.appender.access.layout.ConversionPattern= %m%n
+</code></pre><p>log4j.properties 需要放在项目的classpath下面，一般放在名为resources 的source folder中</p>
+<p>log4j中打印日志的基本单位是Logger<br>log4j.rootLogger 是最基础的Logger，是所有Logger都需要同时打印的。<br>定义Logger的方法是log4j.logger.logname=inforstandard,appendername ….<br>其中logname是定义logger的名字，inforstandard 是该Logger的日志级别，appendername 是该日志使用的appender</p>
+<p>日志级别包括： TRACE,DEBUG,INFO,WARN,ERROR,FATAL。一个logger只有一个日志级别，可以有多个<br>TRACE,<br>DEBUG,<br>INFO,<br>WARN,<br>ERROR and<br>FATAL</p>
+<p>appender 是输出时的基本工具，你可以把它看作是System.out.print()。 appender可以有多个</p>
+<p>接下来的appender 是一个类。这个类都实现了 org.apache.log4j.Appender 接口<br>log4j中的配置文件 log4j.appender.stdout.layout配置的值，其实是将该值通过Appender中的setLayout()方法注入的</p>
+<p>配置好log4J的配置文件后，就可以在JAVA代码中使用了。</p>
+<p>public static void main(String[] args) {<br>            Logger loger= Logger.getLogger( “access”);<br>             loger.info(“I am a access log4j” );<br>            Logger logger= Logger.getLogger(Flume4Log4J. class);<br>             loger.info(“ddd” );<br>      }</p>
+<p>因为自定义logger “access ” 中定义了两个appender,一个使用控制台输出了，一个输出到文件了。<br>【注】 windows下面 /opt/data/access.log  会输出到项目所在盘的 /opt/data/access.log下。<br>java项目放在e盘的话，就会输出到E:\opt\data\access.log</p>
+<p>2016-05-21 17:20:55 access [INFO] I am a access log4j<br>2016-05-21 17:20:55 access [INFO] ddd</p>
+<p>用JAVA代码也可以实现配置文件相同功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	Logger logger = Logger.getLogger(<span class="string">"hhh"</span>);</span><br><span class="line">	logger.setLevel(Level.DEBUG);</span><br><span class="line"></span><br><span class="line">	org.apache.log4j.ConsoleAppender appender = </span><br><span class="line">			<span class="keyword">new</span> org.apache.log4j.ConsoleAppender();</span><br><span class="line">	appender.setName(<span class="string">"sta"</span>);</span><br><span class="line">	appender.setTarget(<span class="string">"System.out"</span>);</span><br><span class="line">	appender.setWriter(<span class="keyword">new</span> FileWriter(<span class="keyword">new</span> File(<span class="string">"e:/test.txt"</span>)));</span><br><span class="line"></span><br><span class="line">	org.apache.log4j.PatternLayout layout = <span class="keyword">new</span> PatternLayout();</span><br><span class="line">	layout.setConversionPattern(<span class="string">"%d&#123;yyyy-MM-dd HH:mm:ss&#125; %c&#123;1&#125; [%p] %m%n"</span>);</span><br><span class="line">	appender.setLayout(layout);</span><br><span class="line"></span><br><span class="line">	logger.addAppender(appender);</span><br><span class="line"></span><br><span class="line">	logger.info(<span class="string">"log4j of JAVA Code"</span>);</span><br><span class="line"></span><br><span class="line">	Logger loggerRoot = Logger.getRootLogger();</span><br><span class="line">	logger.warn(<span class="string">"ddd"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要引入的包</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Level;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.PatternLayout;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/12/Zookeeper.install.distributed/" itemprop="url">
                   Zookeeper之集群安装
                 </a>
@@ -733,314 +997,6 @@ Mode: leader    //主节显示leader,重节点会显示follower
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/03/Redis.brief/" itemprop="url">
-                  Redis 入门基础篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-03T11:53:16+08:00" content="2016-05-03">
-              2016-05-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/03/Redis.brief/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/Redis.brief/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。</p>
-<p><strong>官方介绍摘要</strong></p>
-<blockquote>
-<p>Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.</p>
-</blockquote>
-<h1 id="安装运行"><a href="#安装运行" class="headerlink" title="安装运行"></a>安装运行</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code># wget http://download.redis.io/releases/redis-3.0.7.tar.gz
-# tar xzf redis-3.0.7.tar.gz
-# cd redis-3.0.7
-# make
-# make install
-</code></pre><ul>
-<li>第一步 下载redis压缩包  在Linux中用wget命令。前提是当前linux能联网。或者手动去官网下载压缩包再上传到Linux环境。</li>
-<li>接下来：解压压缩包，再进入（cd）到解压后的目录 redis-3.0.7  再编译构建（make命令）。最后安装(make install命令)</li>
-</ul>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code># redis-server 
-</code></pre><blockquote>
-<p>执行 redis-server命令后，如下面所示，则证明安装成功。</p>
-</blockquote>
-<pre><code>10714:C 03 May 22:24:47.216 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-10714:M 03 May 22:24:47.216 * Increased maximum number of open files to 10032 (it was originally set to 1024).
-                _._                                                  
-           _.-``__ &apos;&apos;-._                                             
-      _.-``    `.  `_.  &apos;&apos;-._           Redis 3.0.7 (00000000/0) 64 bit
-  .-`` .-```.  ```\/    _.,_ &apos;&apos;-._                                   
- (    &apos;      ,       .-`  | `,    )     Running in standalone mode
- |`-._`-...-` __...-.``-._|&apos;` _.-&apos;|     Port: 6379
- |    `-._   `._    /     _.-&apos;    |     PID: 10714
-  `-._    `-._  `-./  _.-&apos;    _.-&apos;                                   
- |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
- |    `-._`-._        _.-&apos;_.-&apos;    |           http://redis.io        
-  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;                                   
- |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
- |    `-._`-._        _.-&apos;_.-&apos;    |                                  
-  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;        
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/03/Redis.brief/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/01/Tools.mark/" itemprop="url">
-                  Markdown编写博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-01T20:17:14+08:00" content="2016-05-01">
-              2016-05-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/01/Tools.mark/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/Tools.mark/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="欢迎使用Markdown编辑器写博客"><a href="#欢迎使用Markdown编辑器写博客" class="headerlink" title="欢迎使用Markdown编辑器写博客"></a>欢迎使用Markdown编辑器写博客</h1><p>本Markdown编辑器使用<a href="https://github.com/benweet/stackedit">StackEdit</a>修改而来，用它写博客，将会带来全新的体验哦：</p>
-<ul>
-<li><strong>Markdown和扩展Markdown简洁的语法</strong></li>
-<li><strong>代码块高亮</strong></li>
-<li><strong>图片链接和图片上传</strong></li>
-<li><strong><em>LaTex</em>数学公式</strong></li>
-<li><strong>UML序列图和流程图</strong></li>
-<li><strong>离线写博客</strong></li>
-<li><strong>导入导出Markdown文件</strong></li>
-<li><strong>丰富的快捷键</strong></li>
-</ul>
-<hr>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li>加粗    <code>Ctrl + B</code> </li>
-<li>斜体    <code>Ctrl + I</code> </li>
-<li>引用    <code>Ctrl + Q</code></li>
-<li>插入链接    <code>Ctrl + L</code></li>
-<li>插入代码    <code>Ctrl + K</code></li>
-<li>插入图片    <code>Ctrl + G</code></li>
-<li>提升标题    <code>Ctrl + H</code></li>
-<li>有序列表    <code>Ctrl + O</code></li>
-<li>无序列表    <code>Ctrl + U</code></li>
-<li>横线    <code>Ctrl + R</code></li>
-<li>撤销    <code>Ctrl + Z</code></li>
-<li>重做    <code>Ctrl + Y</code></li>
-</ul>
-<h2 id="Markdown及扩展"><a href="#Markdown及扩展" class="headerlink" title="Markdown及扩展"></a>Markdown及扩展</h2><blockquote>
-<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank"> [ 维基百科 ]</p>
-</blockquote>
-<p>使用简单的符号标识不同的标题，将某些文字标记为<strong>粗体</strong>或者<em>斜体</em>，创建一个<a href="http://www.csdn.net">链接</a>等，详细语法参考帮助？。</p>
-<p>本编辑器支持 <strong>Markdown Extra</strong> , 　扩展了很多好用的功能。具体请参考<a href="https://github.com/jmcmanus/pagedown-extra" title="Pagedown Extra">Github</a>.  </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/01/Tools.mark/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1086,7 +1042,7 @@ Mode: leader    //主节显示leader,重节点会显示follower
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1094,7 +1050,7 @@ Mode: leader    //主节显示leader,重节点会显示follower
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1103,7 +1059,7 @@ Mode: leader    //主节显示leader,重节点会显示follower
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

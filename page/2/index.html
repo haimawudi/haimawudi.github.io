@@ -257,6 +257,314 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/03/Redis.brief/" itemprop="url">
+                  Redis 入门基础篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T11:53:16+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/Redis.brief/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/Redis.brief/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>redis 是基于键值对的数据库，是一个非关系型数据库（nosql）。redis是基于内存的数据库，常用于网站缓存。目前支持 strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs , geospatial indexes数据类型的存储。</p>
+<p><strong>官方介绍摘要</strong></p>
+<blockquote>
+<p>Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.</p>
+</blockquote>
+<h1 id="安装运行"><a href="#安装运行" class="headerlink" title="安装运行"></a>安装运行</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code># wget http://download.redis.io/releases/redis-3.0.7.tar.gz
+# tar xzf redis-3.0.7.tar.gz
+# cd redis-3.0.7
+# make
+# make install
+</code></pre><ul>
+<li>第一步 下载redis压缩包  在Linux中用wget命令。前提是当前linux能联网。或者手动去官网下载压缩包再上传到Linux环境。</li>
+<li>接下来：解压压缩包，再进入（cd）到解压后的目录 redis-3.0.7  再编译构建（make命令）。最后安装(make install命令)</li>
+</ul>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code># redis-server 
+</code></pre><blockquote>
+<p>执行 redis-server命令后，如下面所示，则证明安装成功。</p>
+</blockquote>
+<pre><code>10714:C 03 May 22:24:47.216 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+10714:M 03 May 22:24:47.216 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ &apos;&apos;-._                                             
+      _.-``    `.  `_.  &apos;&apos;-._           Redis 3.0.7 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ &apos;&apos;-._                                   
+ (    &apos;      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|&apos;` _.-&apos;|     Port: 6379
+ |    `-._   `._    /     _.-&apos;    |     PID: 10714
+  `-._    `-._  `-./  _.-&apos;    _.-&apos;                                   
+ |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
+ |    `-._`-._        _.-&apos;_.-&apos;    |           http://redis.io        
+  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;                                   
+ |`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|                                  
+ |    `-._`-._        _.-&apos;_.-&apos;    |                                  
+  `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;        
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/03/Redis.brief/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/01/Tools.mark/" itemprop="url">
+                  Markdown编写博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-01T20:17:14+08:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/01/Tools.mark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/Tools.mark/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="欢迎使用Markdown编辑器写博客"><a href="#欢迎使用Markdown编辑器写博客" class="headerlink" title="欢迎使用Markdown编辑器写博客"></a>欢迎使用Markdown编辑器写博客</h1><p>本Markdown编辑器使用<a href="https://github.com/benweet/stackedit">StackEdit</a>修改而来，用它写博客，将会带来全新的体验哦：</p>
+<ul>
+<li><strong>Markdown和扩展Markdown简洁的语法</strong></li>
+<li><strong>代码块高亮</strong></li>
+<li><strong>图片链接和图片上传</strong></li>
+<li><strong><em>LaTex</em>数学公式</strong></li>
+<li><strong>UML序列图和流程图</strong></li>
+<li><strong>离线写博客</strong></li>
+<li><strong>导入导出Markdown文件</strong></li>
+<li><strong>丰富的快捷键</strong></li>
+</ul>
+<hr>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>加粗    <code>Ctrl + B</code> </li>
+<li>斜体    <code>Ctrl + I</code> </li>
+<li>引用    <code>Ctrl + Q</code></li>
+<li>插入链接    <code>Ctrl + L</code></li>
+<li>插入代码    <code>Ctrl + K</code></li>
+<li>插入图片    <code>Ctrl + G</code></li>
+<li>提升标题    <code>Ctrl + H</code></li>
+<li>有序列表    <code>Ctrl + O</code></li>
+<li>无序列表    <code>Ctrl + U</code></li>
+<li>横线    <code>Ctrl + R</code></li>
+<li>撤销    <code>Ctrl + Z</code></li>
+<li>重做    <code>Ctrl + Y</code></li>
+</ul>
+<h2 id="Markdown及扩展"><a href="#Markdown及扩展" class="headerlink" title="Markdown及扩展"></a>Markdown及扩展</h2><blockquote>
+<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank"> [ 维基百科 ]</p>
+</blockquote>
+<p>使用简单的符号标识不同的标题，将某些文字标记为<strong>粗体</strong>或者<em>斜体</em>，创建一个<a href="http://www.csdn.net">链接</a>等，详细语法参考帮助？。</p>
+<p>本编辑器支持 <strong>Markdown Extra</strong> , 　扩展了很多好用的功能。具体请参考<a href="https://github.com/jmcmanus/pagedown-extra" title="Pagedown Extra">Github</a>.  </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/01/Tools.mark/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/24/Linux.awk/" itemprop="url">
                   Linux之强大的awk
                 </a>
@@ -719,303 +1027,6 @@ Linux没有的
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/Python.sequence/" itemprop="url">
-                  python 序列sequence
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T20:25:39+08:00" content="2016-04-13">
-              2016-04-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/13/Python.sequence/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/Python.sequence/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>有点像数组，可以用下标索引访问到容器中的数值，索引以0开始<br>序列中可以是不同类型的内容<br>字符串也能用索引脚标访问<br>逆序访问序列的元素，用负数表示索引</p>
-<pre><code>&gt;&gt;&gt; arr=[&quot;haima&quot;,1] 
-&gt;&gt;&gt; arr[0]  
-&apos;haima&apos;
-&gt;&gt;&gt; arr[1]
-1
-
-
-&gt;&gt;&gt; name=&quot;haima&quot; 
-&gt;&gt;&gt; name[3]
-&apos;m&apos;
-
-&gt;&gt;&gt; arr=[&quot;haima&quot;,1]  
-&gt;&gt;&gt; arr[-1]
-1
-</code></pre><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>序列相乘，序列相加</p>
-<pre><code>&gt;&gt;&gt; arrbig=arr+[&quot;hailong&quot;,2]   //序列相加：简单的元素组合
-&gt;&gt;&gt; arrbig
-[&apos;haima&apos;, 1, &apos;hailong&apos;, 2]
-
-
-&gt;&gt;&gt; arrM=arr*5    //序列*数字   元素的简单重复
-&gt;&gt;&gt; arrM
-[&apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1, &apos;haima&apos;, 1]
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/Python.sequence/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/12/python.brief/" itemprop="url">
-                  python入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T21:13:41+08:00" content="2016-04-12">
-              2016-04-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/12/python.brief/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/python.brief/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="python的使用"><a href="#python的使用" class="headerlink" title="python的使用"></a>python的使用</h2><pre><code>Linux中基本都自带安装了python编译器，其他安装方式待查询。
-
-使用python命令，
-     -V 查看版本
-     安装python 通常linux 自带安装了python 
-     直接在linux环境中使用命令python即可进入python交互式解释器
-
-man python 一下，查看python的基本参数
-</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><pre><code>&gt;&gt;&gt; 1/2   //整除
-0
-
-&gt;&gt;&gt; 1.0/3   //浮点型
-0.33333333333333331
-&gt;&gt;&gt; 1/3.0
-0.33333333333333331
-&gt;&gt;&gt; 1/2.0
-0.5
-
-
-&gt;&gt;&gt; 1.0//2  //浮点型强制整除
-0.0
-
-
-&gt;&gt;&gt; 10%3     //取余
-1
-
-
-&gt;&gt;&gt; 2**5  //幂运算     **表示 幂运算
-32
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/12/python.brief/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1061,7 +1072,7 @@ man python 一下，查看python的基本参数
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1069,7 +1080,7 @@ man python 一下，查看python的基本参数
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1078,7 +1089,7 @@ man python 一下，查看python的基本参数
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,string," />
+  <meta name="keywords" content="logs,Java," />
 
 
 
@@ -78,37 +78,34 @@
 
 
 
-<meta name="description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链
-&amp;gt;&amp;gt;&amp;gt; str=&amp;quot;wo shi haima&amp;quot;
-&amp;gt;&amp;gt;&amp;gt; str[5]
-&amp;apos;i&amp;apos;
-&amp;gt;&amp;gt;&amp;gt; str[5:]
-&amp;apos;i haima&amp;apos;
-&amp;gt;&amp;gt;&amp;gt; str*2
-&amp;apos;wo shi haimawo shi ha">
+<meta name="description" content="log4j.properties 内容：
+log4j.rootLogger=DEBUG,stdout,
+log4j.logger.access =INFO,stdout,access
+
+### stdout ###
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 字符串string">
-<meta property="og:url" content="http://yoursite.com/2016/04/11/Python.String/index.html">
+<meta property="og:title" content="Log4J简单应用">
+<meta property="og:url" content="http://yoursite.com/2016/05/22/Log4J/index.html">
 <meta property="og:site_name" content="梦想家Haima's blog">
-<meta property="og:description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链
-&amp;gt;&amp;gt;&amp;gt; str=&amp;quot;wo shi haima&amp;quot;
-&amp;gt;&amp;gt;&amp;gt; str[5]
-&amp;apos;i&amp;apos;
-&amp;gt;&amp;gt;&amp;gt; str[5:]
-&amp;apos;i haima&amp;apos;
-&amp;gt;&amp;gt;&amp;gt; str*2
-&amp;apos;wo shi haimawo shi ha">
-<meta property="og:updated_time" content="2016-04-19T17:34:53.731Z">
+<meta property="og:description" content="log4j.properties 内容：
+log4j.rootLogger=DEBUG,stdout,
+log4j.logger.access =INFO,stdout,access
+
+### stdout ###
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.o">
+<meta property="og:updated_time" content="2016-05-22T12:29:16.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 字符串string">
-<meta name="twitter:description" content="基本字符串操作索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链
-&amp;gt;&amp;gt;&amp;gt; str=&amp;quot;wo shi haima&amp;quot;
-&amp;gt;&amp;gt;&amp;gt; str[5]
-&amp;apos;i&amp;apos;
-&amp;gt;&amp;gt;&amp;gt; str[5:]
-&amp;apos;i haima&amp;apos;
-&amp;gt;&amp;gt;&amp;gt; str*2
-&amp;apos;wo shi haimawo shi ha">
+<meta name="twitter:title" content="Log4J简单应用">
+<meta name="twitter:description" content="log4j.properties 内容：
+log4j.rootLogger=DEBUG,stdout,
+log4j.logger.access =INFO,stdout,access
+
+### stdout ###
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.o">
 
 
 
@@ -126,7 +123,7 @@
   };
 </script>
 
-  <title> python 字符串string | 梦想家Haima's blog </title>
+  <title> Log4J简单应用 | 梦想家Haima's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +273,7 @@
             
             
               
-                python 字符串string
+                Log4J简单应用
               
             
           </h1>
@@ -288,8 +285,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T19:22:45+08:00" content="2016-04-11">
-              2016-04-11
+            <time itemprop="dateCreated" datetime="2016-05-22T20:04:26+08:00" content="2016-05-22">
+              2016-05-22
             </time>
           </span>
 
@@ -302,8 +299,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -318,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/11/Python.String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Python.String/" itemprop="commentsCount"></span>
+                <a href="/2016/05/22/Log4J/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/22/Log4J/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,89 +344,38 @@
       
 
       
-        <h2 id="基本字符串操作"><a href="#基本字符串操作" class="headerlink" title="基本字符串操作"></a>基本字符串操作</h2><p>索引、分片、乘法、判断成员资格、长度、最大值、最小值、加链</p>
-<pre><code>&gt;&gt;&gt; str=&quot;wo shi haima&quot;
-&gt;&gt;&gt; str[5]
-&apos;i&apos;
-&gt;&gt;&gt; str[5:]
-&apos;i haima&apos;
-&gt;&gt;&gt; str*2
-&apos;wo shi haimawo shi haima&apos;
-&gt;&gt;&gt; &quot;haima&quot; in str
-True
-&gt;&gt;&gt; len(str)
-12
-&gt;&gt;&gt; max(str)
-&apos;w&apos;
-&gt;&gt;&gt; min(str)
-&apos;&apos;
-&gt;&gt;&gt; str+&quot; vick&apos;s brother&quot;
-&quot;wo shi haima vick&apos;s brother&quot;
-</code></pre><h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><p>目标字符串以%为标记，格式化用%作为运算符 后面跟随要格式化替换的内容</p>
-<pre><code>&gt;&gt;&gt; &quot;woshi %s&quot;  %   &quot;haima&quot;   //被替换的目标字符串中%s  s表示替换者类型
-&apos;woshi haima&apos;
-</code></pre><p>常见替换者类型符            类型</p>
-<pre><code>i                              十进制整数
-f,F                           浮点型
-s                             字符串（使用str转化任意python对象）
-r                             字符串（使用repr转换任意python对象）
-C                             单字符
-</code></pre><a id="more"></a>
-<p>举例</p>
-<pre><code>&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; &quot;%10f&quot; % pi        //10 可以指明替换宽度
-&apos;  3.141593&apos;
+        <p>log4j.properties 内容：</p>
+<pre><code>log4j.rootLogger=DEBUG,stdout,
+log4j.logger.access =INFO,stdout,access
 
-&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; &quot;%10.2f&quot; % pi   // f前面点号后面可以指定一个保留小数位数
-&apos;      3.14&apos;
+### stdout ###
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern= %d{yyyy -MM-dd HH:mm:ss} %c{1} [%p] %m%n
 
-&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; &quot;%-10.2f&quot; % pi   //符号（-）可以指明左对齐
-&apos;3.14      &apos;
-</code></pre><h2 id="find-查找"><a href="#find-查找" class="headerlink" title="find()  查找 "></a>find()  查找 </h2><p>返回查找到的第一个子字符串的索引，如果找不到，则返回-1</p>
-<pre><code>&gt;&gt;&gt; &quot;hello I am haima&quot;.find(&quot;haima&quot;)
-11
-&gt;&gt;&gt; &quot;hello I am haima&quot;.find(&quot;haimd&quot;)
--1
-</code></pre><h2 id="split-切割方法"><a href="#split-切割方法" class="headerlink" title="split() 切割方法"></a>split() 切割方法</h2><p>返回一个被分割后的序列</p>
-<pre><code>&gt;&gt;&gt;&quot;hello I am haima&quot;.split(&quot; &quot;)
-[&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;]
-
-&gt;&gt;&gt; &quot;hello I    am haima&quot;.split(&quot; &quot;)     //*连续出现空格是，切割容易出错
-[&apos;hello&apos;, &apos;I&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;am&apos;, &apos;haima&apos;]
-</code></pre><h2 id="join-方法"><a href="#join-方法" class="headerlink" title="join()方法  "></a>join()方法  </h2><p>split() 的一个逆运算</p>
-<pre><code>&gt;&gt;&gt; &quot; &quot;.join([&apos;hello&apos;, &apos;I&apos;, &apos;am&apos;, &apos;haima&apos;])
-&apos;hello I am haima&apos;
-</code></pre><h2 id="lower-方法"><a href="#lower-方法" class="headerlink" title="lower()方法    "></a>lower()方法    </h2><p>返回字符串的小写</p>
-<pre><code>&gt;&gt;&gt; &quot;WO SHI HAIMA&quot;.lower();
-&apos;wo shi haima&apos;
-</code></pre><h2 id="upper-方法"><a href="#upper-方法" class="headerlink" title="upper()方法"></a>upper()方法</h2><p>返回字符串的大写</p>
-<pre><code>&gt;&gt;&gt; &quot;wo shi haima&quot;.upper();
-&apos;WO SHI HAIMA&apos;
-</code></pre><h2 id="title-方法"><a href="#title-方法" class="headerlink" title="title()方法"></a>title()方法</h2><p>可以将string中的单词首字母大写</p>
-<pre><code>&gt;&gt;&gt; &quot;I&apos;m haima,Vicky&apos;s brother&quot;.title();
-&quot;I&apos;M Haima,Vicky&apos;S Brother&quot;
-</code></pre><h2 id="capwords-方法"><a href="#capwords-方法" class="headerlink" title="capwords()方法"></a>capwords()方法</h2><p>可以看出title不算特别友好，在句子中有分隔符的时候</p>
-<pre><code>&gt;&gt;&gt; capwords(&quot;I&apos;m haima,Vick&apos;s brother&quot;)
-&quot;I&apos;m Haima,vick&apos;s Brother&quot;
-</code></pre><h2 id="replace"><a href="#replace" class="headerlink" title="replace()    "></a>replace()    </h2><p>替换</p>
-<pre><code>&gt;&gt;&gt; &quot;I am haima,I am a java developer.&quot;.replace(&quot;I am&quot;,&quot;He is&quot;)
-&apos;He is haima,He is a java developer.&apos;    //He is 替换 I am
-</code></pre><h2 id="strip"><a href="#strip" class="headerlink" title="strip() "></a>strip() </h2><p>去除两端空格</p>
-<pre><code>&gt;&gt;&gt; &quot;      I am rob or haima.    &quot;.strip();
-&apos;I am rob or haima.&apos;
-</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>单引号和双引号都能作为字符串的开始和结束标记。<br>字符串中间不能出现此字符串的开头或结束标记。如果需要，则用转移字符\</p>
-<pre><code>&gt;&gt;&gt; &quot;I am &apos;haima&apos; &quot;
-&quot;I am &apos;haima&apos; &quot;
-
-
-&gt;&gt;&gt; &apos;I am &quot;haima&quot; &apos;
-&apos;I am &quot;haima&quot; &apos;
-
-&gt;&gt;&gt; &apos;I am \&apos;haima\&apos; &apos;     //注意转移字符
-&quot;I am &apos;haima&apos; &quot;
-</code></pre>
+### access ###
+log4j.appender.access=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.access.File=/opt/data/access.log
+log4j.appender.access.Append=true
+log4j.appender.access.DatePattern=&apos;.&apos;yyyy-MM-dd
+log4j.appender.access.layout=org.apache.log4j.PatternLayout
+log4j.appender.access.layout.ConversionPattern= %m%n
+</code></pre><p>log4j.properties 需要放在项目的classpath下面，一般放在名为resources 的source folder中</p>
+<p>log4j中打印日志的基本单位是Logger<br>log4j.rootLogger 是最基础的Logger，是所有Logger都需要同时打印的。<br>定义Logger的方法是log4j.logger.logname=inforstandard,appendername ….<br>其中logname是定义logger的名字，inforstandard 是该Logger的日志级别，appendername 是该日志使用的appender</p>
+<p>日志级别包括： TRACE,DEBUG,INFO,WARN,ERROR,FATAL。一个logger只有一个日志级别，可以有多个<br>TRACE,<br>DEBUG,<br>INFO,<br>WARN,<br>ERROR and<br>FATAL</p>
+<p>appender 是输出时的基本工具，你可以把它看作是System.out.print()。 appender可以有多个</p>
+<p>接下来的appender 是一个类。这个类都实现了 org.apache.log4j.Appender 接口<br>log4j中的配置文件 log4j.appender.stdout.layout配置的值，其实是将该值通过Appender中的setLayout()方法注入的</p>
+<p>配置好log4J的配置文件后，就可以在JAVA代码中使用了。</p>
+<p>public static void main(String[] args) {<br>            Logger loger= Logger.getLogger( “access”);<br>             loger.info(“I am a access log4j” );<br>            Logger logger= Logger.getLogger(Flume4Log4J. class);<br>             loger.info(“ddd” );<br>      }</p>
+<p>因为自定义logger “access ” 中定义了两个appender,一个使用控制台输出了，一个输出到文件了。<br>【注】 windows下面 /opt/data/access.log  会输出到项目所在盘的 /opt/data/access.log下。<br>java项目放在e盘的话，就会输出到E:\opt\data\access.log</p>
+<p>2016-05-21 17:20:55 access [INFO] I am a access log4j<br>2016-05-21 17:20:55 access [INFO] ddd</p>
+<p>用JAVA代码也可以实现配置文件相同功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	Logger logger = Logger.getLogger(<span class="string">"hhh"</span>);</span><br><span class="line">	logger.setLevel(Level.DEBUG);</span><br><span class="line"></span><br><span class="line">	org.apache.log4j.ConsoleAppender appender = </span><br><span class="line">			<span class="keyword">new</span> org.apache.log4j.ConsoleAppender();</span><br><span class="line">	appender.setName(<span class="string">"sta"</span>);</span><br><span class="line">	appender.setTarget(<span class="string">"System.out"</span>);</span><br><span class="line">	appender.setWriter(<span class="keyword">new</span> FileWriter(<span class="keyword">new</span> File(<span class="string">"e:/test.txt"</span>)));</span><br><span class="line"></span><br><span class="line">	org.apache.log4j.PatternLayout layout = <span class="keyword">new</span> PatternLayout();</span><br><span class="line">	layout.setConversionPattern(<span class="string">"%d&#123;yyyy-MM-dd HH:mm:ss&#125; %c&#123;1&#125; [%p] %m%n"</span>);</span><br><span class="line">	appender.setLayout(layout);</span><br><span class="line"></span><br><span class="line">	logger.addAppender(appender);</span><br><span class="line"></span><br><span class="line">	logger.info(<span class="string">"log4j of JAVA Code"</span>);</span><br><span class="line"></span><br><span class="line">	Logger loggerRoot = Logger.getRootLogger();</span><br><span class="line">	logger.warn(<span class="string">"ddd"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要引入的包</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Level;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.PatternLayout;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -449,9 +395,9 @@ C                             单字符
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/logs/" rel="tag">#logs</a>
           
-            <a href="/tags/string/" rel="tag">#string</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -460,16 +406,16 @@ C                             单字符
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/11/Linux.skills/" rel="next" title="Linux常用技巧">
-                <i class="fa fa-chevron-left"></i> Linux常用技巧
+              <a href="/2016/05/12/Zookeeper.install.distributed/" rel="next" title="Zookeeper之集群安装">
+                <i class="fa fa-chevron-left"></i> Zookeeper之集群安装
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/12/Python.dictionary/" rel="prev" title="python 字典dictionary">
-                python 字典dictionary <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/24/Poem.lianmei/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -496,8 +442,8 @@ C                             单字符
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/11/Python.String/"
-           data-title="python 字符串string" data-url="http://yoursite.com/2016/04/11/Python.String/">
+      <div class="ds-thread" data-thread-key="2016/05/22/Log4J/"
+           data-title="Log4J简单应用" data-url="http://yoursite.com/2016/05/22/Log4J/">
       </div>
     
   </div>
@@ -599,7 +545,7 @@ C                             单字符
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本字符串操作"><span class="nav-number">1.</span> <span class="nav-text">基本字符串操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串格式化"><span class="nav-number">2.</span> <span class="nav-text">字符串格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-查找"><span class="nav-number">3.</span> <span class="nav-text">find()  查找 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split-切割方法"><span class="nav-number">4.</span> <span class="nav-text">split() 切割方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-方法"><span class="nav-number">5.</span> <span class="nav-text">join()方法  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lower-方法"><span class="nav-number">6.</span> <span class="nav-text">lower()方法    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#upper-方法"><span class="nav-number">7.</span> <span class="nav-text">upper()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#title-方法"><span class="nav-number">8.</span> <span class="nav-text">title()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#capwords-方法"><span class="nav-number">9.</span> <span class="nav-text">capwords()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replace"><span class="nav-number">10.</span> <span class="nav-text">replace()    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strip"><span class="nav-number">11.</span> <span class="nav-text">strip() </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">12.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
